@@ -5,41 +5,40 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import tam.group_bbv181.car_rental.model.Customer;
-import tam.group_bbv181.car_rental.services.customers.impls.CustomerServiceImpl;
+import tam.group_bbv181.car_rental.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rental.services.login.impls.LoginServiceImpl;
 
 import java.util.List;
 
-@RequestMapping("/CarRentals")
+@RequestMapping("/CarRental")
 @CrossOrigin("*")
 @Controller
 public class CustomerWebController {
     @Autowired
-    CustomerServiceImpl customersService;
+    CustomerServiceImpl customerService;
 
     @Autowired
     LoginServiceImpl loginService;
 
-    @RequestMapping("/customers/list")
+    @RequestMapping("/customer/list")
     public String showAll(Model model){
-        List<Customer> list = customersService.getAll();
+        List<Customer> list = customerService.getAll();
         model.addAttribute("customers", list);
-        return "customerslist";
+        return "customerList";
     }
 
 
-    @RequestMapping("/customers/delete/{id}")
+    @RequestMapping("/customer/delete/{id}")
     public String delete(Model model,@PathVariable(value = "id")String id){
-        customersService.delete(id);
-        List<Customer> list = customersService.getAll();
-        return "redirect:/CarRentals/customers/list";
+        customerService.delete(id);
+        return "redirect:/CarRental/customer/list";
     }
 
     @RequestMapping("/userAccount/{id}")
     public String userAccount(Model model,@PathVariable(value = "id")String id){
-        Customer customer = customersService.get(id);
-        model.addAttribute("customers", customer);
-        return "usersAccount";
+        Customer customer = customerService.get(id);
+        model.addAttribute("customer", customer);
+        return "accountUser";
     }
 /*
 

@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <title>Create Car</title>
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet"type="text/css" href="<@spring.url '/css/style.css'/>"/>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" Type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" Type="text/css" />
+    <link rel="stylesheet"Type="text/css" href="<@spring.url '/css/style.css'/>"/>
 </head>
 <body>
 
@@ -24,7 +24,7 @@
             <br>Speciality:<@spring.formSingleSelect "WorkerForm.speciality", mavs, "class='form-control'"/>
             <br>EmploymentDay:<@spring.formInput "WorkerForm.employmentDay" "class='form-control' readonly  width='276'" "text"/>
             <br>
-            <input type="submit" value="Create"/>
+            <input Type="submit" value="Create"/>
         </form>
     </fieldset>
 </div>

@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Customers List</title>
     <link rel="stylesheet"
-          type="text/css" href="<@spring.url '/css/style.css'/>"/>
+          Type="text/css" href="<@spring.url '/css/style.css'/>"/>
 </head>
 <body>
 <div class="container-fluid" style="padding-left: 100px; padding-right: 100px " >
@@ -29,7 +29,7 @@
                 <th>Update</th>
             </tr>
             <#assign gender = "">
-            <#list customer as customer>
+            <#list customers as customer>
                 <#if customer.person.gender == true>
                     <#assign gender = "man">
                 <#else>
@@ -44,13 +44,13 @@
                 <td>${customer.phone}</td>
                 <td>${customer.eMail}</td>
                 <td>${customer.bonusPoints}</td>
-                <td><a href="/CarRentals/customer/delete/${customer.id}" type="Button" class="btn btn-danger" >Delete</a></td>
-                <td><a href="/CarRentals/customer/update/${customer.id}" type="Button" class="btn btn-primary" >Update</a></td>
+                <td><a href="/CarRental/customer/delete/${customer.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
+                <td><a href="/CarRental/customer/update/${customer.id}" Type="Button" class="btn btn-primary" >Update</a></td>
             </tr>
         </#list>
         </table>
     </div>
-    <a href="/CarRentals/registration" type="Button" class="btn btn-info">Add new customer</a>
+    <a href="/CarRental/registration" Type="Button" class="btn btn-info">Add new customer</a>
     </form>
 </div>
 </body>

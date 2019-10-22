@@ -8,19 +8,19 @@ import tam.group_bbv181.car_rental.forms.CustomerForm;
 import tam.group_bbv181.car_rental.model.Customer;
 import tam.group_bbv181.car_rental.model.LoginUser;
 import tam.group_bbv181.car_rental.model.Person;
-import tam.group_bbv181.car_rental.services.customers.impls.CustomerServiceImpl;
+import tam.group_bbv181.car_rental.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rental.services.login.impls.LoginServiceImpl;
 import tam.group_bbv181.car_rental.services.person.impls.PersonServiceImpl;
 
 import java.util.Arrays;
 import java.util.List;
 
-@RequestMapping("/CarRentals")
+@RequestMapping("/CarRental")
 @CrossOrigin("*")
 @Controller
 public class LoginUserWebController {
     @Autowired
-    CustomerServiceImpl customersService;
+    CustomerServiceImpl customerService;
 
     @Autowired
     LoginServiceImpl loginService;
@@ -43,12 +43,12 @@ public class LoginUserWebController {
         if(loginService.userAccount(loginUser.getLogin(),
                 loginUser.getPassword()) != null) {
             model.addAttribute("LoginUser", loginUser);
-            String redirectStr = "redirect:/CarRentals/userAccount/" +
+            String redirectStr = "redirect:/CarRental/userAccount/" +
                     loginService.userAccount(loginUser.getLogin(),
                             loginUser.getPassword()).getCustomer().getId();
             return redirectStr;
         }
-        return "redirect:/CarRentals/signIn";
+        return "redirect:/CarRental/signIn";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
@@ -58,28 +58,31 @@ public class LoginUserWebController {
                 "man", "woman");
         model.addAttribute("manWoman", manWoman);
         model.addAttribute("CustomersForm", customerForm);
-        return "customersAdd";
+        return "registrationUser";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String create(Model model,@ModelAttribute("CustomersForm")
             CustomerForm customerForm){
+
         boolean gender;
         if(customerForm.getGender().equals("man")){
             gender = true;
         }else{
             gender = false;
         }
-        Person newperson = new Person(customerForm.getFirstName(),
+        Person newPerson = new Person(customerForm.getFirstName(),
                 customerForm.getMiddleName(), customerForm.getLastName(),
                 gender);
-        personService.create(newperson);
-        Customer newCustomer = new Customer(newperson, customerForm.getAddress(),
+        if(!loginService.uniqueLogin(customerForm.getLogin()) ||
+                !personService.isNotEmptyFields(newPerson)){
+            return "redirect:/CarRental/registration";
+        }
+        Customer newCustomer = new Customer(personService.create(newPerson), customerForm.getAddress(),
                 customerForm.getPhone(), customerForm.geteMail());
-        customersService.create(newCustomer);
         LoginUser loginUser = new LoginUser(customerForm.getLogin(), customerForm.getPassword(),
-                newCustomer);
-        return "redirect:/CarRentals/userAccount/" + loginService.create(loginUser).getCustomer().getId();
+                customerService.create(newCustomer));
+        return "redirect:/CarRental/userAccount/" + loginService.create(loginUser).getCustomer().getId();
     }
 /*
 

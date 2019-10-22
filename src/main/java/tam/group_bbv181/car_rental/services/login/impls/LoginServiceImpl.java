@@ -11,6 +11,7 @@ import tam.group_bbv181.car_rental.repository.PersonRepository;
 import tam.group_bbv181.car_rental.services.login.interfaces.ILoginService;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -26,14 +27,40 @@ public class LoginServiceImpl implements ILoginService {
 
     @PostConstruct
     void init(){
+        customerRepository.deleteAll();
         personRepository.deleteAll();
-        Person pash = new Person("qwer","qwer", "qwer", true);
-        personRepository.save(pash);
-        Customer qwer1 = new Customer(pash,"qwerrttyyu",1234567890,"qwert@mail.com");
-        customerRepository.save(qwer1);
         loginRepository.deleteAll();
-        LoginUser Qwer = new LoginUser("qwer","1234", qwer1);
-        loginRepository.save(Qwer);
+
+        Person pash = new Person("Bazil","Pash", "Anodov", true);
+        Person desi = new Person("Jan","Desi", "Emue", true);
+        Person tester = new Person("Anna","Tester", "Oyen", false);
+        Person pash1 = new Person("Qwer","Rewq", "Ywer", true);
+
+        Customer bazil = new Customer(personRepository.save(pash),"qwrewt",
+                    45679689,"qwer@gmail.com");
+        Customer jan = new Customer(personRepository.save(desi),"zxcxczcz",
+                    436554,"asdf@gmail.com");
+        Customer anna = new Customer(personRepository.save(tester),"wqqrrwer",
+                    323774,"zvcx@mail.com");
+        Customer qwer1 = new Customer(personRepository.save(pash1),"qwerrttyy",
+                1234567890,"qwert@mail.com");
+
+        anna.setBonusPoints(7);
+        bazil.setBonusPoints(20);
+
+        LoginUser baziL = new LoginUser("QWER","1234",
+                customerRepository.save(bazil));
+        LoginUser jaN = new LoginUser("QWERTY","1234",
+                customerRepository.save(jan));
+        LoginUser annA = new LoginUser("qwerty","1234",
+                customerRepository.save(anna));
+        LoginUser qweR = new LoginUser("qwer","1234",
+                customerRepository.save(qwer1));
+
+        loginRepository.save(baziL);
+        loginRepository.save(jaN);
+        loginRepository.save(annA);
+        loginRepository.save(qweR);
     }
 
     @Override
@@ -66,5 +93,16 @@ public class LoginServiceImpl implements ILoginService {
     @Override
     public LoginUser userAccount(String login, String password) {
         return loginRepository.findByLoginAndPassword(login, password);
+    }
+
+    @Override
+    public boolean uniqueLogin(String login) {
+        List<LoginUser> loginUserList = this.getAll();
+        for (LoginUser item: loginUserList) {
+            if(item.getLogin().equals(login)){
+                return false;
+            }
+        }
+        return true;
     }
 }

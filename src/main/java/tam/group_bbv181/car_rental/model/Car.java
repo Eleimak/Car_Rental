@@ -13,7 +13,7 @@ public class Car {
     private int costCar;
     private String licenseNumberPlates;
     private String carCondition;
-    private Type type;
+    private TypeCar typeCar;
     private LocalDate carYear;
     private int rentalPrice;
     private boolean repair;
@@ -22,12 +22,12 @@ public class Car {
     }
 
     public Car(String brandCar, int costCar, String licenseNumberPlates,
-               String carCondition, Type type, LocalDate carYear, int rentalPrice) {
+               String carCondition, TypeCar typeCar, LocalDate carYear, int rentalPrice) {
         this.brandCar = brandCar;
         this.costCar = costCar;
         this.licenseNumberPlates = licenseNumberPlates;
         this.carCondition = carCondition;
-        this.type = type;
+        this.typeCar = typeCar;
         this.carYear = carYear;
         this.rentalPrice = rentalPrice;
     }
@@ -72,12 +72,12 @@ public class Car {
         this.carCondition = carCondition;
     }
 
-    public Type getType() {
-        return type;
+    public TypeCar getTypeCar() {
+        return typeCar;
     }
 
-    public void setType(Type type) {
-        this.type = type;
+    public void setTypeCar(TypeCar typeCar) {
+        this.typeCar = typeCar;
     }
 
     public LocalDate getCarYear() {
@@ -116,7 +116,7 @@ public class Car {
                 Objects.equals(brandCar, car.brandCar) &&
                 Objects.equals(licenseNumberPlates, car.licenseNumberPlates) &&
                 Objects.equals(carCondition, car.carCondition) &&
-                type == car.type &&
+                typeCar == car.typeCar &&
                 Objects.equals(carYear, car.carYear);
     }
 
@@ -133,7 +133,7 @@ public class Car {
                 ", costCar=" + costCar +
                 ", licenseNumberPlates='" + licenseNumberPlates + '\'' +
                 ", carCondition='" + carCondition + '\'' +
-                ", type=" + type +
+                ", typeCar=" + typeCar +
                 ", carYear=" + carYear +
                 ", rentalPrice=" + rentalPrice +
                 ", repair=" + repair +

@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import tam.group_bbv181.car_rental.model.Car;
-import tam.group_bbv181.car_rental.services.cars.impls.CarServiceImpl;
+import tam.group_bbv181.car_rental.model.TypeCar;
+import tam.group_bbv181.car_rental.services.car.impls.CarServiceImpl;
 
 import java.util.List;
 
-@RequestMapping("/CarRentals/cars")
+@RequestMapping("/CarRental/car")
 @CrossOrigin("*")
 @Controller
 public class CarWebController {
@@ -22,14 +23,26 @@ public class CarWebController {
     public String showAll(Model model){
         List<Car> list = carsService.getAll();
         model.addAttribute("cars", list);
-        return "carsList";
+        return "carList";
     }
 
+    @RequestMapping("/listR")
+    public String showNoRepair(Model model){
+        List<Car> list = carsService.getAllNoRepair();
+        model.addAttribute("cars", list);
+        return "carList";
+    }
+
+    @RequestMapping("/listSort")
+    public String showSort(Model model){
+        List<Car> list = carsService.getSortingByType(TypeCar.SEDAN);
+        model.addAttribute("cars", list);
+        return "carList";
+    }
 
     @RequestMapping("/delete/{id}")
     public String delete(Model model,@PathVariable(value = "id")String id){
         carsService.delete(id);
-        List<Car> list = carsService.getAll();
-        return "/CarRentals/cars/list";
+        return "redirect:/CarRental/car/list";
     }
 }

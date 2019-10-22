@@ -20,17 +20,17 @@ public class PersonServiceImpl implements IPersonService {
 
     @Override
     public Person get(String id) {
-        return (Person) personRepository.findById(id).orElse(null);
+        return personRepository.findById(id).orElse(null);
     }
 
     @Override
     public Person create(Person person) {
-        return (Person) personRepository.save(person);
+        return personRepository.save(person);
     }
 
     @Override
     public Person update(Person person) {
-        return (Person) personRepository.save(person);
+        return personRepository.save(person);
     }
 
     @Override
@@ -38,5 +38,13 @@ public class PersonServiceImpl implements IPersonService {
         Person person = this.get(id);
         personRepository.deleteById(id);
         return person;
+    }
+
+    @Override
+    public boolean isNotEmptyFields(Person person) {
+        if(person.getFirstName().equals("")){return false;}
+        if(person.getLastName().equals("")){return false;}
+        if(person.getMiddleName().equals("")){return false;}
+        return true;
     }
 }
