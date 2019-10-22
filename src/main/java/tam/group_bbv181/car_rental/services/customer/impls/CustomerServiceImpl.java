@@ -1,43 +1,28 @@
-package tam.group_bbv181.car_rental.services.customers.impls;
+package tam.group_bbv181.car_rental.services.customer.impls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tam.group_bbv181.car_rental.model.Customer;
+import tam.group_bbv181.car_rental.model.LoginUser;
 import tam.group_bbv181.car_rental.model.Person;
 import tam.group_bbv181.car_rental.repository.CustomerRepository;
+import tam.group_bbv181.car_rental.repository.LoginRepository;
 import tam.group_bbv181.car_rental.repository.PersonRepository;
-import tam.group_bbv181.car_rental.services.customers.interfaces.ICustomersService;
+import tam.group_bbv181.car_rental.services.customer.interfaces.ICustomerService;
 
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CustomerServiceImpl implements ICustomersService {
+public class CustomerServiceImpl implements ICustomerService {
     @Autowired
     CustomerRepository customerRepository;
     @Autowired
     PersonRepository personRepository;
+    @Autowired
+    LoginRepository loginRepository;
 
-    List<Customer> customerList = new ArrayList<>();
-
-    @PostConstruct
-    void init(){
-        Person pash = new Person("Bazil","Pash", "Anodov", true);
-        Person desi = new Person("Jan","Desi", "Emue", true);
-        Person tester = new Person("Anna","Tester", "Oyen", false);
-
-        customerRepository.deleteAll();
-        Customer bazil = new Customer(pash,"qwrewt",45679689,"qwer@gmail.com");
-        Customer jan = new Customer(desi,"zxcxczcz",436554,"asdf@gmail.com");
-        Customer anna = new Customer(tester,"wqqrrwer", 323774,"zvcx@mail.com");
-        anna.setBonusPoints(7);
-        bazil.setBonusPoints(20);
-        customerList.add(bazil);
-        customerList.add(jan);
-        customerList.add(anna);
-        customerRepository.saveAll(customerList);
-    }
     @Override
     public List<Customer> getAll() {
         return customerRepository.findAll();
@@ -58,11 +43,19 @@ public class CustomerServiceImpl implements ICustomersService {
         return (Customer) customerRepository.save(customer);
     }
 
-
     @Override
     public Customer delete(String id) {
         Customer customer = this.get(id);
         customerRepository.deleteById(id);
+        personRepository.deleteById(customer.getPerson().getId());
+        loginRepository.deleteById(loginRepository.findByCustomer(customer).getId());
         return customer;
+    }
+
+    @Override
+    public boolean isNotEmptyFields(Customer customer) {
+        if(customer.getAddress().equals("")){return false;}
+        if(customer.geteMail().equals("")){return false;}
+        return true;
     }
 }
