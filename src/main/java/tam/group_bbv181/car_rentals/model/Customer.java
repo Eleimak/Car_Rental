@@ -20,12 +20,13 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Person person, String address, int phone, String eMail) {
+    public Customer(Person person, String address, int phone, String eMail, int bonusPoints, List<Car> carList) {
         this.person = person;
         this.address = address;
         this.phone = phone;
         this.eMail = eMail;
-        bonusPoints = 0;
+        this.bonusPoints = bonusPoints;
+        this.carList = carList;
     }
 
     public String getId() {

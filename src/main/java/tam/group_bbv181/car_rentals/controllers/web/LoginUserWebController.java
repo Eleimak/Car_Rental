@@ -21,10 +21,8 @@ import java.util.List;
 public class LoginUserWebController {
     @Autowired
     CustomerServiceImpl customerService;
-
     @Autowired
     LoginServiceImpl loginService;
-
     @Autowired
     PersonServiceImpl personService;
 
@@ -79,7 +77,7 @@ public class LoginUserWebController {
             return "redirect:/CarRental/registration";
         }
         Customer newCustomer = new Customer(personService.create(newPerson), customerForm.getAddress(),
-                customerForm.getPhone(), customerForm.geteMail());
+                customerForm.getPhone(), customerForm.geteMail(),0,null);
         LoginUser loginUser = new LoginUser(customerForm.getLogin(), customerForm.getPassword(),
                 customerService.create(newCustomer));
         return "redirect:/CarRental/userAccount/" + loginService.create(loginUser).getCustomer().getId();

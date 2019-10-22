@@ -26,36 +26,36 @@
                 </#if>
             <div class="container" >
                 <tr>
-                        <th>First Name</th>
-                        <td>${customer.person.firstName}</td>
+                    <th>First Name</th>
+                    <td>${customer.person.firstName}</td>
                 </tr>
                 <tr>
-                        <th>Middle Name</th>
-                        <td>${customer.person.middleName}</td>
+                    <th>Last Name</th>
+                    <td>${customer.person.lastName}</td>
                 </tr>
                 <tr>
-                        <th>Last Name</th>
-                        <td>${customer.person.lastName}</td>
+                    <th>Middle Name</th>
+                    <td>${customer.person.middleName}</td>
                 </tr>
                 <tr>
-                        <th>Gander</th>
-                        <td>${gender}</td>
+                    <th>Gander</th>
+                    <td>${gender}</td>
                 </tr>
                 <tr>
-                        <th>Address</th>
-                        <td>${customer.address}</td>
+                    <th>Address</th>
+                    <td>${customer.address}</td>
                 </tr>
                 <tr>
-                        <th>Mobile phone</th>
-                        <td>${customer.phone}</td>
+                    <th>Mobile phone</th>
+                    <td>${customer.phone}</td>
                 </tr>
                 <tr>
-                        <th>@e-mail</th>
-                        <td>${customer.eMail}</td>
+                    <th>@e-mail</th>
+                    <td>${customer.eMail}</td>
                 </tr>
                 <tr>
-                        <th>Bonus points</th>
-                        <td>${customer.bonusPoints}</td>
+                    <th>Bonus points</th>
+                    <td>${customer.bonusPoints}</td>
                 </tr>
             </div>
         </table>

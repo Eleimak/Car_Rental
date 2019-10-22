@@ -18,8 +18,8 @@
         <table class="table table-sm table-striped table-bordered table-dark">
             <tr class="bg-success">
                 <th>First Name</th>
-                <th>Middle Name</th>
                 <th>Last Name</th>
+                <th>Middle Name</th>
                 <th>Gander</th>
                 <th>Address</th>
                 <th>Mobile phone</th>
@@ -37,8 +37,8 @@
                 </#if>
             <tr>
                 <td>${customer.person.firstName}</td>
-                <td>${customer.person.middleName}</td>
                 <td>${customer.person.lastName}</td>
+                <td>${customer.person.middleName}</td>
                 <td>${gender}</td>
                 <td>${customer.address}</td>
                 <td>${customer.phone}</td>

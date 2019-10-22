@@ -21,8 +21,7 @@ public class Car {
     public Car() {
     }
 
-    public Car(String brandCar, int costCar, String licenseNumberPlates,
-               String carCondition, TypeCar typeCar, LocalDate carYear, int rentalPrice) {
+    public Car(String brandCar, int costCar, String licenseNumberPlates, String carCondition, TypeCar typeCar, LocalDate carYear, int rentalPrice, boolean repair) {
         this.brandCar = brandCar;
         this.costCar = costCar;
         this.licenseNumberPlates = licenseNumberPlates;
@@ -30,6 +29,7 @@ public class Car {
         this.typeCar = typeCar;
         this.carYear = carYear;
         this.rentalPrice = rentalPrice;
+        this.repair = repair;
     }
 
     public String getId() {

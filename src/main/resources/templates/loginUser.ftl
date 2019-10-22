@@ -10,7 +10,7 @@
     <title>Sign In</title>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" Type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" Type="text/css" />
-    <link rel="stylesheet"Type="text/css" href="<@spring.url '/css/style.css'/>"/>
+    <link rel="stylesheet" Type="text/css" href="<@spring.url '/css/style.css'/>"/>
 </head>
 <body>
 

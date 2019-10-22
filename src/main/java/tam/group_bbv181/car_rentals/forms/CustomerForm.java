@@ -1,5 +1,10 @@
 package tam.group_bbv181.car_rentals.forms;
 
+import tam.group_bbv181.car_rentals.model.Car;
+
+import java.util.List;
+import java.util.Objects;
+
 public class CustomerForm {
     private String id;
     private String login;
@@ -12,12 +17,14 @@ public class CustomerForm {
     private int phone;
     private String eMail;
     private int bonusPoints;
+    private List<Car> carList;
 
     public CustomerForm() {
     }
 
-    public CustomerForm(String id, String firstName, String middleName, String lastName, String gender, String address, int phone, String eMail, int bonusPoints) {
-        this.id = id;
+    public CustomerForm(String login, String password, String firstName, String middleName, String lastName, String gender, String address, int phone, String eMail, int bonusPoints, List<Car> carList) {
+        this.login = login;
+        this.password = password;
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -26,6 +33,7 @@ public class CustomerForm {
         this.phone = phone;
         this.eMail = eMail;
         this.bonusPoints = bonusPoints;
+        this.carList = carList;
     }
 
     public String getId() {
@@ -116,18 +124,53 @@ public class CustomerForm {
         this.bonusPoints = bonusPoints;
     }
 
+    public List<Car> getCarList() {
+        return carList;
+    }
+
+    public void setCarList(List<Car> carList) {
+        this.carList = carList;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CustomerForm that = (CustomerForm) o;
+        return phone == that.phone &&
+                bonusPoints == that.bonusPoints &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(login, that.login) &&
+                Objects.equals(password, that.password) &&
+                Objects.equals(firstName, that.firstName) &&
+                Objects.equals(middleName, that.middleName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(gender, that.gender) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(eMail, that.eMail) &&
+                Objects.equals(carList, that.carList);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
     @Override
     public String toString() {
         return "CustomerForm{" +
                 "id='" + id + '\'' +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", gander='" + gender + '\'' +
+                ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
                 ", phone=" + phone +
                 ", eMail='" + eMail + '\'' +
                 ", bonusPoints=" + bonusPoints +
+                ", carList=" + carList +
                 '}';
     }
 }
