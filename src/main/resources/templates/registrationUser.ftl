@@ -73,7 +73,7 @@
                 <@spring.formInput "CustomersForm.eMail" "class='form-control'" "text"/>
             </div>
             <br>
-            <a href="/CarRental/signIn" Type="Button" class="btn btn-info">Back</a>
+            <a href="/CarRental/signIn" Type="Button" class="btn btn-primary">Back</a>
             <input Type="submit" value="     Next     " class="btn btn-danger"/>
         </form>
     </fieldset>
