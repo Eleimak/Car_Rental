@@ -89,6 +89,7 @@ public class CarServiceImpl implements ICarService {
         return carTypeSort;
     }
 
+
     @Override
     public boolean uniqueNumber(String licenseNumberPlates) {
         List<Car> carList = this.getAll();
