@@ -22,7 +22,7 @@
         <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="/">
-                <img src="/docs/image/icons8-страховка-автомобиля-30.png" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img src="/docs/image/icons8-car-64.png" width="30" height="30" class="d-inline-block align-top" alt="">
                 Car Rentals
             </a>
             <div class="collapse navbar-collapse" id="navbarNav">
