@@ -13,7 +13,7 @@
     <link rel="stylesheet" Type="text/css" href="<@spring.url '/css/style.css'/>"/>
     <style type="text/css">
         html,body{
-            background-image: url('https://wallpaperaccess.com/full/11207.jpg');
+            background-image: url('https://wallpaperaccess.com/full/17634.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             height: 100%;
@@ -21,7 +21,30 @@
     </style>
 </head>
 <body>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">
+        <img src="/docs/image/icons8-страховка-автомобиля-30.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Car Rentals
+    </a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/CarRentals/customer/list">Customers list</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Car </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/CarRentals/car/list">Full list</a>
+                    <a class="dropdown-item" href="/CarRentals/car/listR">Active list</a>
+                    <a class="dropdown-item" href="/CarRentals/car/listSort">Sort list</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/CarRentals/signIn">Sign In</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 <div class="container-fluid" style="padding-left: 500px; padding-right: 500px " >
     <fieldset>
         <legend>Registration</legend>

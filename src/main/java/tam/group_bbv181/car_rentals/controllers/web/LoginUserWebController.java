@@ -26,8 +26,6 @@ public class LoginUserWebController {
     @Autowired
     PersonServiceImpl personService;
 
-
-
     @RequestMapping(value = "/signIn", method = RequestMethod.GET)
     public String signIn(Model model){
         LoginUser loginUser = new LoginUser();

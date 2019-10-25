@@ -24,22 +24,19 @@
     </a>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/CarRentals/customer/list">Customers list</a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="/CarRentals/signIn">Sign In</a>
+                <a class="nav-link" href="/CarRentals/customer/list">Customers list</a>
             </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Car </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/CarRentals/car/list">Full list</a>
-                    <a class="dropdown-item" href="/CarRentals/car/listR">Active list</a>
-                    <a class="dropdown-item" href="/CarRentals/car/listSort">Sort list</a>
+                <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item alert-link" href="/CarRentals/car/list">Full list</a>
+                    <a class="dropdown-item alert-link" href="/CarRentals/car/listR">Active list</a>
+                    <a class="dropdown-item alert-link" href="/CarRentals/car/listSort">Sort list</a>
                 </div>
+            </li>
+            <li class="nav-item">
+                    <a class="nav-link" href="/CarRentals/signIn">Sign In</a>
             </li>
         </ul>
     </div>
