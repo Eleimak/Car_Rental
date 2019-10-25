@@ -83,7 +83,7 @@
         </#list>
         </table>
     </div>
-    <a href="/CarRentals/signIn" Type="Button" class="btn btn-info">Add new customer</a>
+    <a href="/CarRentals/signUp" Type="Button" class="btn btn-info">Add new customer</a>
     </form>
 </div>
 </body>
