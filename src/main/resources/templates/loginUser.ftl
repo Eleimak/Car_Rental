@@ -1,19 +1,14 @@
-
+<#import "common.ftl" as c/>
+<@c.page title="Sign In">
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="robots" content="noindex, nofollow">
 
     <title>Sign In</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <style type="text/css">
         html,body{
-            background-image: url('https://wallpaperaccess.com/full/17634.jpg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            height: 100%;
+
         }
 
         .container{
@@ -94,7 +89,6 @@
             margin-left: 4px;
         }    </style>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         window.alert = function(){};
         var defaultCSS = document.getElementById('bootstrap-css');
@@ -113,42 +107,12 @@
 <html>
 <head>
     <title>Sign IN</title>
-    <!--Made with love by Mutiullah Samim -->
-
-    <!--Bootsrap 4 CDN-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <!--Fontawesome CDN-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-
-    <!--Custom styles-->
     <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">
-        <img src="/docs/image/icons8-страховка-автомобиля-30.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        Car Rentals
-    </a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/CarRentals/customer/list">Customers list</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Car </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/CarRentals/car/list">Full list</a>
-                    <a class="dropdown-item" href="/CarRentals/car/listR">Active list</a>
-                    <a class="dropdown-item" href="/CarRentals/car/listSort">Sort list</a>
-                </div>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="/CarRentals/signIn">Sign In</a>
-            </li>
-        </ul>
-    </div>
-</nav>
+
 <div class="container">
     <div class="d-flex justify-content-center h-100">
         <div class="card">
@@ -194,3 +158,4 @@
 </script>
 </body>
 </html>
+</@c.page>
