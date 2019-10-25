@@ -15,7 +15,7 @@ import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;
 import java.util.Arrays;
 import java.util.List;
 
-@RequestMapping("/CarRental")
+@RequestMapping("/CarRentals")
 @CrossOrigin("*")
 @Controller
 public class LoginUserWebController {
@@ -46,10 +46,10 @@ public class LoginUserWebController {
                             loginUser.getPassword()).getCustomer().getId();
             return redirectStr;
         }
-        return "redirect:/CarRental/signIn";
+        return "redirect:/CarRentals/signIn";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.GET)
+    @RequestMapping(value = "/signUp", method = RequestMethod.GET)
     public String addCustomer(Model model){
         CustomerForm customerForm = new CustomerForm();
         List manWoman = Arrays.asList(
@@ -59,7 +59,7 @@ public class LoginUserWebController {
         return "registrationUser";
     }
 
-    @RequestMapping(value = "/registration", method = RequestMethod.POST)
+    @RequestMapping(value = "/signUp", method = RequestMethod.POST)
     public String create(Model model,@ModelAttribute("CustomersForm")
             CustomerForm customerForm){
 
@@ -74,13 +74,13 @@ public class LoginUserWebController {
                 gender);
         if(!loginService.uniqueLogin(customerForm.getLogin()) ||
                 !personService.isNotEmptyFields(newPerson)){
-            return "redirect:/CarRental/registration";
+            return "redirect:/CarRentals/signUp";
         }
         Customer newCustomer = new Customer(personService.create(newPerson), customerForm.getAddress(),
                 customerForm.getPhone(), customerForm.geteMail(),0,null);
         LoginUser loginUser = new LoginUser(customerForm.getLogin(), customerForm.getPassword(),
                 customerService.create(newCustomer));
-        return "redirect:/CarRental/userAccount/" + loginService.create(loginUser).getCustomer().getId();
+        return "redirect:/CarRentals/userAccount/" + loginService.create(loginUser).getCustomer().getId();
     }
 /*
 

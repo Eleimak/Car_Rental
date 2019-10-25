@@ -10,7 +10,15 @@
     <title>Registration</title>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" Type="text/javascript"></script>
     <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" Type="text/css" />
-    <link rel="stylesheet"Type="text/css" href="<@spring.url '/css/style.css'/>"/>
+    <link rel="stylesheet" Type="text/css" href="<@spring.url '/css/style.css'/>"/>
+    <style type="text/css">
+        html,body{
+            background-image: url('https://wallpaperaccess.com/full/11207.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100%;
+        }
+    </style>
 </head>
 <body>
 
@@ -73,7 +81,7 @@
                 <@spring.formInput "CustomersForm.eMail" "class='form-control'" "text"/>
             </div>
             <br>
-            <a href="/CarRental/signIn" Type="Button" class="btn btn-primary">Back</a>
+            <a href="/CarRentals/signIn" Type="Button" class="btn btn-primary">Back</a>
             <input Type="submit" value="     Next     " class="btn btn-danger"/>
         </form>
     </fieldset>

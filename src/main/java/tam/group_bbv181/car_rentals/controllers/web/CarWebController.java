@@ -12,7 +12,7 @@ import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
 
 import java.util.List;
 
-@RequestMapping("/CarRental/car")
+@RequestMapping("/CarRentals/car")
 @CrossOrigin("*")
 @Controller
 public class CarWebController {

@@ -10,7 +10,7 @@ import tam.group_bbv181.car_rentals.services.login.impls.LoginServiceImpl;
 
 import java.util.List;
 
-@RequestMapping("/CarRental")
+@RequestMapping("/CarRentals")
 @CrossOrigin("*")
 @Controller
 public class CustomerWebController {
@@ -31,7 +31,7 @@ public class CustomerWebController {
     @RequestMapping("/customer/delete/{id}")
     public String delete(Model model,@PathVariable(value = "id")String id){
         customerService.delete(id);
-        return "redirect:/CarRental/customer/list";
+        return "redirect:/CarRentals/customer/list";
     }
 
     @RequestMapping("/userAccount/{id}")
