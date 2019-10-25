@@ -9,7 +9,8 @@
     <link rel="stylesheet" Type="text/css" href="<@spring.url '/css/style.css'/>"/>
 </head>
 <body>
-<div class="container-fluid" style="padding-left: 500px; padding-right: 500px " >
+<div class="container-fluid">
+    <div class="container">
     <fieldset>
         <legend>Registration</legend>
         <form name="Customer" action="" method="POST">
@@ -72,6 +73,7 @@
             <input Type="submit" value="     Next     " class="btn btn-danger"/>
         </form>
     </fieldset>
+</div>
 </div>
 </body>
 </html>
