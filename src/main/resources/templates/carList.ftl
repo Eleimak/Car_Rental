@@ -71,8 +71,8 @@
                 <td>${car.carYear}</td>
                 <td>${car.typeCar}</td>
                 <td>${car.rentalPrice}</td>
-                <td><a href="/CarRental/car/delete/${car.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
-                <td><a href="/car/update/${car.id}" Type="Button" class="btn btn-primary" >Update</a></td>
+                <td><a href="/CarRentals/car/delete/${car.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
+                <td><a href="/CarRentals/car/update/${car.id}" Type="Button" class="btn btn-primary" >Update</a></td>
             </tr>
         </#list>
 
@@ -80,7 +80,7 @@
 
     </div>
 
-    <a href="/CarRental/car/create" Type="Button" class="btn btn-info">Add new car</a>
+    <a href="/CarRentals/car/create" Type="Button" class="btn btn-info">Add new car</a>
 
 </div>
 </body>

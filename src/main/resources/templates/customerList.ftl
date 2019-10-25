@@ -77,13 +77,13 @@
                 <td>${customer.phone}</td>
                 <td>${customer.eMail}</td>
                 <td>${customer.bonusPoints}</td>
-                <td><a href="/CarRental/customer/delete/${customer.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
-                <td><a href="/CarRental/customer/update/${customer.id}" Type="Button" class="btn btn-primary" >Update</a></td>
+                <td><a href="/CarRentals/customer/delete/${customer.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
+                <td><a href="/CarRentals/customer/update/${customer.id}" Type="Button" class="btn btn-primary" >Update</a></td>
             </tr>
         </#list>
         </table>
     </div>
-    <a href="/CarRental/registration" Type="Button" class="btn btn-info">Add new customer</a>
+    <a href="/CarRentals/signIn" Type="Button" class="btn btn-info">Add new customer</a>
     </form>
 </div>
 </body>
