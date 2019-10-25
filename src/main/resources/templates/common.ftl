@@ -21,7 +21,7 @@
 
         </head>
         <body>
-
+        <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="/">
                 <img src="/docs/image/icons8-страховка-автомобиля-30.png" width="30" height="30" class="d-inline-block align-top" alt="">
@@ -50,7 +50,7 @@
             <#nested/> <#-- <<<<<< Сюда вставится каждый твой файл -->
 
             <#-- Тут то, что должно быть на каждой странице снизу -->
-
+        </div>
         </body>
     </html>
 </#macro>
