@@ -7,7 +7,8 @@
     <title>Car List</title>
 </head>
 <body>
-<div class="container-fluid" style="padding-left: 100px; padding-right: 100px " >
+<div class="container-fluid">
+    <br>
     <h3>Car List</h3>
     <br>
     <div>

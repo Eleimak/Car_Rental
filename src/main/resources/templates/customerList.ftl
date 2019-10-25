@@ -7,10 +7,11 @@
     <title>Customers List</title>
 </head>
 <body>
-<div class="container-fluid" style="padding-left: 100px; padding-right: 100px " >
-    <h3>Customers List</h3>
-    <form name="Customers List" action="/CarRentals/customer/list">
+<div class="container-fluid">
     <br>
+    <h3>Customers List</h3>
+    <br>
+    <form name="Customers List" action="/CarRentals/customer/list">
     <div>
 
         <table class="table table-sm table-striped table-bordered table-dark">
