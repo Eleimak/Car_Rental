@@ -20,7 +20,6 @@
                 <th>Brand car</th>
                 <th>Cost car</th>
                 <th>License number plates</th>
-                <th>Car condition</th>
                 <th>Car year</th>
                 <th>Type</th>
                 <th>Rental price</th>
@@ -33,7 +32,6 @@
                 <td>${car.brandCar}</td>
                 <td>${car.costCar}</td>
                 <td>${car.licenseNumberPlates}</td>
-                <td>${car.carCondition}</td>
                 <td>${car.carYear}</td>
                 <td>${car.typeCar}</td>
                 <td>${car.rentalPrice}</td>

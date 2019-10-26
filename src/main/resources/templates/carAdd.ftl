@@ -1,54 +1,67 @@
-
+<#import "common.ftl" as c/>
+<@c.page title="Car List">
 <#import "/spring.ftl" as spring/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Create Car</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" Type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" Type="text/css" />
-    <link rel="stylesheet"Type="text/css" href="<@spring.url '/css/style.css'/>"/>
+    <title>Create Car</title>
+    <link rel="stylesheet" Type="text/css" href="<@spring.url '/css/style.css'/>"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">
-        <img src="/docs/image/icons8-страховка-автомобиля-30.png" width="30" height="30" class="d-inline-block align-top" alt="">
-        Car Rentals
-    </a>
-    <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="/CarRentals/customer/list">Customers list</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Car </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="/CarRentals/car/list">Full list</a>
-                    <a class="dropdown-item" href="/CarRentals/car/listR">Active list</a>
-                    <a class="dropdown-item" href="/CarRentals/car/listSort">Sort list</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/CarRentals/signIn">Sign In</a>
-            </li>
-        </ul>
-    </div>
-</nav>
-<div class="container-fluid" style="padding-left: 100px; padding-right: 100px " >
+<div class="container" >
     <fieldset>
         <legend>Add car</legend>
-        <form name="worker" action="" method="POST">
-            First name:<@spring.formInput "WorkerForm.name" "class='form-control'" "text"/>
-            <br>Occupation:<@spring.formInput "WorkerForm.occupation" "class='form-control'" "text"/>
-            <br>Salary:<@spring.formInput "WorkerForm.salary" "class='form-control'" "text"/>
-            <br>Speciality:<@spring.formSingleSelect "WorkerForm.speciality", mavs, "class='form-control'"/>
-            <br>EmploymentDay:<@spring.formInput "WorkerForm.employmentDay" "class='form-control' readonly  width='276'" "text"/>
+        <form name="CarForm" action="" method="POST">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Brand car:</span>
+                </div>
+                <@spring.formInput "CarForm.brandCar" "class='form-control'" "text"/>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Cost car:</span>
+                </div>
+                <@spring.formInput "CarForm.costCar" "class='form-control'" "text"/>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">License number plates:</span>
+                </div>
+                <@spring.formInput "CarForm.licenseNumberPlates" "class='form-control'" "text"/>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Type car:</span>
+                </div>
+                <@spring.formSingleSelect "CarForm.typeCar", typeCar, "class='form-control'"/>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Car year:</span>
+                </div>
+                <@spring.formInput "CarForm.carYear" "class='form-control' readonly  width='276'" "text"/>
+                <script>
+                    $('#carYear').datepicker({uiLibrary: 'bootstrap4'});
+                </script>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Rental price:</span>
+                </div>
+                <@spring.formInput "CarForm.rentalPrice" "class='form-control'" "text"/>
+            </div>
             <br>
-            <input Type="submit" value="Create"/>
+            <a href="/CarRentals/car/list" Type="Button" class="btn btn-primary">Back</a>
+            <input Type="submit" value="     Next     " class="btn btn-danger"/>
         </form>
     </fieldset>
 </div>
-
 </body>
 </html>
+</@c.page>

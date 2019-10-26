@@ -1,5 +1,6 @@
 package tam.group_bbv181.car_rentals.services.car.interfaces;
 
+import tam.group_bbv181.car_rentals.forms.CarForm;
 import tam.group_bbv181.car_rentals.model.Car;
 import tam.group_bbv181.car_rentals.model.TypeCar;
 
@@ -15,5 +16,6 @@ public interface ICarService {
 
     List<Car> getAllNoRepair();
     List<Car> getSortingByType(TypeCar typeCar);
-    boolean uniqueNumber(String licenseNumberPlates);
+    boolean isUniqueNumber(String licenseNumberPlates);
+    boolean isFullInput(CarForm carForm);
 }

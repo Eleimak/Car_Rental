@@ -2,6 +2,7 @@ package tam.group_bbv181.car_rentals.services.car.impls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tam.group_bbv181.car_rentals.forms.CarForm;
 import tam.group_bbv181.car_rentals.model.Car;
 import tam.group_bbv181.car_rentals.model.TypeCar;
 import tam.group_bbv181.car_rentals.repository.CarRepository;
@@ -24,13 +25,13 @@ public class CarServiceImpl implements ICarService {
 
         List<Car> carList = new ArrayList<>();
 
-        Car bmw = new Car("BMW",25000,"AA","good",
+        Car bmw = new Car("BMW",25000,"AA",
                 TypeCar.SEDAN, LocalDate.of(2012, Month.APRIL, 25),20,false);
-        Car wolksvagen = new Car("Wolksvagen",15000,"VV", "nice",
+        Car wolksvagen = new Car("Wolksvagen",15000,"VV",
                 TypeCar.HATCHBACK, LocalDate.of(2015,Month.AUGUST,12),15,false);
-        Car mersedes = new Car("Mersedes", 30000, "QQ", "good",
+        Car mersedes = new Car("Mersedes", 30000, "QQ",
                 TypeCar.CONVERTIBLE, LocalDate.of(2017,Month.FEBRUARY,6),27,false);
-        Car WV = new Car("Wolksvagen",25000,"AI","good",
+        Car WV = new Car("Wolksvagen",25000,"AI",
                 TypeCar.SEDAN, LocalDate.of(2016, Month.MARCH, 5),20,false);
 
         bmw.setRepair(true);
@@ -91,13 +92,19 @@ public class CarServiceImpl implements ICarService {
 
 
     @Override
-    public boolean uniqueNumber(String licenseNumberPlates) {
+    public boolean isUniqueNumber(String licenseNumberPlates) {
         List<Car> carList = this.getAll();
         for (Car item: carList) {
             if(item.getLicenseNumberPlates().equals(licenseNumberPlates)){
                 return false;
             }
         }
+        return true;
+    }
+
+    @Override
+    public boolean isFullInput(CarForm carForm) {
+        if(carForm.getBrandCar().equals("")){return false;}
         return true;
     }
 }

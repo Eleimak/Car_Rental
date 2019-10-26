@@ -12,7 +12,6 @@ public class Car {
     private String brandCar;
     private int costCar;
     private String licenseNumberPlates;
-    private String carCondition;
     private TypeCar typeCar;
     private LocalDate carYear;
     private int rentalPrice;
@@ -21,11 +20,10 @@ public class Car {
     public Car() {
     }
 
-    public Car(String brandCar, int costCar, String licenseNumberPlates, String carCondition, TypeCar typeCar, LocalDate carYear, int rentalPrice, boolean repair) {
+    public Car(String brandCar, int costCar, String licenseNumberPlates, TypeCar typeCar, LocalDate carYear, int rentalPrice, boolean repair) {
         this.brandCar = brandCar;
         this.costCar = costCar;
         this.licenseNumberPlates = licenseNumberPlates;
-        this.carCondition = carCondition;
         this.typeCar = typeCar;
         this.carYear = carYear;
         this.rentalPrice = rentalPrice;
@@ -62,14 +60,6 @@ public class Car {
 
     public void setLicenseNumberPlates(String licenseNumberPlates) {
         this.licenseNumberPlates = licenseNumberPlates;
-    }
-
-    public String getCarCondition() {
-        return carCondition;
-    }
-
-    public void setCarCondition(String carCondition) {
-        this.carCondition = carCondition;
     }
 
     public TypeCar getTypeCar() {
@@ -115,7 +105,6 @@ public class Car {
                 Objects.equals(id, car.id) &&
                 Objects.equals(brandCar, car.brandCar) &&
                 Objects.equals(licenseNumberPlates, car.licenseNumberPlates) &&
-                Objects.equals(carCondition, car.carCondition) &&
                 typeCar == car.typeCar &&
                 Objects.equals(carYear, car.carYear);
     }
@@ -132,7 +121,6 @@ public class Car {
                 ", brandCar='" + brandCar + '\'' +
                 ", costCar=" + costCar +
                 ", licenseNumberPlates='" + licenseNumberPlates + '\'' +
-                ", carCondition='" + carCondition + '\'' +
                 ", typeCar=" + typeCar +
                 ", carYear=" + carYear +
                 ", rentalPrice=" + rentalPrice +

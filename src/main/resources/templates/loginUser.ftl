@@ -1,10 +1,11 @@
 <#import "common.ftl" as c/>
 <@c.page title="Sign In">
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <title>Sign In</title>
     <style type="text/css">
         html,body{
@@ -37,12 +38,6 @@
 
         .card-header h3{
             color: white;
-        }
-
-        .social_icon{
-            position: absolute;
-            right: 20px;
-            top: -45px;
         }
 
         .input-group-prepend span{
