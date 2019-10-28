@@ -115,19 +115,19 @@
                 <h3>Sign In</h3>
             </div>
             <div class="card-body">
-                <form>
+                <form name="f" action="/CarRentals/signIn" method="POST">
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="login">
+                        <input name="username" type="text" class="form-control" placeholder="login">
 
                     </div>
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-key"></i></span>
                         </div>
-                        <input type="password" class="form-control" placeholder="password">
+                        <input name="password" type="password" class="form-control" placeholder="password">
                     </div>
                     <div class="row align-items-center remember">
                         <input type="checkbox">Remember Me

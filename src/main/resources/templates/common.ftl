@@ -3,7 +3,7 @@
     <html lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         <title>Car Rentals</title>
 
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -12,18 +12,22 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
         <style type="text/css">
-            html,body{
+            html, body {
+                height: 100%;
+            }
+            body {
                 background-image: url('https://wallpaperaccess.com/full/11207.jpg');
                 background-size: cover;
                 background-repeat: no-repeat;
-                height: 100%;
+                background-position: center;
+                background-attachment: fixed;
             }
         </style>
 
         </head>
         <body>
         <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-to">
             <a class="navbar-brand" href="/">
                 <img src="/docs/image/icons8-car-64.png" width="30" height="30" type="image/png" class="d-inline-block align-top" alt="">
                 Car Rentals
