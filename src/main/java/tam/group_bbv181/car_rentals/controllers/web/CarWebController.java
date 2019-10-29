@@ -9,10 +9,6 @@ import tam.group_bbv181.car_rentals.model.Car;
 import tam.group_bbv181.car_rentals.model.TypeCar;
 import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -27,41 +23,21 @@ public class CarWebController {
     public String showAll(Model model){
         List<Car> list = carsService.getAll();
         model.addAttribute("cars", list);
-        return "carList";
+        return "/car/carList";
     }
 
-    @RequestMapping(value = "/listR", method = RequestMethod.GET)
-    public String showNoRepair(Model model, @ModelAttribute("CarForm")
-            CarForm carForm){
-        List<Car> list = carsService.getAll();
-        List typeCar = Arrays.asList(
-                TypeCar.CONVERTIBLE
-                ,TypeCar.COUPE
-                ,TypeCar.HATCHBACK
-                ,TypeCar.MUV_SUV
-                ,TypeCar.PIC_UP_VEHICLE
-                ,TypeCar.SEDAN
-                ,TypeCar.VAN
-                ,TypeCar.WAGON
-        );
-        model.addAttribute("typeCar", typeCar);
+    @RequestMapping("/listR")
+    public String showNoRepair(Model model){
         List<Car> listNoRepair = carsService.getAllNoRepair();
-        List<Car> listSortingByType = carsService.getSortingByType(carForm.getTypeCar());
-        model.addAttribute("cars", list);
-        return "carList";
-    }
-    @RequestMapping(value = "/listR", method = RequestMethod.POST)
-    public String showFull(Model model,@ModelAttribute("CarForm")
-            CarForm carForm){
-
-        return "carList";
+        model.addAttribute("cars", listNoRepair);
+        return "/car/carList";
     }
 
     @RequestMapping("/listSort")
     public String showSort(Model model){
         List<Car> list = carsService.getSortingByType(TypeCar.SEDAN);
         model.addAttribute("cars", list);
-        return "carList";
+        return "/car/carList";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -80,7 +56,7 @@ public class CarWebController {
         );
         model.addAttribute("typeCar", typeCar);
         model.addAttribute("CarForm", carForm);
-        return "carAdd";
+        return "/car/carAdd";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
