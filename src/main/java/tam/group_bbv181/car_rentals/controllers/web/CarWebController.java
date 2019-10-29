@@ -9,6 +9,8 @@ import tam.group_bbv181.car_rentals.model.Car;
 import tam.group_bbv181.car_rentals.model.TypeCar;
 import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -44,17 +46,14 @@ public class CarWebController {
     public String addCar(Model model){
         List<Car> list = carsService.getAll();
         CarForm carForm = new CarForm();
-        List typeCar = Arrays.asList(
-                TypeCar.CONVERTIBLE
-                ,TypeCar.COUPE
-                ,TypeCar.HATCHBACK
-                ,TypeCar.MUV_SUV
-                ,TypeCar.PIC_UP_VEHICLE
-                ,TypeCar.SEDAN
-                ,TypeCar.VAN
-                ,TypeCar.WAGON
-        );
+        List typeCar = Arrays.asList( TypeCar.values());
         model.addAttribute("typeCar", typeCar);
+        List yearCar = new ArrayList();
+        int nowYear = LocalDate.now().getYear();
+        for (Integer i = nowYear; i >= 2000; i--) {
+            yearCar.add(i.toString());
+        }
+        model.addAttribute("yearCar", yearCar);
         model.addAttribute("CarForm", carForm);
         return "/car/carAdd";
     }
@@ -66,7 +65,7 @@ public class CarWebController {
                 carsService.isFullInput(carForm)){
             Car newCar = new Car(carForm.getBrandCar(),carForm.getModelCar(),
                     carForm.getCostCar(), carForm.getLicenseNumberPlates(),
-                    carForm.getTypeCar(), carForm.getCarYear(),
+                    carForm.getTypeCar(), carForm.getYearCar(),
                     carForm.getRentalPrice(), carForm.isRepair());
             carsService.create(newCar);
             return "redirect:/CarRentals/car/list";

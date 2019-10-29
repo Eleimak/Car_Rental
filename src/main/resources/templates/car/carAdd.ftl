@@ -50,7 +50,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Car year:</span>
                 </div>
-                <@spring.formInput "CarForm.carYear" "class='form-control'" "text"/>
+                <@spring.formSingleSelect "CarForm.yearCar", yearCar, "class='form-control'"/>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">

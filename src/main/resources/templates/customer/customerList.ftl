@@ -1,4 +1,4 @@
-<#import "common.ftl" as c/>
+<#import "../common.ftl" as c/>
 <@c.page title="Customers List">
 <!DOCTYPE html>
 <html lang="en">

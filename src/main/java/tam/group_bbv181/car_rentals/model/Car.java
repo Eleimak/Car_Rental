@@ -2,7 +2,7 @@ package tam.group_bbv181.car_rentals.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.time.LocalDate;
+
 import java.util.Objects;
 
 @Document
@@ -14,20 +14,20 @@ public class Car {
     private int costCar;
     private String licenseNumberPlates;
     private TypeCar typeCar;
-    private int carYear;
+    private int yearCar;
     private int rentalPrice;
     private boolean repair;
 
     public Car() {
     }
 
-    public Car(String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, int carYear, int rentalPrice, boolean repair) {
+    public Car(String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, int yearCar, int rentalPrice, boolean repair) {
         this.brandCar = brandCar;
         this.modelCar = modelCar;
         this.costCar = costCar;
         this.licenseNumberPlates = licenseNumberPlates;
         this.typeCar = typeCar;
-        this.carYear = carYear;
+        this.yearCar = yearCar;
         this.rentalPrice = rentalPrice;
         this.repair = repair;
     }
@@ -80,12 +80,12 @@ public class Car {
         this.typeCar = typeCar;
     }
 
-    public int getCarYear() {
-        return carYear;
+    public int getYearCar() {
+        return yearCar;
     }
 
-    public void setCarYear(int carYear) {
-        this.carYear = carYear;
+    public void setYearCar(int yearCar) {
+        this.yearCar = yearCar;
     }
 
     public int getRentalPrice() {
@@ -110,7 +110,7 @@ public class Car {
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
         return costCar == car.costCar &&
-                carYear == car.carYear &&
+                yearCar == car.yearCar &&
                 rentalPrice == car.rentalPrice &&
                 repair == car.repair &&
                 Objects.equals(id, car.id) &&
@@ -134,7 +134,7 @@ public class Car {
                 ", costCar=" + costCar +
                 ", licenseNumberPlates='" + licenseNumberPlates + '\'' +
                 ", typeCar=" + typeCar +
-                ", carYear=" + carYear +
+                ", carYear=" + yearCar +
                 ", rentalPrice=" + rentalPrice +
                 ", repair=" + repair +
                 '}';

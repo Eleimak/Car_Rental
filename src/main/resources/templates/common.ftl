@@ -16,7 +16,7 @@
                 height: 100%;
             }
             body {
-                background-image: url('https://wallpaperaccess.com/full/11207.jpg');
+                background-image: url('/image/11207.jpg');
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;

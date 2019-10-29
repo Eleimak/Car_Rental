@@ -24,7 +24,7 @@ public class CustomerWebController {
     public String showAll(Model model){
         List<Customer> list = customerService.getAll();
         model.addAttribute("customers", list);
-        return "customerList";
+        return "/customer/customerList";
     }
 
 
@@ -38,7 +38,7 @@ public class CustomerWebController {
     public String userAccount(Model model,@PathVariable(value = "id")String id){
         Customer customer = customerService.get(id);
         model.addAttribute("customer", customer);
-        return "accountUser";
+        return "/customer/accountUser";
     }
 /*
 

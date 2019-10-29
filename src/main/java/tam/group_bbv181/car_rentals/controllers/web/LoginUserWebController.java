@@ -30,7 +30,7 @@ public class LoginUserWebController {
     public String signIn(Model model){
         LoginUser loginUser = new LoginUser();
         model.addAttribute("LoginUser", loginUser);
-        return "loginUser";
+        return "/loginuser/loginUser";
     }
 
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)
@@ -54,7 +54,7 @@ public class LoginUserWebController {
                 "man", "woman");
         model.addAttribute("manWoman", manWoman);
         model.addAttribute("CustomersForm", customerForm);
-        return "registrationUser";
+        return "/loginuser/registrationUser";
     }
 
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
