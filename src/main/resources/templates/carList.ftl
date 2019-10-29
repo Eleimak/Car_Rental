@@ -17,26 +17,37 @@
         <table class="table table-sm table-striped table-bordered table-dark">
             <tr class="bg-success">
 
-                <th>Brand car</th>
-                <th>Cost car</th>
+                <th><a href="" class="btn btn-success">Brand car</a></th>
+                <th>Model car</th>
+                <th><div class="dropdown">
+                        <a id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Cost car
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">Car cost descending</a>
+                            <a class="dropdown-item" href="#">Car cost ascending</a>
+                        </div>
+                    </div>
+                </th>
                 <th>License number plates</th>
                 <th>Car year</th>
-                <th>Type</th>
+                <th><a href="/CarRentals/car/listSort" class="btn btn-success">Type</a></th>
                 <th>Rental price</th>
-                <th>Delete</th>
-                <th>Update</th>
+               <#-- <th>Delete</th>
+                <th>Update</th>-->
             </tr>
 
             <#list cars as car>
             <tr>
                 <td>${car.brandCar}</td>
+                <td>${car.modelCar}</td>
                 <td>${car.costCar}</td>
                 <td>${car.licenseNumberPlates}</td>
                 <td>${car.carYear}</td>
                 <td>${car.typeCar}</td>
                 <td>${car.rentalPrice}</td>
-                <td><a href="/CarRentals/car/delete/${car.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
-                <td><a href="/CarRentals/car/update/${car.id}" Type="Button" class="btn btn-primary" >Update</a></td>
+                <#--<td><a href="/CarRentals/car/delete/${car.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
+                <td><a href="/CarRentals/car/update/${car.id}" Type="Button" class="btn btn-primary" >Update</a></td>-->
             </tr>
         </#list>
 

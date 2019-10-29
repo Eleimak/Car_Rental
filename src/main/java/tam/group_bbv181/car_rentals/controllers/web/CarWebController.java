@@ -30,10 +30,30 @@ public class CarWebController {
         return "carList";
     }
 
-    @RequestMapping("/listR")
-    public String showNoRepair(Model model){
-        List<Car> list = carsService.getAllNoRepair();
+    @RequestMapping(value = "/listR", method = RequestMethod.GET)
+    public String showNoRepair(Model model, @ModelAttribute("CarForm")
+            CarForm carForm){
+        List<Car> list = carsService.getAll();
+        List typeCar = Arrays.asList(
+                TypeCar.CONVERTIBLE
+                ,TypeCar.COUPE
+                ,TypeCar.HATCHBACK
+                ,TypeCar.MUV_SUV
+                ,TypeCar.PIC_UP_VEHICLE
+                ,TypeCar.SEDAN
+                ,TypeCar.VAN
+                ,TypeCar.WAGON
+        );
+        model.addAttribute("typeCar", typeCar);
+        List<Car> listNoRepair = carsService.getAllNoRepair();
+        List<Car> listSortingByType = carsService.getSortingByType(carForm.getTypeCar());
         model.addAttribute("cars", list);
+        return "carList";
+    }
+    @RequestMapping(value = "/listR", method = RequestMethod.POST)
+    public String showFull(Model model,@ModelAttribute("CarForm")
+            CarForm carForm){
+
         return "carList";
     }
 
@@ -64,13 +84,13 @@ public class CarWebController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String create(Model model,@ModelAttribute("CustomersForm")
+    public String create(Model model,@ModelAttribute("CarForm")
             CarForm carForm){
-        if(carsService.isUniqueNumber(carForm.getLicenseNumberPlates()) && carsService.isFullInput(carForm)){
-            Car newCar = new Car(carForm.getBrandCar(), carForm.getCostCar(),
-                    carForm.getLicenseNumberPlates(), carForm.getTypeCar(),
-                    LocalDate.parse(carForm.getCarYear(),
-                            DateTimeFormatter.ofPattern("MM/dd/yyyy")),
+        if(carsService.isUniqueNumber(carForm.getLicenseNumberPlates()) &&
+                carsService.isFullInput(carForm)){
+            Car newCar = new Car(carForm.getBrandCar(),carForm.getModelCar(),
+                    carForm.getCostCar(), carForm.getLicenseNumberPlates(),
+                    carForm.getTypeCar(), carForm.getCarYear(),
                     carForm.getRentalPrice(), carForm.isRepair());
             carsService.create(newCar);
             return "redirect:/CarRentals/car/list";

@@ -25,14 +25,14 @@ public class CarServiceImpl implements ICarService {
 
         List<Car> carList = new ArrayList<>();
 
-        Car bmw = new Car("BMW",25000,"AA",
-                TypeCar.SEDAN, LocalDate.of(2012, Month.APRIL, 25),20,false);
-        Car wolksvagen = new Car("Wolksvagen",15000,"VV",
-                TypeCar.HATCHBACK, LocalDate.of(2015,Month.AUGUST,12),15,false);
-        Car mersedes = new Car("Mersedes", 30000, "QQ",
-                TypeCar.CONVERTIBLE, LocalDate.of(2017,Month.FEBRUARY,6),27,false);
-        Car WV = new Car("Wolksvagen",25000,"AI",
-                TypeCar.SEDAN, LocalDate.of(2016, Month.MARCH, 5),20,false);
+        Car bmw = new Car("BMW", "320",25000,"AA",
+                TypeCar.SEDAN, 2012,20,false);
+        Car wolksvagen = new Car("Wolksvagen", "Polo",15000,"VV",
+                TypeCar.HATCHBACK, 2015,15,false);
+        Car mersedes = new Car("Mersedes", "E 220", 30000, "QQ",
+                TypeCar.CONVERTIBLE, 2017,27,false);
+        Car WV = new Car("Wolksvagen", "Lupo",25000,"AI",
+                TypeCar.SEDAN, 2016,20,false);
 
         bmw.setRepair(true);
 

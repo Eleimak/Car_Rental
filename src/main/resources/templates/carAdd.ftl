@@ -5,7 +5,6 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Create Car</title>
     <link rel="stylesheet" Type="text/css" href="<@spring.url '/css/style.css'/>"/>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -22,6 +21,12 @@
                     <span class="input-group-text" id="basic-addon1">Brand car:</span>
                 </div>
                 <@spring.formInput "CarForm.brandCar" "class='form-control'" "text"/>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Model car:</span>
+                </div>
+                <@spring.formInput "CarForm.modelCar" "class='form-control'" "text"/>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -45,10 +50,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Car year:</span>
                 </div>
-                <@spring.formInput "CarForm.carYear" "class='form-control' readonly  width='276'" "text"/>
-                <script>
-                    $('#carYear').datepicker({uiLibrary: 'bootstrap4'});
-                </script>
+                <@spring.formInput "CarForm.carYear" "class='form-control'" "text"/>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">

@@ -29,7 +29,7 @@
         <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-to">
             <a class="navbar-brand" href="/">
-                <img src="/docs/image/icons8-car-64.png" width="30" height="30" type="image/png" class="d-inline-block align-top" alt="">
+                <img src="/static/image/icons8-car-64.png" type="image/png" alt="">
                 Car Rentals
             </a>
             <div class="collapse navbar-collapse" id="navbarNav">

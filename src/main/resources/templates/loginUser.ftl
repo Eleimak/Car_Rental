@@ -8,9 +8,6 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <title>Sign In</title>
     <style type="text/css">
-        html,body{
-
-        }
 
         .container{
             height: 100%;
@@ -25,16 +22,6 @@
             background-color: rgba(0,0,0,0.5) !important;
         }
 
-        .social_icon span{
-            font-size: 60px;
-            margin-left: 10px;
-            color: #FFC312;
-        }
-
-        .social_icon span:hover{
-            color: white;
-            cursor: pointer;
-        }
 
         .card-header h3{
             color: white;

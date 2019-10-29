@@ -10,18 +10,20 @@ public class Car {
     @Id
     private String id;
     private String brandCar;
+    private String modelCar;
     private int costCar;
     private String licenseNumberPlates;
     private TypeCar typeCar;
-    private LocalDate carYear;
+    private int carYear;
     private int rentalPrice;
     private boolean repair;
 
     public Car() {
     }
 
-    public Car(String brandCar, int costCar, String licenseNumberPlates, TypeCar typeCar, LocalDate carYear, int rentalPrice, boolean repair) {
+    public Car(String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, int carYear, int rentalPrice, boolean repair) {
         this.brandCar = brandCar;
+        this.modelCar = modelCar;
         this.costCar = costCar;
         this.licenseNumberPlates = licenseNumberPlates;
         this.typeCar = typeCar;
@@ -44,6 +46,14 @@ public class Car {
 
     public void setBrandCar(String brandCar) {
         this.brandCar = brandCar;
+    }
+
+    public String getModelCar() {
+        return modelCar;
+    }
+
+    public void setModelCar(String modelCar) {
+        this.modelCar = modelCar;
     }
 
     public int getCostCar() {
@@ -70,11 +80,11 @@ public class Car {
         this.typeCar = typeCar;
     }
 
-    public LocalDate getCarYear() {
+    public int getCarYear() {
         return carYear;
     }
 
-    public void setCarYear(LocalDate carYear) {
+    public void setCarYear(int carYear) {
         this.carYear = carYear;
     }
 
@@ -100,13 +110,14 @@ public class Car {
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
         return costCar == car.costCar &&
+                carYear == car.carYear &&
                 rentalPrice == car.rentalPrice &&
                 repair == car.repair &&
                 Objects.equals(id, car.id) &&
                 Objects.equals(brandCar, car.brandCar) &&
+                Objects.equals(modelCar, car.modelCar) &&
                 Objects.equals(licenseNumberPlates, car.licenseNumberPlates) &&
-                typeCar == car.typeCar &&
-                Objects.equals(carYear, car.carYear);
+                typeCar == car.typeCar;
     }
 
     @Override
@@ -119,6 +130,7 @@ public class Car {
         return "Car{" +
                 "id='" + id + '\'' +
                 ", brandCar='" + brandCar + '\'' +
+                ", modelCar='" + modelCar + '\'' +
                 ", costCar=" + costCar +
                 ", licenseNumberPlates='" + licenseNumberPlates + '\'' +
                 ", typeCar=" + typeCar +
