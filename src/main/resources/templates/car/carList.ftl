@@ -42,7 +42,7 @@
                 <td>${car.modelCar}</td>
                 <td>${car.costCar}</td>
                 <td>${car.licenseNumberPlates}</td>
-                <td>${car.carYear}</td>
+                <td>${car.yearCar}</td>
                 <td>${car.typeCar}</td>
                 <td>${car.rentalPrice}</td>
                 <#--<td><a href="/CarRentals/car/delete/${car.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
