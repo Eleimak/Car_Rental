@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarServiceImpl implements ICarService {
@@ -106,5 +107,25 @@ public class CarServiceImpl implements ICarService {
     public boolean isFullInput(CarForm carForm) {
         if(carForm.getBrandCar().equals("")){return false;}
         return true;
+    }
+
+    @Override
+    public List<Car> getSearchBrand(String search) {
+        return carRepository.findCarByBrandCar(search);
+    }
+
+    @Override
+    public List<Car> getSearchModel(String search) {
+        return carRepository.findCarByModelCar(search);
+    }
+
+    @Override
+    public List<Car> getSearchLicenseNumberPlates(String search) {
+        return carRepository.findCarByLicenseNumberPlates(search);
+    }
+
+    @Override
+    public List<Car> getSearchCostCarBetween(Integer from, Integer before) {
+        return carRepository.findCarByCostCarIsBetween(from, before);
     }
 }

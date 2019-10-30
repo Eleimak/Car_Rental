@@ -19,32 +19,42 @@ import java.util.List;
 @Controller
 public class CarWebController {
     @Autowired
-    CarServiceImpl carsService;
+    CarServiceImpl carService;
 
     @RequestMapping("/list")
     public String showAll(Model model){
-        List<Car> list = carsService.getAll();
+        List<Car> list = carService.getAll();
         model.addAttribute("cars", list);
         return "/car/carList";
     }
 
     @RequestMapping("/listR")
     public String showNoRepair(Model model){
-        List<Car> listNoRepair = carsService.getAllNoRepair();
+        List<Car> listNoRepair = carService.getAllNoRepair();
         model.addAttribute("cars", listNoRepair);
         return "/car/carList";
     }
 
     @RequestMapping("/listSort")
     public String showSort(Model model){
-        List<Car> list = carsService.getSortingByType(TypeCar.SEDAN);
+        List<Car> list = carService.getSortingByType(TypeCar.SEDAN);
+        model.addAttribute("cars", list);
+        return "/car/carList";
+    }
+    @RequestMapping("/listSearch")
+    public String showSearch(Model model){
+        List<Car> list = new ArrayList<>();
+        list.addAll(carService.getSearchBrand("BMm"));
+        list.addAll(carService.getSearchModel("Polo"));
+        list.addAll(carService.getSearchLicenseNumberPlates("Q"));
+        list.addAll(carService.getSearchCostCarBetween(15000, 25000));
         model.addAttribute("cars", list);
         return "/car/carList";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String addCar(Model model){
-        List<Car> list = carsService.getAll();
+        List<Car> list = carService.getAll();
         CarForm carForm = new CarForm();
         List typeCar = Arrays.asList( TypeCar.values());
         model.addAttribute("typeCar", typeCar);
@@ -61,13 +71,13 @@ public class CarWebController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(Model model,@ModelAttribute("CarForm")
             CarForm carForm){
-        if(carsService.isUniqueNumber(carForm.getLicenseNumberPlates()) &&
-                carsService.isFullInput(carForm)){
+        if(carService.isUniqueNumber(carForm.getLicenseNumberPlates()) &&
+                carService.isFullInput(carForm)){
             Car newCar = new Car(carForm.getBrandCar(),carForm.getModelCar(),
                     carForm.getCostCar(), carForm.getLicenseNumberPlates(),
                     carForm.getTypeCar(), carForm.getYearCar(),
                     carForm.getRentalPrice(), carForm.isRepair());
-            carsService.create(newCar);
+            carService.create(newCar);
             return "redirect:/CarRentals/car/list";
         }
         return "redirect:/CarRentals/car/create";
@@ -75,7 +85,7 @@ public class CarWebController {
 
     @RequestMapping("/delete/{id}")
     public String delete(Model model,@PathVariable(value = "id")String id){
-        carsService.delete(id);
+        carService.delete(id);
         return "redirect:/CarRentals/car/list";
     }
 }

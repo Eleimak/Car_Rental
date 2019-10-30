@@ -43,6 +43,7 @@
                             <a class="dropdown-item alert-link" href="/CarRentals/car/list">Full list</a>
                             <a class="dropdown-item alert-link" href="/CarRentals/car/listR">Active list</a>
                             <a class="dropdown-item alert-link" href="/CarRentals/car/listSort">Sort list</a>
+                            <a class="dropdown-item alert-link" href="/CarRentals/car/listSearch">Search list</a>
                         </div>
                     </li>
                     <li class="nav-item">

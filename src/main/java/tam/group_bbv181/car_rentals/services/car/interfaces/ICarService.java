@@ -18,4 +18,8 @@ public interface ICarService {
     List<Car> getSortingByType(TypeCar typeCar);
     boolean isUniqueNumber(String licenseNumberPlates);
     boolean isFullInput(CarForm carForm);
+    List<Car> getSearchBrand(String search);
+    List<Car> getSearchModel(String search);
+    List<Car> getSearchLicenseNumberPlates(String search);
+    List<Car> getSearchCostCarBetween(Integer from, Integer before);
 }
