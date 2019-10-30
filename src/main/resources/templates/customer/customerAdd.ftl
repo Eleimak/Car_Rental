@@ -1,19 +1,18 @@
 <#import "/spring.ftl" as spring/>
 <#import "../common.ftl" as c/>
-<@c.page title="Customer update">
+<@c.page title="Customer add">
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Customer update</title>
+    <title>Customer add</title>
     <link rel="stylesheet" Type="text/css" href="<@spring.url '/css/style.css'/>"/>
 </head>
 <body>
     <div class="container">
-        <legend>Customer update</legend>
-        <form name="CustomerForm" action="" method="POST">
-            <@spring.formHiddenInput "CustomerForm.id"/>
 
+        <legend>Customer add</legend>
+        <form name="CustomerForm" action="" method="POST">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">First Name:</span>
@@ -36,8 +35,8 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Gender:</span>
                     </div>
-                <@spring.formSingleSelect "CustomerForm.gender", ListGender, "class='form-control'"/>
-                </div>
+                <@spring.formSingleSelect "CustomerForm.gender", Gender, "class='form-control'"/>
+            </div>
             <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon1">Address:</span>
@@ -55,18 +54,6 @@
                         <span class="input-group-text" id="basic-addon1">@e-mail</span>
                     </div>
                 <@spring.formInput "CustomerForm.eMail" "class='form-control'" "text"/>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Bonus points</span>
-                </div>
-                <@spring.formInput "CustomerForm.bonusPoints" "class='form-control' readonly" "text"/>
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1">Car list</span>
-                </div>
-                <@spring.formSingleSelect "CustomerForm.carList", ListCars, "class='form-control' readonly"/>
             </div>
             <br>
             <a href="/CarRentals/customer/list" Type="Button" class="btn btn-primary">Back</a>

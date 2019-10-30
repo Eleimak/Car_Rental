@@ -54,7 +54,6 @@ public class CarWebController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String addCar(Model model){
-        List<Car> list = carService.getAll();
         CarForm carForm = new CarForm();
         List typeCar = Arrays.asList( TypeCar.values());
         model.addAttribute("typeCar", typeCar);
@@ -91,7 +90,7 @@ public class CarWebController {
 
     // @PostMapping("/update/{id}")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String updateWorker(Model model,  @PathVariable("id") String id){
+    public String updateCar(Model model,  @PathVariable("id") String id){
         Car carToUpdate = carService.get(id);
         CarForm carForm = new CarForm();
         carForm.setId(carToUpdate.getId());

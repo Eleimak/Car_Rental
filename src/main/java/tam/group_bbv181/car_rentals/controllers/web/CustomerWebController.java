@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import tam.group_bbv181.car_rentals.forms.CarForm;
 import tam.group_bbv181.car_rentals.forms.CustomerForm;
 import tam.group_bbv181.car_rentals.model.Customer;
 import tam.group_bbv181.car_rentals.model.Person;
@@ -36,18 +35,43 @@ public class CustomerWebController {
         return "/customer/customerList";
     }
 
+    @RequestMapping(value = "/customer/create", method = RequestMethod.GET)
+    public String add(Model model){
+        CustomerForm customerForm = new CustomerForm();
+        List gender = Arrays.asList(
+                "man", "woman");
+        model.addAttribute("Gender", gender);
+        model.addAttribute("CustomerForm", customerForm);
+        return "/customer/customerAdd";
+    }
 
-    @RequestMapping("/customer/delete/{id}")
-    public String delete(Model model,@PathVariable(value = "id")String id){
-        customerService.delete(id);
-        return "redirect:/CarRentals/customer/list";
+    @RequestMapping(value = "/customer/create", method = RequestMethod.POST)
+    public String create(Model model,@ModelAttribute("CustomerForm")
+            CustomerForm customerForm){
+        boolean gender;
+        if(customerForm.getGender().equals("man")){
+            gender = true;
+        }else{
+            gender = false;
+        }
+        Person newPerson = new Person(customerForm.getFirstName(),
+                customerForm.getLastName(), customerForm.getMiddleName(),
+                gender);
+        if(!loginService.uniqueLogin(customerForm.getLogin()) ||
+                !personService.isNotEmptyFields(newPerson)){
+            return "redirect:/CarRentals/signUp";
+        }
+        Customer newCustomer = new Customer(personService.create(newPerson), customerForm.getAddress(),
+                customerForm.getPhone(), customerForm.geteMail());
+        customerService.create(newCustomer);
+        return "redirect:/CarRentals/customer/create";
     }
 
     @RequestMapping("/userAccount/{id}")
     public String userAccount(Model model,@PathVariable(value = "id")String id){
         Customer customer = customerService.get(id);
         model.addAttribute("customer", customer);
-        return "/customer/accountUser";
+        return "accountUser";
     }
 
     // @PostMapping("/update/{id}")
@@ -55,14 +79,12 @@ public class CustomerWebController {
     public String updateCustomer(Model model,  @PathVariable("id") String id){
         Customer customerToUpdate = customerService.get(id);
         CustomerForm customerForm = new CustomerForm();
-        //Person personToUpdate = personService.get(customerToUpdate.getPerson().getId());
-        Person personToUpdate = customerToUpdate.getPerson();
-        customerForm.setIdPerson(personToUpdate.getId());
-        customerForm.setFirstName(personToUpdate.getFirstName());
-        customerForm.setLastName(personToUpdate.getLastName());
-        customerForm.setMiddleName(personToUpdate.getMiddleName());
+        customerForm.setIdPerson(customerToUpdate.getPerson().getId());
+        customerForm.setFirstName(customerToUpdate.getPerson().getFirstName());
+        customerForm.setLastName(customerToUpdate.getPerson().getLastName());
+        customerForm.setMiddleName(customerToUpdate.getPerson().getMiddleName());
         List listGender = new ArrayList();
-        if(personToUpdate.isGender()){
+        if(customerToUpdate.getPerson().isGender()){
             listGender.add("man");
             listGender.add("woman");
         }
@@ -78,7 +100,7 @@ public class CustomerWebController {
         List listCars = Arrays.asList(customerToUpdate.getCarList());
         model.addAttribute("ListCars", listCars);
         model.addAttribute("CustomerForm", customerForm);
-        return "customerToUpdate";
+        return "/customer/customerToUpdate";
     }
 
     @RequestMapping(value = "/customer/update/{id}", method = RequestMethod.POST)
@@ -96,8 +118,15 @@ public class CustomerWebController {
         newPerson.setId(customerForm.getIdPerson());
         Customer newCustomer = new Customer(newPerson, customerForm.getAddress(), customerForm.getPhone(),
                 customerForm.geteMail());
+        newCustomer.setBonusPoints(customerForm.getBonusPoints());
         newCustomer.setId(customerForm.getId());
         customerService.update(newCustomer);
-        return "redirect:/customer/customerList";
+        return "redirect:/CarRentals/customer/list";
+    }
+
+    @RequestMapping("/customer/delete/{id}")
+    public String delete(Model model,@PathVariable(value = "id")String id){
+        customerService.delete(id);
+        return "redirect:/CarRentals/customer/list";
     }
 }

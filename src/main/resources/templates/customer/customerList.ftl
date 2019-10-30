@@ -11,9 +11,8 @@
     <br>
     <h3>Customers List</h3>
     <br>
-    <form name="Customers List" action="/CarRentals/customer/list">
+    <form name="Customers List" action="">
     <div>
-
         <table class="table table-sm table-striped table-bordered table-dark">
             <tr class="bg-success">
                 <th>First Name</th>
@@ -49,7 +48,7 @@
         </#list>
         </table>
     </div>
-    <a href="/CarRentals/signUp" Type="Button" class="btn btn-info">Add new customer</a>
+    <a href="/CarRentals/customer/create" Type="Button" class="btn btn-info">Add new customer</a>
     </form>
 </div>
 </body>

@@ -7,6 +7,8 @@ import tam.group_bbv181.car_rentals.model.LoginUser;
 
 @Repository
 public interface LoginRepository extends MongoRepository<LoginUser, String> {
-    LoginUser findByLoginAndPassword(String login, String password);
-    LoginUser findByCustomer(Customer customer);
+    LoginUser findByUsernameAndPassword(String login, String password);
+  // LoginUser findByCustomer(Customer customer);
+
+    LoginUser findByUsername(String username);
 }

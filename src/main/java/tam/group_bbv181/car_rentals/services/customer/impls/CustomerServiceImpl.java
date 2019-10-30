@@ -44,7 +44,7 @@ public class CustomerServiceImpl implements ICustomerService {
         Customer customer = this.get(id);
         customerRepository.deleteById(id);
         personRepository.deleteById(customer.getPerson().getId());
-        loginRepository.deleteById(loginRepository.findByCustomer(customer).getId());
+        //!!!!!!!!!!!!!!!!!! loginRepository.deleteById(loginRepository.findByCustomer(customer).getId());
         return customer;
     }
 

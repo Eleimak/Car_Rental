@@ -12,12 +12,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import tam.group_bbv181.car_rentals.services.login.impls.LoginServiceImpl;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Override
+  /*  @Override
      protected void configure(AuthenticationManagerBuilder auth) throws Exception {
          auth.inMemoryAuthentication()
                  .withUser("user")
@@ -32,29 +33,30 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      public PasswordEncoder getPasswordEncoder(){
          return NoOpPasswordEncoder.getInstance();
      }
+ }*/
+   @Autowired
+   private LoginServiceImpl userService;
 
-   // @Autowired
-   // private UserService userService;
-
-   /* @Bean
+    @Bean
     public PasswordEncoder bcryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
-    }*/
+    }
 
-   /* @Autowired
+    @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth
                 .userDetailsService(userService)
                 .passwordEncoder(bcryptPasswordEncoder());
-    }*/
+    }
+
 
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasAuthority("ADMIN")//permitAll
-                .antMatchers("/*").permitAll()
+                .antMatchers("/admin/**").permitAll()//hasAuthority("ADMIN")
+                .antMatchers("/readme.txt", "/css/*", "/").permitAll()
                 //.anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/CarRentals/signIn").permitAll()

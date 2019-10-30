@@ -32,22 +32,22 @@ public class LoginUserWebController {
         model.addAttribute("LoginUser", loginUser);
         return "/loginuser/loginUser";
     }
-
+/*
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)
     public String SignIn(Model model,@ModelAttribute("LoginUser")
             LoginUser loginUser){
-        if(loginService.userAccount(loginUser.getLogin(),
+        if(loginService.userAccount(loginUser.getUsername(),
                 loginUser.getPassword()) != null) {
             model.addAttribute("LoginUser", loginUser);
             String redirectStr = "redirect:/CarRental/userAccount/" +
-                    loginService.userAccount(loginUser.getLogin(),
+                    loginService.userAccount(loginUser.getUsername(),
                             loginUser.getPassword()).getCustomer().getId();
             return redirectStr;
         }
         return "redirect:/CarRentals/signIn";
     }
-
-    @RequestMapping(value = "/signUp", method = RequestMethod.GET)
+*/
+ /*   @RequestMapping(value = "/signUp", method = RequestMethod.GET)
     public String addCustomer(Model model){
         CustomerForm customerForm = new CustomerForm();
         List manWoman = Arrays.asList(
@@ -76,9 +76,9 @@ public class LoginUserWebController {
         }
         Customer newCustomer = new Customer(personService.create(newPerson), customerForm.getAddress(),
                 customerForm.getPhone(), customerForm.geteMail());
-        LoginUser loginUser = new LoginUser(customerForm.getLogin(), customerForm.getPassword(),
-                customerService.create(newCustomer));
-        return "redirect:/CarRentals/userAccount/" + loginService.create(loginUser).getCustomer().getId();
+      //!!!!!!!!!!!!!!!!  LoginUser loginUser = new LoginUser(customerForm.getLogin(), customerForm.getPassword(),
+      //!!!!!!!!!!!!!!!!          customerService.create(newCustomer));
+        return "redirect:/CarRentals/userAccount/"; //!!!!!!!!!!!!!!!!!+ loginService.create(loginUser).getCustomer().getId();
     }
 /*
 

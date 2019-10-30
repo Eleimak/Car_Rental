@@ -2,27 +2,35 @@ package tam.group_bbv181.car_rentals.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import lombok.Data;
+import java.util.Collection;
+import java.util.List;
 
+@Data
 @Document
-public class LoginUser {
+public class LoginUser implements UserDetails {
     @Id
     private String id;
-    private String login;
+    private String username;
+    private List<Role> authorities;
     private String password;
-    private Customer customer;
-
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
+    private boolean enabled;
     public LoginUser() {
     }
 
-    public LoginUser(String login, String password) {
-        this.login = login;
+    public LoginUser(String username, List<Role> authorities, String password, boolean accountNonExpired, boolean accountNonLocked, boolean credentialsNonExpired, boolean enabled) {
+        this.username = username;
+        this.authorities = authorities;
         this.password = password;
-    }
-
-    public LoginUser(String login, String password, Customer customer) {
-        this.login = login;
-        this.password = password;
-        this.customer = customer;
+        this.accountNonExpired = accountNonExpired;
+        this.accountNonLocked = accountNonLocked;
+        this.credentialsNonExpired = credentialsNonExpired;
+        this.enabled = enabled;
     }
 
     public String getId() {
@@ -33,37 +41,63 @@ public class LoginUser {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setAuthorities(List<Role> authorities) {
+        this.authorities = authorities;
+    }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return authorities;
     }
 
     public String getPassword() {
         return password;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    @Override
+    public String getUsername() {
+        return this.username;
     }
 
     @Override
-    public String toString() {
-        return "Login{" +
-                "id='" + id + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", customer=" + customer +
-                '}';
+    public boolean isAccountNonExpired() {
+        return this.accountNonExpired;
     }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return this.accountNonLocked;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return this.credentialsNonExpired;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return this.enabled;
+    }
+
+
 }

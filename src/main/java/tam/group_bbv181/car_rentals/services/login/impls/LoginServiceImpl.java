@@ -1,20 +1,29 @@
 package tam.group_bbv181.car_rentals.services.login.impls;
 
+import com.mongodb.lang.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import tam.group_bbv181.car_rentals.model.Customer;
 import tam.group_bbv181.car_rentals.model.LoginUser;
 import tam.group_bbv181.car_rentals.model.Person;
+import tam.group_bbv181.car_rentals.model.Role;
 import tam.group_bbv181.car_rentals.repository.CustomerRepository;
 import tam.group_bbv181.car_rentals.repository.LoginRepository;
 import tam.group_bbv181.car_rentals.repository.PersonRepository;
 import tam.group_bbv181.car_rentals.services.login.interfaces.ILoginService;
 
 import javax.annotation.PostConstruct;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class LoginServiceImpl implements ILoginService {
+public class LoginServiceImpl implements UserDetailsService, ILoginService {
     @Autowired
     LoginRepository loginRepository;
 
@@ -47,19 +56,15 @@ public class LoginServiceImpl implements ILoginService {
         anna.setBonusPoints(7);
         bazil.setBonusPoints(20);
 
-        LoginUser baziL = new LoginUser("QWER","1234",
-                customerRepository.save(bazil));
-        LoginUser jaN = new LoginUser("QWERTY","1234",
-                customerRepository.save(jan));
-        LoginUser annA = new LoginUser("qwerty","1234",
-                customerRepository.save(anna));
-        LoginUser qweR = new LoginUser("qwer","1234",
-                customerRepository.save(qwer1));
+        LoginUser baziL = new LoginUser("user",new ArrayList<>(Arrays.asList(Role.values())),new BCryptPasswordEncoder().encode("user"), true, true, true, true);
 
+
+        customerRepository.save(bazil);
+        loginRepository.deleteAll();
         loginRepository.save(baziL);
-        loginRepository.save(jaN);
-        loginRepository.save(annA);
-        loginRepository.save(qweR);
+        //loginRepository.save(jaN);
+        //loginRepository.save(annA);
+        //loginRepository.save(qweR);
     }
 
     @Override
@@ -89,19 +94,31 @@ public class LoginServiceImpl implements ILoginService {
         return loginUser;
     }
 
+
     @Override
     public LoginUser userAccount(String login, String password) {
-        return loginRepository.findByLoginAndPassword(login, password);
+     return null;// loginRepository.findByLoginAndPassword(login, password);
     }
 
     @Override
     public boolean uniqueLogin(String login) {
         List<LoginUser> loginUserList = this.getAll();
         for (LoginUser item: loginUserList) {
-            if(item.getLogin().equals(login)){
+            if(item.getUsername().equals(login)){
                 return false;
             }
         }
         return true;
+    }
+
+    public Optional<LoginUser> findByUsername(@NonNull String username){
+        // return Optional.ofNullable(mongoTemplate.findOne(query(where("username").is(username)), User.class));
+        return  Optional.ofNullable(loginRepository.findByUsername(username));
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return findByUsername(username).orElseThrow(() ->
+                new UsernameNotFoundException("user " + username + " was not found!"));
     }
 }

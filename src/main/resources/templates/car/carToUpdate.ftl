@@ -16,6 +16,7 @@
     <fieldset>
         <legend>Update car</legend>
         <form name="CarForm" action="" method="POST">
+            <@spring.formHiddenInput "CarForm.id"/>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Brand car:</span>

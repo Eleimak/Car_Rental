@@ -101,7 +101,7 @@
                 <h3>Sign In</h3>
             </div>
             <div class="card-body">
-                <form name="f" action="/CarRentals/signIn" method="POST">
+                <form name="f" action="/login" method="POST">
                     <div class="input-group form-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fas fa-user"></i></span>
@@ -119,7 +119,7 @@
                         <input type="checkbox">Remember Me
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="  OK  " class="btn float-right login_btn">
+                        <input name="submit" type="submit" value="  OK  " class="btn float-right login_btn">
                     </div>
                 </form>
             </div>
