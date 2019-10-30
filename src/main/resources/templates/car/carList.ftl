@@ -32,8 +32,8 @@
                 <th>Car year</th>
                 <th><a href="/CarRentals/car/listSort" class="btn btn-success">Type</a></th>
                 <th>Rental price</th>
-               <#-- <th>Delete</th>
-                <th>Update</th>-->
+                <th>Delete</th>
+                <th>Update</th>
             </tr>
 
             <#list cars as car>
@@ -45,8 +45,8 @@
                 <td>${car.yearCar}</td>
                 <td>${car.typeCar}</td>
                 <td>${car.rentalPrice}</td>
-                <#--<td><a href="/CarRentals/car/delete/${car.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
-                <td><a href="/CarRentals/car/update/${car.id}" Type="Button" class="btn btn-primary" >Update</a></td>-->
+                <td><a href="/CarRentals/car/delete/${car.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
+                <td><a href="/CarRentals/car/update/${car.id}" Type="Button" class="btn btn-primary" >Update</a></td>
             </tr>
         </#list>
 

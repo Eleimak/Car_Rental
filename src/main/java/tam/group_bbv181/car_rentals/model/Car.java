@@ -14,7 +14,7 @@ public class Car {
     private int costCar;
     private String licenseNumberPlates;
     private TypeCar typeCar;
-    private int yearCar;
+    private Integer yearCar;
     private int rentalPrice;
     private boolean repair;
 
@@ -80,11 +80,11 @@ public class Car {
         this.typeCar = typeCar;
     }
 
-    public int getYearCar() {
+    public Integer getYearCar() {
         return yearCar;
     }
 
-    public void setYearCar(int yearCar) {
+    public void setYearCar(Integer yearCar) {
         this.yearCar = yearCar;
     }
 

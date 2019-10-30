@@ -11,14 +11,14 @@ public class CarForm {
     private int costCar;
     private String licenseNumberPlates;
     private TypeCar typeCar;
-    private int yearCar;
+    private Integer yearCar;
     private int rentalPrice;
-    private boolean repair;
+    private String repair;
 
     public CarForm() {
     }
 
-    public CarForm(String id, String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, int yearCar, int rentalPrice, boolean repair) {
+    public CarForm(String id, String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, int yearCar, int rentalPrice, String repair) {
         this.id = id;
         this.brandCar = brandCar;
         this.modelCar = modelCar;
@@ -78,11 +78,11 @@ public class CarForm {
         this.typeCar = typeCar;
     }
 
-    public int getYearCar() {
+    public Integer getYearCar() {
         return yearCar;
     }
 
-    public void setYearCar(int yearCar) {
+    public void setYearCar(Integer yearCar) {
         this.yearCar = yearCar;
     }
 
@@ -94,11 +94,11 @@ public class CarForm {
         this.rentalPrice = rentalPrice;
     }
 
-    public boolean isRepair() {
+    public String getRepair() {
         return repair;
     }
 
-    public void setRepair(boolean repair) {
+    public void setRepair(String repair) {
         this.repair = repair;
     }
 
@@ -108,14 +108,14 @@ public class CarForm {
         if (o == null || getClass() != o.getClass()) return false;
         CarForm carForm = (CarForm) o;
         return costCar == carForm.costCar &&
-                yearCar == carForm.yearCar &&
                 rentalPrice == carForm.rentalPrice &&
-                repair == carForm.repair &&
                 Objects.equals(id, carForm.id) &&
                 Objects.equals(brandCar, carForm.brandCar) &&
                 Objects.equals(modelCar, carForm.modelCar) &&
                 Objects.equals(licenseNumberPlates, carForm.licenseNumberPlates) &&
-                typeCar == carForm.typeCar;
+                typeCar == carForm.typeCar &&
+                Objects.equals(yearCar, carForm.yearCar) &&
+                Objects.equals(repair, carForm.repair);
     }
 
     @Override

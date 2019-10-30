@@ -76,7 +76,7 @@ public class CarWebController {
             Car newCar = new Car(carForm.getBrandCar(),carForm.getModelCar(),
                     carForm.getCostCar(), carForm.getLicenseNumberPlates(),
                     carForm.getTypeCar(), carForm.getYearCar(),
-                    carForm.getRentalPrice(), carForm.isRepair());
+                    carForm.getRentalPrice(), false);
             carService.create(newCar);
             return "redirect:/CarRentals/car/list";
         }
@@ -86,6 +86,62 @@ public class CarWebController {
     @RequestMapping("/delete/{id}")
     public String delete(Model model,@PathVariable(value = "id")String id){
         carService.delete(id);
+        return "redirect:/CarRentals/car/list";
+    }
+
+    // @PostMapping("/update/{id}")
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String updateWorker(Model model,  @PathVariable("id") String id){
+        Car carToUpdate = carService.get(id);
+        CarForm carForm = new CarForm();
+        carForm.setId(carToUpdate.getId());
+        carForm.setBrandCar(carToUpdate.getBrandCar());
+        carForm.setModelCar(carToUpdate.getModelCar());
+        carForm.setCostCar(carToUpdate.getCostCar());
+        carForm.setLicenseNumberPlates(carToUpdate.getLicenseNumberPlates());
+        List typeThisCar = new ArrayList();
+      //  typeThisCar.add();
+        List typeCar = Arrays.asList(carToUpdate.getTypeCar(),
+                TypeCar.CONVERTIBLE, TypeCar.SEDAN, TypeCar.HATCHBACK,
+                TypeCar.COUPE, TypeCar.MUV_SUV, TypeCar.PIC_UP_VEHICLE,
+                TypeCar.VAN, TypeCar.WAGON);
+        model.addAttribute("typeCar", typeCar);
+        List listYear = new ArrayList();
+        listYear.add(carToUpdate.getYearCar().toString());
+        int nowYear = LocalDate.now().getYear();
+        for (Integer i = nowYear; i >= 2000; i--) {
+                    listYear.add(i.toString());
+        }
+        model.addAttribute("ListYear", listYear);
+        carForm.setRentalPrice(carToUpdate.getRentalPrice());
+        List listRepair = new ArrayList();
+        if(carToUpdate.isRepair()){
+            listRepair.add("yes");
+            listRepair.add("no");
+        }
+        else{
+            listRepair.add("no");
+            listRepair.add("yes");
+        }
+        model.addAttribute("ListRepair", listRepair);
+        model.addAttribute("CarForm", carForm);
+        return "/car/carToUpdate";
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String update(@ModelAttribute("CarForm") CarForm carForm){
+        boolean repair;
+        if(carForm.getRepair().equals("yes")){
+            repair = true;
+        }else{
+            repair = false;
+        }
+        Car newCar = new Car(carForm.getBrandCar(), carForm.getModelCar(),
+                carForm.getCostCar(), carForm.getLicenseNumberPlates(),
+                carForm.getTypeCar(), carForm.getYearCar(),
+                carForm.getRentalPrice(), repair);
+        newCar.setId(carForm.getId());
+        carService.update(newCar);
         return "redirect:/CarRentals/car/list";
     }
 }
