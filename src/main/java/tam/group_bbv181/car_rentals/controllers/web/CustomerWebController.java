@@ -4,10 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import tam.group_bbv181.car_rentals.forms.CarForm;
+import tam.group_bbv181.car_rentals.forms.CustomerForm;
 import tam.group_bbv181.car_rentals.model.Customer;
+import tam.group_bbv181.car_rentals.model.Person;
 import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rentals.services.login.impls.LoginServiceImpl;
+import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RequestMapping("/CarRentals")
@@ -19,6 +25,9 @@ public class CustomerWebController {
 
     @Autowired
     LoginServiceImpl loginService;
+
+    @Autowired
+    PersonServiceImpl personService;
 
     @RequestMapping("/customer/list")
     public String showAll(Model model){
@@ -40,38 +49,55 @@ public class CustomerWebController {
         model.addAttribute("customer", customer);
         return "/customer/accountUser";
     }
-/*
 
     // @PostMapping("/update/{id}")
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-    public String updateWorker(Model model,  @PathVariable("id") String id){
-        Worker workerToUpdate = workerService.get(id);
-        WorkerForm workerForm = new WorkerForm();
-        workerForm.setName(workerToUpdate.getName());
-        workerForm.setOccupation(workerToUpdate.getOccupation());
-        workerForm.setSalary(workerToUpdate.getSalary());
-        workerForm.setSpeciality(workerToUpdate.getSpeciality().getName());
-        Map<String, String> mavs = (Map<String, String>)
-                specialityServices.getAll().stream()
-                        .collect(Collectors.toMap(Speciality::getId,
-                                Speciality::getName));
-
-        model.addAttribute("mavs", mavs);
-        model.addAttribute("WorkerForm", workerForm);
-        return "workerupdate";
+    @RequestMapping(value = "/customer/update/{id}", method = RequestMethod.GET)
+    public String updateCustomer(Model model,  @PathVariable("id") String id){
+        Customer customerToUpdate = customerService.get(id);
+        CustomerForm customerForm = new CustomerForm();
+        //Person personToUpdate = personService.get(customerToUpdate.getPerson().getId());
+        Person personToUpdate = customerToUpdate.getPerson();
+        customerForm.setIdPerson(personToUpdate.getId());
+        customerForm.setFirstName(personToUpdate.getFirstName());
+        customerForm.setLastName(personToUpdate.getLastName());
+        customerForm.setMiddleName(personToUpdate.getMiddleName());
+        List listGender = new ArrayList();
+        if(personToUpdate.isGender()){
+            listGender.add("man");
+            listGender.add("woman");
+        }
+        else{
+            listGender.add("woman");
+            listGender.add("man");
+        }
+        model.addAttribute("ListGender", listGender);
+        customerForm.setAddress(customerToUpdate.getAddress());
+        customerForm.setPhone(customerToUpdate.getPhone());
+        customerForm.seteMail(customerToUpdate.geteMail());
+        customerForm.setBonusPoints(customerToUpdate.getBonusPoints());
+        List listCars = Arrays.asList(customerToUpdate.getCarList());
+        model.addAttribute("ListCars", listCars);
+        model.addAttribute("CustomerForm", customerForm);
+        return "customerToUpdate";
     }
-    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-    public String update(@ModelAttribute("WorkerForm")
-                                 WorkerForm workerForm){
-        Worker newWorker = new Worker(workerForm.getName(),
-                workerForm.getOccupation(),workerForm.getSalary(),
-                specialityServices.get(workerForm.getSpeciality()),
-                LocalDateTime.parse(workerForm.getEmploymentDay(),
-                        DateTimeFormatter.ofPattern("HH:mm MM/dd/yyyy")));
-        newWorker.setId(workerForm.getId());
-        workerService.update(newWorker);
-        return "redirect:/worker/list";
-    }
-*/
 
+    @RequestMapping(value = "/customer/update/{id}", method = RequestMethod.POST)
+    public String update(@ModelAttribute("CustomerForm") CustomerForm
+                                     customerForm){
+        boolean gender;
+        if(customerForm.getGender().equals("man")){
+            gender = true;
+        }else{
+            gender = false;
+        }
+        Person newPerson = new Person(customerForm.getFirstName(),
+                customerForm.getLastName(), customerForm.getMiddleName(),
+                gender);
+        newPerson.setId(customerForm.getIdPerson());
+        Customer newCustomer = new Customer(newPerson, customerForm.getAddress(), customerForm.getPhone(),
+                customerForm.geteMail());
+        newCustomer.setId(customerForm.getId());
+        customerService.update(newCustomer);
+        return "redirect:/customer/customerList";
+    }
 }

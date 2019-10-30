@@ -36,13 +36,13 @@ public class LoginServiceImpl implements ILoginService {
         Person pash1 = new Person("Qwer","Rewq", "Ywer", true);
 
         Customer bazil = new Customer(personRepository.save(pash),"qwrewt",
-                    45679689,"qwer@gmail.com",0,null);
+                    45679689,"qwer@gmail.com");
         Customer jan = new Customer(personRepository.save(desi),"zxcxczcz",
-                    436554,"asdf@gmail.com",0,null);
+                    436554,"asdf@gmail.com");
         Customer anna = new Customer(personRepository.save(tester),"wqqrrwer",
-                    323774,"zvcx@mail.com",0,null);
+                    323774,"zvcx@mail.com");
         Customer qwer1 = new Customer(personRepository.save(pash1),"qwerrttyy",
-                1234567890,"qwert@mail.com",0,null);
+                1234567890,"qwert@mail.com");
 
         anna.setBonusPoints(7);
         bazil.setBonusPoints(20);

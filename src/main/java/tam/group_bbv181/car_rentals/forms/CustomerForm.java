@@ -9,9 +9,10 @@ public class CustomerForm {
     private String id;
     private String login;
     private String password;
+    private String idPerson;
     private String firstName;
-    private String middleName;
     private String lastName;
+    private String middleName;
     private String gender;
     private String address;
     private int phone;
@@ -22,7 +23,7 @@ public class CustomerForm {
     public CustomerForm() {
     }
 
-    public CustomerForm(String login, String password, String firstName, String middleName, String lastName, String gender, String address, int phone, String eMail, int bonusPoints, List<Car> carList) {
+    public CustomerForm(String login, String password, String firstName, String lastName, String middleName, String gender, String address, int phone, String eMail, int bonusPoints, List<Car> carList) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
@@ -58,6 +59,14 @@ public class CustomerForm {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getIdPerson() {
+        return idPerson;
+    }
+
+    public void setIdPerson(String idPerson) {
+        this.idPerson = idPerson;
     }
 
     public String getFirstName() {
@@ -142,9 +151,10 @@ public class CustomerForm {
                 Objects.equals(id, that.id) &&
                 Objects.equals(login, that.login) &&
                 Objects.equals(password, that.password) &&
+                Objects.equals(idPerson, that.idPerson) &&
                 Objects.equals(firstName, that.firstName) &&
-                Objects.equals(middleName, that.middleName) &&
                 Objects.equals(lastName, that.lastName) &&
+                Objects.equals(middleName, that.middleName) &&
                 Objects.equals(gender, that.gender) &&
                 Objects.equals(address, that.address) &&
                 Objects.equals(eMail, that.eMail) &&
@@ -162,9 +172,10 @@ public class CustomerForm {
                 "id='" + id + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", idPerson='" + idPerson + '\'' +
                 ", firstName='" + firstName + '\'' +
-                ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", middleName='" + middleName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
                 ", phone=" + phone +

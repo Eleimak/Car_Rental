@@ -68,14 +68,14 @@ public class LoginUserWebController {
             gender = false;
         }
         Person newPerson = new Person(customerForm.getFirstName(),
-                customerForm.getMiddleName(), customerForm.getLastName(),
+                customerForm.getLastName(), customerForm.getMiddleName(),
                 gender);
         if(!loginService.uniqueLogin(customerForm.getLogin()) ||
                 !personService.isNotEmptyFields(newPerson)){
             return "redirect:/CarRentals/signUp";
         }
         Customer newCustomer = new Customer(personService.create(newPerson), customerForm.getAddress(),
-                customerForm.getPhone(), customerForm.geteMail(),0,null);
+                customerForm.getPhone(), customerForm.geteMail());
         LoginUser loginUser = new LoginUser(customerForm.getLogin(), customerForm.getPassword(),
                 customerService.create(newCustomer));
         return "redirect:/CarRentals/userAccount/" + loginService.create(loginUser).getCustomer().getId();
