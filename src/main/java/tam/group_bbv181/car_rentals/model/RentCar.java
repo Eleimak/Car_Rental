@@ -18,7 +18,7 @@ public class RentCar {
     public RentCar() {
     }
 
-    public RentCar(Car car, Customer customer, boolean accessibility, LocalDate dateOfIssue, LocalDate returnDate) {
+    public RentCar(Car car, Customer customer, LocalDate dateOfIssue, LocalDate returnDate) {
         this.car = car;
         this.customer = customer;
         this.dateOfIssue = dateOfIssue;
