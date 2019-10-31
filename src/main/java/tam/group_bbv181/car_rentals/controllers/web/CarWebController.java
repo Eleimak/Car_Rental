@@ -98,8 +98,6 @@ public class CarWebController {
         carForm.setModelCar(carToUpdate.getModelCar());
         carForm.setCostCar(carToUpdate.getCostCar());
         carForm.setLicenseNumberPlates(carToUpdate.getLicenseNumberPlates());
-        List typeThisCar = new ArrayList();
-      //  typeThisCar.add();
         List typeCar = Arrays.asList(carToUpdate.getTypeCar(),
                 TypeCar.CONVERTIBLE, TypeCar.SEDAN, TypeCar.HATCHBACK,
                 TypeCar.COUPE, TypeCar.MUV_SUV, TypeCar.PIC_UP_VEHICLE,

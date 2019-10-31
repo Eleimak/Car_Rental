@@ -11,7 +11,7 @@
     <groupId>tam.group_bbv181</groupId>
     <artifactId>car_rental</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>car_rental</name>
+    <name>car_rentals</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
