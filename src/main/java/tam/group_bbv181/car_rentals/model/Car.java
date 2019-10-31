@@ -17,11 +17,12 @@ public class Car {
     private Integer yearCar;
     private int rentalPrice;
     private boolean repair;
+    private boolean rent;
 
     public Car() {
     }
 
-    public Car(String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, int yearCar, int rentalPrice, boolean repair) {
+    public Car(String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, Integer yearCar, int rentalPrice, boolean repair, boolean rent) {
         this.brandCar = brandCar;
         this.modelCar = modelCar;
         this.costCar = costCar;
@@ -30,6 +31,7 @@ public class Car {
         this.yearCar = yearCar;
         this.rentalPrice = rentalPrice;
         this.repair = repair;
+        this.rent = rent;
     }
 
     public String getId() {
@@ -104,20 +106,29 @@ public class Car {
         this.repair = repair;
     }
 
+    public boolean isRent() {
+        return rent;
+    }
+
+    public void setRent(boolean rent) {
+        this.rent = rent;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
         return costCar == car.costCar &&
-                yearCar == car.yearCar &&
                 rentalPrice == car.rentalPrice &&
                 repair == car.repair &&
+                rent == car.rent &&
                 Objects.equals(id, car.id) &&
                 Objects.equals(brandCar, car.brandCar) &&
                 Objects.equals(modelCar, car.modelCar) &&
                 Objects.equals(licenseNumberPlates, car.licenseNumberPlates) &&
-                typeCar == car.typeCar;
+                typeCar == car.typeCar &&
+                Objects.equals(yearCar, car.yearCar);
     }
 
     @Override
@@ -134,9 +145,10 @@ public class Car {
                 ", costCar=" + costCar +
                 ", licenseNumberPlates='" + licenseNumberPlates + '\'' +
                 ", typeCar=" + typeCar +
-                ", carYear=" + yearCar +
+                ", yearCar=" + yearCar +
                 ", rentalPrice=" + rentalPrice +
                 ", repair=" + repair +
+                ", rent=" + rent +
                 '}';
     }
 }

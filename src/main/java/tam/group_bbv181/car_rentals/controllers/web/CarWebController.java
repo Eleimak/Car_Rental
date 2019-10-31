@@ -75,7 +75,7 @@ public class CarWebController {
             Car newCar = new Car(carForm.getBrandCar(),carForm.getModelCar(),
                     carForm.getCostCar(), carForm.getLicenseNumberPlates(),
                     carForm.getTypeCar(), carForm.getYearCar(),
-                    carForm.getRentalPrice(), false);
+                    carForm.getRentalPrice(), false,false);
             carService.create(newCar);
             return "redirect:/CarRentals/car/list";
         }
@@ -121,22 +121,36 @@ public class CarWebController {
             listRepair.add("yes");
         }
         model.addAttribute("ListRepair", listRepair);
+        String rent;
+        if(carToUpdate.isRent()){
+            rent = "yes";
+        }
+        else{
+            rent = "no";
+        }
+        carForm.setRent(rent);
         model.addAttribute("CarForm", carForm);
         return "/car/carToUpdate";
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String update(@ModelAttribute("CarForm") CarForm carForm){
-        boolean repair;
+        boolean repair, rent;
         if(carForm.getRepair().equals("yes")){
             repair = true;
         }else{
             repair = false;
         }
+        if(carForm.getRent().equals("yes")){
+            rent = true;
+        }
+        else {
+            rent = false;
+        }
         Car newCar = new Car(carForm.getBrandCar(), carForm.getModelCar(),
                 carForm.getCostCar(), carForm.getLicenseNumberPlates(),
                 carForm.getTypeCar(), carForm.getYearCar(),
-                carForm.getRentalPrice(), repair);
+                carForm.getRentalPrice(), repair, rent);
         newCar.setId(carForm.getId());
         carService.update(newCar);
         return "redirect:/CarRentals/car/list";

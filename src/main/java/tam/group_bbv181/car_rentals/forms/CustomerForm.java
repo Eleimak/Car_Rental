@@ -19,22 +19,30 @@ public class CustomerForm {
     private String eMail;
     private int bonusPoints;
     private List<Car> carList;
+    private boolean rent;
 
     public CustomerForm() {
     }
 
-    public CustomerForm(String login, String password, String firstName, String lastName, String middleName, String gender, String address, String phone, String eMail, int bonusPoints, List<Car> carList) {
+    public CustomerForm(String id, String login, String password,
+                        String idPerson, String firstName, String lastName,
+                        String middleName, String gender, String address,
+                        String phone, String eMail, int bonusPoints,
+                        List<Car> carList, boolean rent) {
+        this.id = id;
         this.login = login;
         this.password = password;
+        this.idPerson = idPerson;
         this.firstName = firstName;
-        this.middleName = middleName;
         this.lastName = lastName;
+        this.middleName = middleName;
         this.gender = gender;
         this.address = address;
         this.phone = phone;
         this.eMail = eMail;
         this.bonusPoints = bonusPoints;
         this.carList = carList;
+        this.rent = rent;
     }
 
     public String getId() {
@@ -77,14 +85,6 @@ public class CustomerForm {
         this.firstName = firstName;
     }
 
-    public String getMiddleName() {
-        return middleName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
     public String getLastName() {
         return lastName;
     }
@@ -93,12 +93,20 @@ public class CustomerForm {
         this.lastName = lastName;
     }
 
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
     public String getGender() {
         return gender;
     }
 
-    public void setGender(String gander) {
-        this.gender = gander;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     public String getAddress() {
@@ -141,13 +149,21 @@ public class CustomerForm {
         this.carList = carList;
     }
 
+    public boolean isRent() {
+        return rent;
+    }
+
+    public void setRent(boolean rent) {
+        this.rent = rent;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CustomerForm that = (CustomerForm) o;
-        return phone == that.phone &&
-                bonusPoints == that.bonusPoints &&
+        return bonusPoints == that.bonusPoints &&
+                rent == that.rent &&
                 Objects.equals(id, that.id) &&
                 Objects.equals(login, that.login) &&
                 Objects.equals(password, that.password) &&
@@ -157,6 +173,7 @@ public class CustomerForm {
                 Objects.equals(middleName, that.middleName) &&
                 Objects.equals(gender, that.gender) &&
                 Objects.equals(address, that.address) &&
+                Objects.equals(phone, that.phone) &&
                 Objects.equals(eMail, that.eMail) &&
                 Objects.equals(carList, that.carList);
     }
@@ -178,10 +195,11 @@ public class CustomerForm {
                 ", middleName='" + middleName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", address='" + address + '\'' +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
                 ", eMail='" + eMail + '\'' +
                 ", bonusPoints=" + bonusPoints +
                 ", carList=" + carList +
+                ", rent=" + rent +
                 '}';
     }
 }

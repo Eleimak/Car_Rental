@@ -5,7 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import tam.group_bbv181.car_rentals.forms.RentCarForm;
+import tam.group_bbv181.car_rentals.model.Car;
+import tam.group_bbv181.car_rentals.model.Customer;
 import tam.group_bbv181.car_rentals.model.RentCar;
+import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
+import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rentals.services.rentcar.impls.RentCarServiceImpl;
 
 import java.util.List;
@@ -16,6 +20,10 @@ import java.util.List;
 public class RentCarWebController {
     @Autowired
     RentCarServiceImpl rentCarService;
+    @Autowired
+    CarServiceImpl carService;
+    @Autowired
+    CustomerServiceImpl customerService;
 
     @RequestMapping("/list")
     public String showAll(Model model){
@@ -27,6 +35,10 @@ public class RentCarWebController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String addCar(Model model){
         RentCarForm rentCarForm = new RentCarForm();
+        List<Car> carList = carService.getAll();
+        model.addAttribute("CarList", carList);
+        List<Customer> customerList = customerService.getAll();
+        model.addAttribute("CustomerList", customerList);
         model.addAttribute("RentCarForm", rentCarForm);
         return "/rentcar/rentcarAdd";
     }

@@ -59,7 +59,7 @@ public class CustomerWebController {
                 gender);
         Customer newCustomer = new Customer(personService.create(newPerson),
                 customerForm.getAddress(), customerForm.getPhone(),
-                customerForm.geteMail());
+                customerForm.geteMail(),0,null,false);
         if(!personService.isNotEmptyFields(newPerson)
                 || !customerService.isNotEmptyFields(newCustomer)){
             return "redirect:/CarRentals/customer/create";
@@ -98,8 +98,10 @@ public class CustomerWebController {
         customerForm.setPhone(customerToUpdate.getPhone());
         customerForm.seteMail(customerToUpdate.geteMail());
         customerForm.setBonusPoints(customerToUpdate.getBonusPoints());
+        customerForm.setCarList(customerToUpdate.getCarList());
         List listCars = Arrays.asList(customerToUpdate.getCarList());
         model.addAttribute("ListCars", listCars);
+        customerForm.setRent(customerToUpdate.isRent());
         model.addAttribute("CustomerForm", customerForm);
         return "/customer/customerToUpdate";
     }
@@ -117,9 +119,10 @@ public class CustomerWebController {
                 customerForm.getLastName(), customerForm.getMiddleName(),
                 gender);
         newPerson.setId(customerForm.getIdPerson());
-        Customer newCustomer = new Customer(newPerson, customerForm.getAddress(), customerForm.getPhone(),
-                customerForm.geteMail());
-        newCustomer.setBonusPoints(customerForm.getBonusPoints());
+        Customer newCustomer = new Customer(newPerson, customerForm.getAddress(),
+                customerForm.getPhone(), customerForm.geteMail(),
+                customerForm.getBonusPoints(), customerForm.getCarList(),
+                customerForm.isRent());
         newCustomer.setId(customerForm.getId());
         customerService.update(newCustomer);
         return "redirect:/CarRentals/customer/list";

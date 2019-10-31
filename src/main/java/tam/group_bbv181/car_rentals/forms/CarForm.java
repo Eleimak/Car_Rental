@@ -14,11 +14,12 @@ public class CarForm {
     private Integer yearCar;
     private int rentalPrice;
     private String repair;
+    private String rent;
 
     public CarForm() {
     }
 
-    public CarForm(String id, String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, int yearCar, int rentalPrice, String repair) {
+    public CarForm(String id, String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, Integer yearCar, int rentalPrice, String repair, String rent) {
         this.id = id;
         this.brandCar = brandCar;
         this.modelCar = modelCar;
@@ -28,6 +29,7 @@ public class CarForm {
         this.yearCar = yearCar;
         this.rentalPrice = rentalPrice;
         this.repair = repair;
+        this.rent = rent;
     }
 
     public String getId() {
@@ -102,6 +104,14 @@ public class CarForm {
         this.repair = repair;
     }
 
+    public String getRent() {
+        return rent;
+    }
+
+    public void setRent(String rent) {
+        this.rent = rent;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -115,7 +125,8 @@ public class CarForm {
                 Objects.equals(licenseNumberPlates, carForm.licenseNumberPlates) &&
                 typeCar == carForm.typeCar &&
                 Objects.equals(yearCar, carForm.yearCar) &&
-                Objects.equals(repair, carForm.repair);
+                Objects.equals(repair, carForm.repair) &&
+                Objects.equals(rent, carForm.rent);
     }
 
     @Override
@@ -132,9 +143,10 @@ public class CarForm {
                 ", costCar=" + costCar +
                 ", licenseNumberPlates='" + licenseNumberPlates + '\'' +
                 ", typeCar=" + typeCar +
-                ", carYear=" + yearCar +
+                ", yearCar=" + yearCar +
                 ", rentalPrice=" + rentalPrice +
-                ", repair=" + repair +
+                ", repair='" + repair + '\'' +
+                ", rent='" + rent + '\'' +
                 '}';
     }
 }

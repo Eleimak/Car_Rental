@@ -16,15 +16,19 @@ public class Customer {
     private String eMail;
     private int bonusPoints;
     private List<Car> carList;
+    private boolean rent;
 
     public Customer() {
     }
 
-    public Customer(Person person, String address, String phone, String eMail) {
+    public Customer(Person person, String address, String phone, String eMail, int bonusPoints, List<Car> carList, boolean rent) {
         this.person = person;
         this.address = address;
         this.phone = phone;
         this.eMail = eMail;
+        this.bonusPoints = bonusPoints;
+        this.carList = carList;
+        this.rent = rent;
     }
 
     public String getId() {
@@ -83,12 +87,21 @@ public class Customer {
         this.carList = carList;
     }
 
+    public boolean isRent() {
+        return rent;
+    }
+
+    public void setRent(boolean rent) {
+        this.rent = rent;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
         return bonusPoints == customer.bonusPoints &&
+                rent == customer.rent &&
                 Objects.equals(id, customer.id) &&
                 Objects.equals(person, customer.person) &&
                 Objects.equals(address, customer.address) &&
@@ -108,10 +121,11 @@ public class Customer {
                 "id='" + id + '\'' +
                 ", person=" + person +
                 ", address='" + address + '\'' +
-                ", phone=" + phone +
+                ", phone='" + phone + '\'' +
                 ", eMail='" + eMail + '\'' +
                 ", bonusPoints=" + bonusPoints +
                 ", carList=" + carList +
+                ", rent=" + rent +
                 '}';
     }
 }
