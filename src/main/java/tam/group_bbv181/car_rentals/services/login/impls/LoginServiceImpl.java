@@ -56,10 +56,16 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
         anna.setBonusPoints(7);
         bazil.setBonusPoints(20);
 
-        LoginUser baziL = new LoginUser("user",new ArrayList<>(Arrays.asList(Role.values())),new BCryptPasswordEncoder().encode("user"), true, true, true, true);
+        LoginUser baziL = new LoginUser("user",
+                new ArrayList<>(Arrays.asList(Role.values())),
+                new BCryptPasswordEncoder().encode("user"),
+                true, true, true, true);
 
 
         customerRepository.save(bazil);
+        customerRepository.save(jan);
+        customerRepository.save(anna);
+        customerRepository.save(qwer1);
         loginRepository.save(baziL);
         //loginRepository.save(jaN);
         //loginRepository.save(annA);
