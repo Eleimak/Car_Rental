@@ -27,13 +27,13 @@ public class CarServiceImpl implements ICarService {
         List<Car> carList = new ArrayList<>();
 
         Car bmw = new Car("BMW", "320",25000,"AA",
-                TypeCar.SEDAN, 2012,20,false);
+                TypeCar.SEDAN, 2012,20,false,false);
         Car wolksvagen = new Car("Wolksvagen", "Polo",15000,"VV",
-                TypeCar.HATCHBACK, 2015,15,false);
+                TypeCar.HATCHBACK, 2015,15,false,false);
         Car mersedes = new Car("Mersedes", "E 220", 30000, "QQ",
-                TypeCar.CONVERTIBLE, 2017,27,false);
+                TypeCar.CONVERTIBLE, 2017,27,false,false);
         Car WV = new Car("Wolksvagen", "Lupo",25000,"AI",
-                TypeCar.SEDAN, 2016,20,false);
+                TypeCar.SEDAN, 2016,20,false,false);
 
         bmw.setRepair(true);
 
