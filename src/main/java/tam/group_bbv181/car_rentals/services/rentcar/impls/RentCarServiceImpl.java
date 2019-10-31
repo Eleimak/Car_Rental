@@ -39,26 +39,25 @@ public class RentCarServiceImpl implements IRentCarService {
                         customerService.getAll().get(0),
                         LocalDate.of(2017, Month.JULY,15),
                         LocalDate.of(2017,Month.AUGUST,16)
-                ),
-                new RentCar(
-                        carService.getAll().get(1),
-                        customerService.getAll().get(1),
-                        LocalDate.of(2018, Month.APRIL,26),
-                        LocalDate.of(2018,Month.MAY,1)
-                ),
-                new RentCar(
-                        carService.getAll().get(2),
-                        customerService.getAll().get(2),
-                        LocalDate.of(2018, Month.NOVEMBER,4),
-                        LocalDate.of(2018,Month.DECEMBER,19)
-                ),
-                new RentCar(
-                        carService.getAll().get(3),
-                        customerService.getAll().get(3),
-                        LocalDate.of(2019, Month.JANUARY,20),
-                        LocalDate.of(2019,Month.MARCH,29)
-                )
-        )));
+                        ),
+                        new RentCar(
+                                carService.getAll().get(1),
+                                customerService.getAll().get(1),
+                                LocalDate.of(2018, Month.APRIL,26),
+                                LocalDate.of(2018,Month.MAY,1)
+                        ),
+                        new RentCar(
+                                carService.getAll().get(2),
+                                customerService.getAll().get(2),
+                                LocalDate.of(2018, Month.NOVEMBER,4),
+                                LocalDate.of(2018,Month.DECEMBER,19)
+                        ),
+                        new RentCar(
+                                carService.getAll().get(3),
+                                customerService.getAll().get(3),
+                                LocalDate.of(2019, Month.JANUARY,20),
+                                LocalDate.of(2019,Month.MARCH,29)
+                        ))));
     }
 
 
