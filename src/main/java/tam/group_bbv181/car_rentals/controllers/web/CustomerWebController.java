@@ -62,14 +62,14 @@ public class CustomerWebController {
                 customerForm.geteMail());
         if(!personService.isNotEmptyFields(newPerson)
                 || customerService.isNotEmptyFields(newCustomer)){
-            return "redirect:/CarRentals/signUp";
+            return "redirect:/CarRentals/customer/create";
         }
         customerService.create(newCustomer);
-        return "redirect:/CarRentals/customer/create";
+        return "redirect:/CarRentals/customer/list";
     }
 
     @RequestMapping("/userAccount/{id}")
-    public String userAccount(Model model,@PathVariable(value= "id")String id){
+    public String userAccount(Model model,@PathVariable(value="id")String id){
         Customer customer = customerService.get(id);
         model.addAttribute("customer", customer);
         return "accountUser";
