@@ -27,7 +27,7 @@ public class RentCarServiceImpl implements IRentCarService {
 
     @Autowired
     CarServiceImpl carService;
-
+/*
     @PostConstruct
     void init(){
         rentCarRepository.deleteAll();
@@ -60,7 +60,10 @@ public class RentCarServiceImpl implements IRentCarService {
 
                 )
         ));
+
     }
+*/
+
     @Override
     public List<RentCar> getAll() {
         return rentCarRepository.findAll();
