@@ -44,12 +44,6 @@
                     <#else>
                         <#assign repair = "no">
                     </#if>
-                    <#assign rent = "">
-                    <#if car.rent == true>
-                        <#assign rent = "yes">
-                    <#else>
-                        <#assign rent = "no">
-                    </#if>
                     <tr>
                         <td>${car.brandCar}</td>
                         <td>${car.modelCar}</td>
@@ -59,7 +53,7 @@
                         <td>${car.typeCar}</td>
                         <td>${car.rentalPrice}</td>
                         <td>${repair}</td>
-                        <td>${rent}</td>
+                        <td>${car.rent}</td>
                         <td><a href="/CarRentals/car/delete/${car.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
                         <td><a href="/CarRentals/car/update/${car.id}" Type="Button" class="btn btn-primary" >Update</a></td>
                     </tr>
