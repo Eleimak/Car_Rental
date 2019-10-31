@@ -57,18 +57,19 @@ public class CustomerWebController {
         Person newPerson = new Person(customerForm.getFirstName(),
                 customerForm.getLastName(), customerForm.getMiddleName(),
                 gender);
-        if(!loginService.uniqueLogin(customerForm.getLogin()) ||
-                !personService.isNotEmptyFields(newPerson)){
+        Customer newCustomer = new Customer(personService.create(newPerson),
+                customerForm.getAddress(), customerForm.getPhone(),
+                customerForm.geteMail());
+        if(!personService.isNotEmptyFields(newPerson)
+                || customerService.isNotEmptyFields(newCustomer)){
             return "redirect:/CarRentals/signUp";
         }
-        Customer newCustomer = new Customer(personService.create(newPerson), customerForm.getAddress(),
-                customerForm.getPhone(), customerForm.geteMail());
         customerService.create(newCustomer);
         return "redirect:/CarRentals/customer/create";
     }
 
     @RequestMapping("/userAccount/{id}")
-    public String userAccount(Model model,@PathVariable(value = "id")String id){
+    public String userAccount(Model model,@PathVariable(value= "id")String id){
         Customer customer = customerService.get(id);
         model.addAttribute("customer", customer);
         return "accountUser";

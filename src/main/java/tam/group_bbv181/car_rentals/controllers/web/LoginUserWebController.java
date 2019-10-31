@@ -45,7 +45,7 @@ public class LoginUserWebController {
         return "redirect:/CarRentals/signIn";
     }
 */
- /*   @RequestMapping(value = "/signUp", method = RequestMethod.GET)
+   @RequestMapping(value = "/signUp", method = RequestMethod.GET)
     public String addCustomer(Model model){
         CustomerForm customerForm = new CustomerForm();
         List manWoman = Arrays.asList(
