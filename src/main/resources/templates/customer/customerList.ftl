@@ -27,7 +27,6 @@
                 <th>Delete</th>
                 <th>Update</th>
             </tr>
-
             <#list customers as customer>
                 <#assign gender = "">
                 <#if customer.person.gender == true>

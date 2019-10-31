@@ -47,6 +47,7 @@ public class RentCarWebController {
     public String create(Model model, @ModelAttribute("RentCarForm")
                          RentCarForm rentCarForm){
             RentCar newRentCar = new RentCar();
+
             rentCarService.create(newRentCar);
             return "redirect:/CarRentals/rentCar/list";
     }
