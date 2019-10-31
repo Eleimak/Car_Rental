@@ -4,12 +4,12 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Car List</title>
+    <title>Car Rentals List</title>
 </head>
 <body>
 <div class="container-fluid">
     <br>
-    <h3>Car List</h3>
+    <h3>Car Rentals List</h3>
     <br>
     <div>
         <form name="RentCarForm" action="" method="POST">
