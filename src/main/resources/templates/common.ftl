@@ -46,9 +46,9 @@
                             <a class="dropdown-item alert-link" href="/CarRentals/car/listSearch">Search list</a>
                         </div>
                     </li>
-                    <li class="nav-item">
+                    <#--<li class="nav-item">
                         <a class="nav-link" href="/CarRentals/signIn">Sign In</a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </nav>
