@@ -61,7 +61,7 @@ public class CustomerWebController {
                 customerForm.getAddress(), customerForm.getPhone(),
                 customerForm.geteMail());
         if(!personService.isNotEmptyFields(newPerson)
-                || customerService.isNotEmptyFields(newCustomer)){
+                || !customerService.isNotEmptyFields(newCustomer)){
             return "redirect:/CarRentals/customer/create";
         }
         customerService.create(newCustomer);
