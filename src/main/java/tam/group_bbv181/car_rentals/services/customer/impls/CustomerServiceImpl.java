@@ -51,7 +51,7 @@ public class CustomerServiceImpl implements ICustomerService {
     @Override
     public boolean isNotEmptyFields(Customer customer) {
         if(customer.getAddress().equals("")){return false;}
-        if(customer.getPhone()<500000000){return false;}
+        if(customer.getPhone().equals("")){return false;}
         if(customer.geteMail().equals("")){return false;}
         return true;
     }

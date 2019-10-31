@@ -12,7 +12,7 @@ public class Customer {
     private String id;
     private Person person;
     private String address;
-    private int phone;
+    private String phone;
     private String eMail;
     private int bonusPoints;
     private List<Car> carList;
@@ -20,7 +20,7 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(Person person, String address, int phone, String eMail) {
+    public Customer(Person person, String address, String phone, String eMail) {
         this.person = person;
         this.address = address;
         this.phone = phone;
@@ -51,11 +51,11 @@ public class Customer {
         this.address = address;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
@@ -88,11 +88,11 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return phone == customer.phone &&
-                bonusPoints == customer.bonusPoints &&
+        return bonusPoints == customer.bonusPoints &&
                 Objects.equals(id, customer.id) &&
                 Objects.equals(person, customer.person) &&
                 Objects.equals(address, customer.address) &&
+                Objects.equals(phone, customer.phone) &&
                 Objects.equals(eMail, customer.eMail) &&
                 Objects.equals(carList, customer.carList);
     }

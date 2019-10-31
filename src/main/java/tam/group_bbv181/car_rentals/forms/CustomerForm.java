@@ -15,7 +15,7 @@ public class CustomerForm {
     private String middleName;
     private String gender;
     private String address;
-    private int phone;
+    private String phone;
     private String eMail;
     private int bonusPoints;
     private List<Car> carList;
@@ -23,7 +23,7 @@ public class CustomerForm {
     public CustomerForm() {
     }
 
-    public CustomerForm(String login, String password, String firstName, String lastName, String middleName, String gender, String address, int phone, String eMail, int bonusPoints, List<Car> carList) {
+    public CustomerForm(String login, String password, String firstName, String lastName, String middleName, String gender, String address, String phone, String eMail, int bonusPoints, List<Car> carList) {
         this.login = login;
         this.password = password;
         this.firstName = firstName;
@@ -109,11 +109,11 @@ public class CustomerForm {
         this.address = address;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
