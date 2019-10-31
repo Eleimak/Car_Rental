@@ -32,7 +32,7 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
 
     @Autowired
     CustomerRepository customerRepository;
-/*
+
 
     @PostConstruct
     void init(){
@@ -72,7 +72,7 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
         //loginRepository.save(annA);
         //loginRepository.save(qweR);
     }
-*/
+
 
     @Override
     public List<LoginUser> getAll() {
