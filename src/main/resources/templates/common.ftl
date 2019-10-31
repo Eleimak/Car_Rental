@@ -16,7 +16,7 @@
                 height: 100%;
             }
             body {
-                background-image: url('/image/11207.jpg');
+                background-image: url('/static/image/mainBackground.jpg');
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -29,7 +29,7 @@
         <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-to">
             <a class="navbar-brand" href="/">
-                <img src="/image/icons8-car-64.png" type="image/png" alt="">
+                <img src="/static/image/mainNavbar.png" type="image/png" alt="">
                 Car Rentals
             </a>
             <div class="collapse navbar-collapse" id="navbarNav">

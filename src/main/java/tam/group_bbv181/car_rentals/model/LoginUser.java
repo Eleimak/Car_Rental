@@ -20,6 +20,8 @@ public class LoginUser implements UserDetails {
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
     private boolean enabled;
+
+
     public LoginUser() {
     }
 

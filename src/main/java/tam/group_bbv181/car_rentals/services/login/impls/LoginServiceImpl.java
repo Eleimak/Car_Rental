@@ -60,7 +60,6 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
 
 
         customerRepository.save(bazil);
-        loginRepository.deleteAll();
         loginRepository.save(baziL);
         //loginRepository.save(jaN);
         //loginRepository.save(annA);

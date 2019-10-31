@@ -28,9 +28,7 @@ public class LoginUserWebController {
 
     @RequestMapping(value = "/signIn", method = RequestMethod.GET)
     public String signIn(Model model){
-        LoginUser loginUser = new LoginUser();
-        model.addAttribute("LoginUser", loginUser);
-        return "/loginuser/loginUser";
+        return "loginuser/loginUser";
     }
 /*
     @RequestMapping(value = "/signIn", method = RequestMethod.POST)

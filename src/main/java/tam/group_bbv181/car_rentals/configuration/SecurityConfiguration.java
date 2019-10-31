@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -50,16 +51,21 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests()
-                .antMatchers("/admin/**").permitAll()//hasAuthority("ADMIN")
-                .antMatchers("/readme.txt", "/css/*", "/").permitAll()
-                //.anyRequest().authenticated()
+                .headers().frameOptions().disable()
                 .and()
-                .formLogin().loginPage("/CarRentals/signIn").permitAll()
+                .exceptionHandling().accessDeniedPage("/login")
+                .and()
+                .authorizeRequests()
+                .regexMatchers("^\\S*.js|\\S*.css$").permitAll()
+                .antMatchers("/admin/**").hasAuthority("ADMIN")
+                .antMatchers("/readme.txt", "/css/*", "/", "/image/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().loginPage("/CarRentals/signIn").defaultSuccessUrl("/")
+                .permitAll()
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).permitAll();
          http.csrf().disable();
