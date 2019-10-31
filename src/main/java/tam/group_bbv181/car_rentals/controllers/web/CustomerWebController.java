@@ -80,6 +80,7 @@ public class CustomerWebController {
     public String updateCustomer(Model model,  @PathVariable("id") String id){
         Customer customerToUpdate = customerService.get(id);
         CustomerForm customerForm = new CustomerForm();
+        customerForm.setId(customerToUpdate.getId());
         customerForm.setIdPerson(customerToUpdate.getPerson().getId());
         customerForm.setFirstName(customerToUpdate.getPerson().getFirstName());
         customerForm.setLastName(customerToUpdate.getPerson().getLastName());

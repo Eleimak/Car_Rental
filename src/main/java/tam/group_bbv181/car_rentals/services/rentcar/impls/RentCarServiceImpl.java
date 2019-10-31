@@ -2,10 +2,8 @@ package tam.group_bbv181.car_rentals.services.rentcar.impls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tam.group_bbv181.car_rentals.model.RentCar;
-import tam.group_bbv181.car_rentals.repository.CarRepository;
-import tam.group_bbv181.car_rentals.repository.CustomerRepository;
-import tam.group_bbv181.car_rentals.repository.RentCarRepository;
+import tam.group_bbv181.car_rentals.model.*;
+import tam.group_bbv181.car_rentals.repository.*;
 import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
 import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rentals.services.rentcar.interfaces.IRentCarService;
@@ -27,42 +25,42 @@ public class RentCarServiceImpl implements IRentCarService {
 
     @Autowired
     CarServiceImpl carService;
-/*
+
     @PostConstruct
     void init(){
+
         rentCarRepository.deleteAll();
-        rentCarRepository.saveAll(new ArrayList<>(
+
+
+        rentCarRepository.saveAll( new ArrayList<>(
                 Arrays.asList(
                         new RentCar(
-                                carService.getAll().get(0),
-                                customerService.getAll().get(0),
-                                LocalDate.of(15, Month.JULY,2017),
-                                LocalDate.of(16,Month.AUGUST,2017)
-                        ),
-                        new RentCar(
-                                carService.getAll().get(1),
-                                customerService.getAll().get(1),
-                                LocalDate.of(26, Month.APRIL,2018),
-                                LocalDate.of(1,Month.MAY,2018)
-                        ),
-                        new RentCar(
-                                carService.getAll().get(2),
-                                customerService.getAll().get(2),
-                                LocalDate.of(4, Month.NOVEMBER,2018),
-                                LocalDate.of(19,Month.DECEMBER,2018)
-                        ),
-                        new RentCar(
-                                carService.getAll().get(3),
-                                customerService.getAll().get(3),
-                                LocalDate.of(20, Month.JANUARY,2019),
-                                LocalDate.of(29,Month.MARCH,2019)
-                        )
-
+                        carService.getAll().get(0),
+                        customerService.getAll().get(0),
+                        LocalDate.of(2017, Month.JULY,15),
+                        LocalDate.of(2017,Month.AUGUST,16)
+                ),
+                new RentCar(
+                        carService.getAll().get(1),
+                        customerService.getAll().get(1),
+                        LocalDate.of(2018, Month.APRIL,26),
+                        LocalDate.of(2018,Month.MAY,1)
+                ),
+                new RentCar(
+                        carService.getAll().get(2),
+                        customerService.getAll().get(2),
+                        LocalDate.of(2018, Month.NOVEMBER,4),
+                        LocalDate.of(2018,Month.DECEMBER,19)
+                ),
+                new RentCar(
+                        carService.getAll().get(3),
+                        customerService.getAll().get(3),
+                        LocalDate.of(2019, Month.JANUARY,20),
+                        LocalDate.of(2019,Month.MARCH,29)
                 )
-        ));
-
+        )));
     }
-*/
+
 
     @Override
     public List<RentCar> getAll() {
