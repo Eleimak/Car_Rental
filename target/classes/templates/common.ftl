@@ -16,7 +16,7 @@
                 height: 100%;
             }
             body {
-                background-image: url('/image/11207.jpg');
+                background-image: url('/image/mainBackground.jpg');
                 background-size: cover;
                 background-repeat: no-repeat;
                 background-position: center;
@@ -29,7 +29,7 @@
         <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-to">
             <a class="navbar-brand" href="/">
-                <img src="/image/icons8-car-64.png" type="image/png" alt="">
+                <img src="/image/mainNavbar.png" type="image/png" alt="">
                 Car Rentals
             </a>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -47,11 +47,15 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/CarRentals/signIn">Sign In</a>
+                        <a class="nav-link" href="/CarRentals/rentCar/list">Rent car list</a>
                     </li>
+                    <#--<li class="nav-item">
+                        <a class="nav-link" href="/CarRentals/signIn">Sign In</a>
+                    </li>-->
                 </ul>
             </div>
         </nav>
+
 
             <#nested/> <#-- <<<<<< Сюда вставится каждый твой файл -->
 

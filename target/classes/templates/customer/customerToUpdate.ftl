@@ -62,12 +62,12 @@
                 </div>
                 <@spring.formInput "CustomerForm.bonusPoints" "class='form-control' readonly" "text"/>
             </div>
-            <div class="input-group mb-3">
+            <#--<div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Car list</span>
                 </div>
                 <@spring.formSingleSelect "CustomerForm.carList", ListCars, "class='form-control' readonly"/>
-            </div>
+            </div>-->
             <br>
             <a href="/CarRentals/customer/list" Type="Button" class="btn btn-primary">Back</a>
             <input Type="submit" value="     Next     " class="btn btn-danger"/>

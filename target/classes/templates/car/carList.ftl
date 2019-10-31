@@ -31,11 +31,25 @@
                     <th>Car year</th>
                     <th><a href="/CarRentals/car/listSort" class="btn btn-success">Type</a></th>
                     <th>Rental price</th>
+                    <th>Repair car</th>
+                    <th>Rent car</th>
                     <th>Delete</th>
                     <th>Update</th>
                 </tr>
 
                 <#list cars as car>
+                    <#assign repair = "">
+                    <#if car.repair == true>
+                        <#assign repair = "yes">
+                    <#else>
+                        <#assign repair = "no">
+                    </#if>
+                    <#assign rent = "">
+                    <#if car.rent == true>
+                        <#assign rent = "yes">
+                    <#else>
+                        <#assign rent = "no">
+                    </#if>
                     <tr>
                         <td>${car.brandCar}</td>
                         <td>${car.modelCar}</td>
@@ -44,6 +58,8 @@
                         <td>${car.yearCar}</td>
                         <td>${car.typeCar}</td>
                         <td>${car.rentalPrice}</td>
+                        <td>${repair}</td>
+                        <td>${rent}</td>
                         <td><a href="/CarRentals/car/delete/${car.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
                         <td><a href="/CarRentals/car/update/${car.id}" Type="Button" class="btn btn-primary" >Update</a></td>
                     </tr>

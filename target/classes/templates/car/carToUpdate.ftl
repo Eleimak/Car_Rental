@@ -65,6 +65,12 @@
                 </div>
                 <@spring.formSingleSelect "CarForm.repair", ListRepair, "class='form-control'"/>
             </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Rent car:</span>
+                </div>
+                <@spring.formInput "CarForm.rent", "class='form-control' readonly"/>
+            </div>
             <br>
             <a href="/CarRentals/car/list" Type="Button" class="btn btn-primary">Back</a>
             <input Type="submit" value="     Next     " class="btn btn-danger"/>

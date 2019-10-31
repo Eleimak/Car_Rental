@@ -49,7 +49,7 @@
                 <td>${customer.phone}</td>
                 <td>${customer.eMail}</td>
                 <td>${customer.bonusPoints}</td>
-                <td>${customer.rent}</td>
+                <td>${rent}</td>
                 <td><a href="/CarRentals/customer/delete/${customer.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
                 <td><a href="/CarRentals/customer/update/${customer.id}" Type="Button" class="btn btn-primary" >Update</a></td>
             </tr>

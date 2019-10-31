@@ -23,15 +23,22 @@
                 <th>Mobile phone</th>
                 <th>@e-mail</th>
                 <th>Bonus points</th>
+                <th>Rent car</th>
                 <th>Delete</th>
                 <th>Update</th>
             </tr>
-            <#assign gender = "">
             <#list customers as customer>
+                <#assign gender = "">
                 <#if customer.person.gender == true>
                     <#assign gender = "man">
                 <#else>
                     <#assign gender = "woman">
+                </#if>
+                <#assign rent = "">
+                <#if customer.rent == true>
+                    <#assign rent = "yes">
+                <#else>
+                    <#assign rent = "no">
                 </#if>
             <tr>
                 <td>${customer.person.firstName}</td>
@@ -42,6 +49,7 @@
                 <td>${customer.phone}</td>
                 <td>${customer.eMail}</td>
                 <td>${customer.bonusPoints}</td>
+                <td>${rent}</td>
                 <td><a href="/CarRentals/customer/delete/${customer.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
                 <td><a href="/CarRentals/customer/update/${customer.id}" Type="Button" class="btn btn-primary" >Update</a></td>
             </tr>
