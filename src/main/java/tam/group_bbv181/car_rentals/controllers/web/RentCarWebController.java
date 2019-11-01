@@ -12,6 +12,8 @@ import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
 import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rentals.services.rentcar.impls.RentCarServiceImpl;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RequestMapping("/CarRentals/rentCar")
@@ -52,6 +54,42 @@ public class RentCarWebController {
             return "redirect:/CarRentals/rentCar/list";
     }
 
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+    public String updateCustomer(Model model,  @PathVariable("id") String id){
+
+        RentCar rentCarToUpdate = rentCarService.get(id);
+
+        RentCarForm rentCarForm = new RentCarForm();
+
+        rentCarForm.setId(rentCarToUpdate.getId());
+        rentCarForm.setDateOfIssue(rentCarToUpdate.getDateOfIssue().toString());
+        rentCarForm.setReturnDate(rentCarToUpdate.getReturnDate().toString());
+
+        rentCarForm.setCarID(rentCarToUpdate.getCar().getId());
+        rentCarForm.setCarBrand(rentCarToUpdate.getCar().getBrandCar());
+        rentCarForm.setCarModel(rentCarToUpdate.getCar().getModelCar());
+        rentCarForm.setCarNumber(rentCarToUpdate.getCar().getLicenseNumberPlates());
+
+        rentCarForm.setCustomerID(rentCarToUpdate.getCustomer().getId());
+        rentCarForm.setCustomerFirstName(rentCarToUpdate.getCustomer().getPerson().getFirstName());
+        rentCarForm.setCustomerLastName(rentCarToUpdate.getCustomer().getPerson().getLastName());
+        rentCarForm.setCustomerMiddleName(rentCarToUpdate.getCustomer().getPerson().getMiddleName());
+
+        model.addAttribute("RentCarForm", rentCarForm);
+        return "/rentcar/rentCarToUpdate";
+    }
+
+    @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+    public String update(@PathVariable("id") String id,
+                         @ModelAttribute("RentCarForm") RentCarForm rentCarForm){
+
+        RentCar newRentCar = rentCarService.get(id);
+        newRentCar.setReturnDate(LocalDate.parse(rentCarForm.getReturnDate(),
+                DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+
+        rentCarService.update(newRentCar);
+        return "redirect:/CarRentals/rentCar/list";
+    }
     @RequestMapping("/delete/{id}")
     public String delete(Model model,@PathVariable(value = "id")String id){
         rentCarService.delete(id);

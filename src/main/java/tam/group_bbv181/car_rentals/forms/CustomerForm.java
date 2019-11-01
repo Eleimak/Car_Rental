@@ -1,14 +1,19 @@
 package tam.group_bbv181.car_rentals.forms;
 
 import tam.group_bbv181.car_rentals.model.Car;
+import tam.group_bbv181.car_rentals.model.LoginUser;
+import tam.group_bbv181.car_rentals.model.Person;
 
 import java.util.List;
 import java.util.Objects;
 
 public class CustomerForm {
     private String id;
+    private LoginUser loginUser;
+    private String idLogin;
     private String login;
     private String password;
+    private Person person;
     private String idPerson;
     private String firstName;
     private String lastName;
@@ -24,14 +29,18 @@ public class CustomerForm {
     public CustomerForm() {
     }
 
-    public CustomerForm(String id, String login, String password,
+    public CustomerForm(String id, LoginUser loginUser, String idLogin,
+                        String login, String password, Person person,
                         String idPerson, String firstName, String lastName,
                         String middleName, String gender, String address,
                         String phone, String eMail, int bonusPoints,
                         List<Car> carList, boolean rent) {
         this.id = id;
+        this.loginUser = loginUser;
+        this.idLogin = idLogin;
         this.login = login;
         this.password = password;
+        this.person = person;
         this.idPerson = idPerson;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -53,6 +62,22 @@ public class CustomerForm {
         this.id = id;
     }
 
+    public LoginUser getLoginUser() {
+        return loginUser;
+    }
+
+    public void setLoginUser(LoginUser loginUser) {
+        this.loginUser = loginUser;
+    }
+
+    public String getIdLogin() {
+        return idLogin;
+    }
+
+    public void setIdLogin(String idLogin) {
+        this.idLogin = idLogin;
+    }
+
     public String getLogin() {
         return login;
     }
@@ -67,6 +92,14 @@ public class CustomerForm {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
     }
 
     public String getIdPerson() {
@@ -165,8 +198,11 @@ public class CustomerForm {
         return bonusPoints == that.bonusPoints &&
                 rent == that.rent &&
                 Objects.equals(id, that.id) &&
+                Objects.equals(loginUser, that.loginUser) &&
+                Objects.equals(idLogin, that.idLogin) &&
                 Objects.equals(login, that.login) &&
                 Objects.equals(password, that.password) &&
+                Objects.equals(person, that.person) &&
                 Objects.equals(idPerson, that.idPerson) &&
                 Objects.equals(firstName, that.firstName) &&
                 Objects.equals(lastName, that.lastName) &&
@@ -187,8 +223,11 @@ public class CustomerForm {
     public String toString() {
         return "CustomerForm{" +
                 "id='" + id + '\'' +
+                ", loginUser=" + loginUser +
+                ", idLogin='" + idLogin + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", person=" + person +
                 ", idPerson='" + idPerson + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +

@@ -1,6 +1,7 @@
 package tam.group_bbv181.car_rentals.controllers.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,10 +9,12 @@ import tam.group_bbv181.car_rentals.forms.CustomerForm;
 import tam.group_bbv181.car_rentals.model.Customer;
 import tam.group_bbv181.car_rentals.model.LoginUser;
 import tam.group_bbv181.car_rentals.model.Person;
+import tam.group_bbv181.car_rentals.model.Role;
 import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rentals.services.login.impls.LoginServiceImpl;
 import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -58,25 +61,33 @@ public class LoginUserWebController {
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
     public String create(Model model,@ModelAttribute("CustomersForm")
             CustomerForm customerForm){
-
         boolean gender;
         if(customerForm.getGender().equals("man")){
             gender = true;
         }else{
             gender = false;
         }
-        Person newPerson = new Person(customerForm.getFirstName(),
+        LoginUser newLogin = new LoginUser(customerForm.getLogin(),
+                new ArrayList<>(Arrays.asList(Role.USER)),
+                new BCryptPasswordEncoder().encode(customerForm.getPassword()),
+                true, true, true, true);
+        if(!loginService.uniqueLogin(newLogin.getUsername())){
+            return "redirect:/CarRentals/signUp";
+        }
+        Person newPerson = new Person(loginService.create(newLogin), customerForm.getFirstName(),
                 customerForm.getLastName(), customerForm.getMiddleName(),
                 gender);
-        if(!loginService.uniqueLogin(customerForm.getLogin()) ||
-                !personService.isNotEmptyFields(newPerson)){
+        if(!personService.isNotEmptyFields(newPerson)){
             return "redirect:/CarRentals/signUp";
         }
         Customer newCustomer = new Customer(personService.create(newPerson), customerForm.getAddress(),
                 customerForm.getPhone(), customerForm.geteMail(),0,null,false);
+        if(!customerService.isNotEmptyFields(newCustomer)){
+            return "redirect:/CarRentals/signUp";
+        }
       //!!!!!!!!!!!!!!!!  LoginUser loginUser = new LoginUser(customerForm.getLogin(), customerForm.getPassword(),
-      //!!!!!!!!!!!!!!!!          customerService.create(newCustomer));
-        return "redirect:/CarRentals/userAccount/"; //!!!!!!!!!!!!!!!!!+ loginService.create(loginUser).getCustomer().getId();
+
+        return "redirect:/CarRentals/userAccount/" + customerService.create(newCustomer).getId();
     }
 /*
 

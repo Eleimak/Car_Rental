@@ -40,10 +40,24 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
         personRepository.deleteAll();
         loginRepository.deleteAll();
 
-        Person pash = new Person("Bazil","Pash", "Anodov", true);
-        Person desi = new Person("Jan","Desi", "Emue", true);
-        Person tester = new Person("Anna","Tester", "Oyen", false);
-        Person pash1 = new Person("Qwer","Rewq", "Ywer", true);
+        LoginUser baziL = new LoginUser("user",
+                new ArrayList<>(Arrays.asList(Role.values())),
+                new BCryptPasswordEncoder().encode("user"),
+                true, true, true, true);
+        LoginUser jaN = new LoginUser("zxcv",new ArrayList<>(Arrays.asList(Role.USER)),
+                new BCryptPasswordEncoder().encode("zxcv"),
+                true,true,true,true);
+        LoginUser annA = new LoginUser("asdf",new ArrayList<>(Arrays.asList(Role.USER)),
+                new BCryptPasswordEncoder().encode("asdf"),
+                true,true,true,true);
+        LoginUser qweR = new LoginUser("qwer",new ArrayList<>(Arrays.asList(Role.USER)),
+                new BCryptPasswordEncoder().encode("qwer"),
+                true,true,true,true);
+
+        Person pash = new Person(this.create(baziL),"Bazil","Pash", "Anodov", true);
+        Person desi = new Person(this.create(jaN),"Jan","Desi", "Emue", true);
+        Person tester = new Person(this.create(annA),"Anna","Tester", "Oyen", false);
+        Person pash1 = new Person(this.create(qweR),"Qwer","Rewq", "Ywer", true);
 
         Customer bazil = new Customer(personRepository.save(pash),"qwrewt",
                     "45679689","qwer@gmail.com", 0,null,false);
@@ -57,17 +71,14 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
         anna.setBonusPoints(7);
         bazil.setBonusPoints(20);
 
-        LoginUser baziL = new LoginUser("user",
-                new ArrayList<>(Arrays.asList(Role.values())),
-                new BCryptPasswordEncoder().encode("user"),
-                true, true, true, true);
+
 
 
         customerRepository.save(bazil);
         customerRepository.save(jan);
         customerRepository.save(anna);
         customerRepository.save(qwer1);
-        loginRepository.save(baziL);
+
         //loginRepository.save(jaN);
         //loginRepository.save(annA);
         //loginRepository.save(qweR);
@@ -112,6 +123,7 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
         List<LoginUser> loginUserList = this.getAll();
         for (LoginUser item: loginUserList) {
             if(item.getUsername().equals(login)){
+                System.out.println(item.getUsername());
                 return false;
             }
         }

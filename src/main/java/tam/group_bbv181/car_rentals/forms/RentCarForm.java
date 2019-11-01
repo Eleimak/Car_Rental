@@ -8,18 +8,34 @@ import java.util.Objects;
 
 public class RentCarForm {
     private String id;
-    private Car car;
-    private Customer customer;
-    private LocalDate dateOfIssue;
-    private LocalDate returnDate;
+    private String carID;
+    private String carBrand;
+    private String carModel;
+    private String carNumber;
+    private String customerID;
+    private String customerFirstName;
+    private String customerLastName;
+    private String customerMiddleName;
+    private String dateOfIssue;
+    private String returnDate;
 
     public RentCarForm() {
     }
 
-    public RentCarForm(String id, Car car, Customer customer, LocalDate dateOfIssue, LocalDate returnDate) {
+    public RentCarForm(String id, String carID, String carBrand,
+                       String carModel, String carNumber, String customerID,
+                       String customerFirstName, String customerLastName,
+                       String customerMiddleName, String dateOfIssue,
+                       String returnDate) {
         this.id = id;
-        this.car = car;
-        this.customer = customer;
+        this.carID = carID;
+        this.carBrand = carBrand;
+        this.carModel = carModel;
+        this.carNumber = carNumber;
+        this.customerID = customerID;
+        this.customerFirstName = customerFirstName;
+        this.customerLastName = customerLastName;
+        this.customerMiddleName = customerMiddleName;
         this.dateOfIssue = dateOfIssue;
         this.returnDate = returnDate;
     }
@@ -32,35 +48,83 @@ public class RentCarForm {
         this.id = id;
     }
 
-    public Car getCar() {
-        return car;
+    public String getCarID() {
+        return carID;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCarID(String carID) {
+        this.carID = carID;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public String getCarBrand() {
+        return carBrand;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
     }
 
-    public LocalDate getDateOfIssue() {
+    public String getCarModel() {
+        return carModel;
+    }
+
+    public void setCarModel(String carModel) {
+        this.carModel = carModel;
+    }
+
+    public String getCarNumber() {
+        return carNumber;
+    }
+
+    public void setCarNumber(String carNumber) {
+        this.carNumber = carNumber;
+    }
+
+    public String getCustomerID() {
+        return customerID;
+    }
+
+    public void setCustomerID(String customerID) {
+        this.customerID = customerID;
+    }
+
+    public String getCustomerFirstName() {
+        return customerFirstName;
+    }
+
+    public void setCustomerFirstName(String customerFirstName) {
+        this.customerFirstName = customerFirstName;
+    }
+
+    public String getCustomerLastName() {
+        return customerLastName;
+    }
+
+    public void setCustomerLastName(String customerLastName) {
+        this.customerLastName = customerLastName;
+    }
+
+    public String getCustomerMiddleName() {
+        return customerMiddleName;
+    }
+
+    public void setCustomerMiddleName(String customerMiddleName) {
+        this.customerMiddleName = customerMiddleName;
+    }
+
+    public String getDateOfIssue() {
         return dateOfIssue;
     }
 
-    public void setDateOfIssue(LocalDate dateOfIssue) {
+    public void setDateOfIssue(String dateOfIssue) {
         this.dateOfIssue = dateOfIssue;
     }
 
-    public LocalDate getReturnDate() {
+    public String getReturnDate() {
         return returnDate;
     }
 
-    public void setReturnDate(LocalDate returnDate) {
+    public void setReturnDate(String returnDate) {
         this.returnDate = returnDate;
     }
 
@@ -70,8 +134,14 @@ public class RentCarForm {
         if (o == null || getClass() != o.getClass()) return false;
         RentCarForm that = (RentCarForm) o;
         return Objects.equals(id, that.id) &&
-                Objects.equals(car, that.car) &&
-                Objects.equals(customer, that.customer) &&
+                Objects.equals(carID, that.carID) &&
+                Objects.equals(carBrand, that.carBrand) &&
+                Objects.equals(carModel, that.carModel) &&
+                Objects.equals(carNumber, that.carNumber) &&
+                Objects.equals(customerID, that.customerID) &&
+                Objects.equals(customerFirstName, that.customerFirstName) &&
+                Objects.equals(customerLastName, that.customerLastName) &&
+                Objects.equals(customerMiddleName, that.customerMiddleName) &&
                 Objects.equals(dateOfIssue, that.dateOfIssue) &&
                 Objects.equals(returnDate, that.returnDate);
     }
@@ -85,10 +155,16 @@ public class RentCarForm {
     public String toString() {
         return "RentCarForm{" +
                 "id='" + id + '\'' +
-                ", car=" + car +
-                ", customer=" + customer +
-                ", dateOfIssue=" + dateOfIssue +
-                ", returnDate=" + returnDate +
+                ", carID='" + carID + '\'' +
+                ", carBrand='" + carBrand + '\'' +
+                ", carModel='" + carModel + '\'' +
+                ", carNumber='" + carNumber + '\'' +
+                ", customerID='" + customerID + '\'' +
+                ", customerFirstName='" + customerFirstName + '\'' +
+                ", customerLastName='" + customerLastName + '\'' +
+                ", customerMiddleName='" + customerMiddleName + '\'' +
+                ", dateOfIssue='" + dateOfIssue + '\'' +
+                ", returnDate='" + returnDate + '\'' +
                 '}';
     }
 }

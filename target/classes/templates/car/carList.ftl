@@ -15,21 +15,12 @@
         <form name="CarForm" action="" method="POST">
             <table class="table table-sm table-striped table-bordered table-dark">
                 <tr class="bg-success">
-                    <th><a href="" class="btn btn-success">Brand car</a></th>
+                    <th>Brand car</th>
                     <th>Model car</th>
-                    <th><div class="dropdown">
-                            <a id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Cost car
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <a class="dropdown-item" href="#">Car cost descending</a>
-                                <a class="dropdown-item" href="#">Car cost ascending</a>
-                            </div>
-                        </div>
-                    </th>
+                    <th>Cost car</th>
                     <th>License number plates</th>
                     <th>Car year</th>
-                    <th><a href="/CarRentals/car/listSort" class="btn btn-success">Type</a></th>
+                    <th>Type</th>
                     <th>Rental price</th>
                     <th>Repair car</th>
                     <th>Rent car</th>
