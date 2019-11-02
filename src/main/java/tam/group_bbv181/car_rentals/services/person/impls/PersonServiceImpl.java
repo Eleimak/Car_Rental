@@ -42,9 +42,9 @@ public class PersonServiceImpl implements IPersonService {
 
     @Override
     public boolean isNotEmptyFields(Person person) {
-        if(person.getFirstName().equals("")){return false;}
-        if(person.getLastName().equals("")){return false;}
-        if(person.getMiddleName().equals("")){return false;}
-        return true;
+        if(person.getFirstName().equals("")){return true;}
+        if(person.getLastName().equals("")){return true;}
+        if(person.getMiddleName().equals("")){return true;}
+        return false;
     }
 }

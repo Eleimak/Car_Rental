@@ -21,13 +21,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Brand car:</span>
                 </div>
-                <@spring.formInput "CarForm.brandCar" "class='form-control'" "text"/>
+                <@spring.formInput "CarForm.brandCar" "class='form-control' readonly" "text"/>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Model car:</span>
                 </div>
-                <@spring.formInput "CarForm.modelCar" "class='form-control'" "text"/>
+                <@spring.formInput "CarForm.modelCar" "class='form-control' readonly" "text"/>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -45,13 +45,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Type car:</span>
                 </div>
-                <@spring.formSingleSelect "CarForm.typeCar", typeCar, "class='form-control'"/>
+                <@spring.formInput "CarForm.typeCar" "class='form-control' readonly" "text"/>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Car year:</span>
                 </div>
-                <@spring.formSingleSelect "CarForm.yearCar", ListYear, "class='form-control'"/>
+                <@spring.formInput "CarForm.yearCar" "class='form-control' readonly" "text"/>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">

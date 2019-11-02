@@ -13,6 +13,11 @@
 </head>
 <body>
 <div class="container" >
+    <#if errorMessage??>
+        <div class="alert alert-danger" role="alert">
+            ${errorMessage}
+        </div>
+    </#if>
     <fieldset>
         <legend>Add car</legend>
         <form name="RentCarForm" action="" method="POST">

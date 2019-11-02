@@ -1,7 +1,7 @@
 <#import "../common.ftl" as c/>
 <@c.page title="Car List">
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Car List</title>

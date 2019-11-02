@@ -82,9 +82,11 @@ public class CustomerWebController {
                 customerForm.getAddress(), customerForm.getPhone(),
                 customerForm.geteMail(),0,null,false);
 
-        if(!personService.isNotEmptyFields(newPerson)
-                || !customerService.isNotEmptyFields(newCustomer)){
-            return "redirect:/CarRentals/customer/create";
+        if(personService.isNotEmptyFields(newPerson)
+                || customerService.isNotEmptyFields(newCustomer)){
+            String error = "First Name & Last Name is required!";
+            model.addAttribute("errorMessage", error);
+            return "/CarRentals/customer/create";
         }
 
         customerService.create(newCustomer);

@@ -10,7 +10,11 @@
 </head>
 <body>
     <div class="container">
-
+        <#if errorMessage??>
+            <div class="alert alert-danger" role="alert">
+                ${errorMessage}
+            </div>
+        </#if>
         <legend>Customer add</legend>
         <form name="CustomerForm" action="" method="POST">
             <div class="input-group mb-3">

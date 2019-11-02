@@ -113,11 +113,18 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
         List<LoginUser> loginUserList = this.getAll();
         for (LoginUser item: loginUserList) {
             if(item.getUsername().equals(login)){
-                System.out.println(item.getUsername());
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
+    }
+
+    @Override
+    public boolean isNotNull(LoginUser loginUser){
+        if(loginUser.getUsername().equals("")||loginUser.getPassword().equals("")){
+            return true;
+        }
+        return false;
     }
 
     public Optional<LoginUser> findByUsername(@NonNull String username){

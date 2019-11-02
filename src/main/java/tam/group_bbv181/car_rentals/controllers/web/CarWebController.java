@@ -51,8 +51,9 @@ public class CarWebController {
         list.addAll(carService.getSearchModel("Polo"));
         list.addAll(carService.getSearchLicenseNumberPlates("Qq"));
         list.addAll(carService.getSearchCostCarBetween(15000, 25000));
-        model.addAttribute("cars", list);
-        return "/car/carList";
+        List<Car> listFull = carService.getAll();
+        model.addAttribute("cars", listFull);
+        return "/car/carListSearch1";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -82,7 +83,9 @@ public class CarWebController {
             carService.create(newCar);
             return "redirect:/CarRentals/car/list";
         }
-        return "redirect:/CarRentals/car/create";
+        String error = "is required!";
+        model.addAttribute("errorMessage", error);
+        return "/CarRentals/car/create";
     }
 
     @RequestMapping("/delete/{id}")

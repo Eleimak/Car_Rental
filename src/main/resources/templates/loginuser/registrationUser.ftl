@@ -9,8 +9,12 @@
         <link rel="stylesheet" Type="text/css" href="<@spring.url '/css/style.css'/>"/>
     </head>
     <body>
-    <div class="container-fluid">
         <div class="container">
+            <#if errorMessage??>
+                <div class="alert alert-danger" role="alert">
+                    ${errorMessage}
+                </div>
+            </#if>
             <fieldset>
                 <legend>Registration</legend>
                 <form name="Customer" action="" method="POST">
@@ -74,7 +78,6 @@
                     <input Type="submit" value="     Next     " class="btn btn-danger"/>
                 </form>
             </fieldset>
-        </div>
     </div>
     </body>
     </html>

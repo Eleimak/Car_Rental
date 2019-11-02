@@ -97,16 +97,16 @@ public class CarServiceImpl implements ICarService {
         List<Car> carList = this.getAll();
         for (Car item: carList) {
             if(item.getLicenseNumberPlates().equals(licenseNumberPlates)){
-                return false;
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     @Override
     public boolean isFullInput(CarForm carForm) {
-        if(carForm.getBrandCar().equals("")){return false;}
-        return true;
+        if(carForm.getBrandCar().equals("")){return true;}
+        return false;
     }
 
     @Override

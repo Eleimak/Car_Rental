@@ -67,26 +67,36 @@ public class LoginUserWebController {
         }else{
             gender = false;
         }
+        List manWoman = Arrays.asList(
+                "man", "woman");
+        model.addAttribute("manWoman", manWoman);
         LoginUser newLogin = new LoginUser(customerForm.getLogin(),
                 new ArrayList<>(Arrays.asList(Role.USER)),
                 new BCryptPasswordEncoder().encode(customerForm.getPassword()),
                 true, true, true, true);
-        if(!loginService.uniqueLogin(newLogin.getUsername())){
-            return "redirect:/CarRentals/signUp";
+        if(loginService.uniqueLogin(newLogin.getUsername())||loginService.isNotNull(newLogin)){
+            String error = "Login & Password is required!";
+            model.addAttribute("errorMessage", error);
+            return "/loginuser/registrationUser";
         }
         Person newPerson = new Person(loginService.create(newLogin), customerForm.getFirstName(),
                 customerForm.getLastName(), customerForm.getMiddleName(),
                 gender);
-        if(!personService.isNotEmptyFields(newPerson)){
-            return "redirect:/CarRentals/signUp";
+        if(personService.isNotEmptyFields(newPerson)){
+            String error = "First Name & Last Name & Middle Name is required!";
+            model.addAttribute("errorMessage", error);
+            loginService.delete(newPerson.getLoginUser().getId());
+            return "/loginuser/registrationUser";
         }
         Customer newCustomer = new Customer(personService.create(newPerson), customerForm.getAddress(),
                 customerForm.getPhone(), customerForm.geteMail(),0,null,false);
-        if(!customerService.isNotEmptyFields(newCustomer)){
-            return "redirect:/CarRentals/signUp";
+        if(customerService.isNotEmptyFields(newCustomer)){
+            String error = "Address & Mobile Phone & eMail is required!";
+            model.addAttribute("errorMessage", error);
+            loginService.delete(newPerson.getLoginUser().getId());
+            personService.delete(newCustomer.getPerson().getId());
+            return "/loginuser/registrationUser";
         }
-      //!!!!!!!!!!!!!!!!  LoginUser loginUser = new LoginUser(customerForm.getLogin(), customerForm.getPassword(),
-
         return "redirect:/CarRentals/userAccount/" + customerService.create(newCustomer).getId();
     }
 /*

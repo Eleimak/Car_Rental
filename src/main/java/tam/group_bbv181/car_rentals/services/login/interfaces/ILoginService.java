@@ -17,6 +17,7 @@ public interface ILoginService {
     LoginUser delete(String id);
 
     boolean uniqueLogin(String login);
+    public boolean isNotNull(LoginUser loginUser);
     Optional<LoginUser> findByUsername(@NonNull String username);
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException;
 }
