@@ -53,7 +53,7 @@ public class CarWebController {
         list.addAll(carService.getSearchCostCarBetween(15000, 25000));
         List<Car> listFull = carService.getAll();
         model.addAttribute("cars", listFull);
-        return "/car/carListSearch1";
+        return "/car/carListSearch";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)

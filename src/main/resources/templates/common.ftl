@@ -27,7 +27,7 @@
         </head>
         <body>
         <div>
-        <nav class="navbar navbar-expand navbar-dark bg-dark sticky-to">
+        <nav class="navbar navbar-expand navbar-dark bg-dark navbar-fixed-top">
             <a class="navbar-brand" href="/">
                 <img src="/image/mainNavbar.png" type="image/png" alt="">
             </a>
@@ -54,7 +54,21 @@
                 </ul>
             </div>
             <form class="form-inline">
-                <button class="btn btn-outline-success my-2 my-sm-0"  href="/CarRentals/signIn">Sign in</button>
+            <#--<#assign PersonLogin = personLogin>
+                <#assign imageGender="">
+                &lt;#&ndash;<#if PersonLogin.gender == true>
+                    <#assign imageGender="/image/userMan.png" >
+                <#else>
+                    <#assign imageGender="/image/userGirl.png">
+                </if>&ndash;&gt;
+                <#if !(PersonLogin??)>
+                    <a href="/CarRentals/signIn"> <img src="/image/userNo.png" type="image/png" alt=""> </a>
+                <#else>
+                    <span class="badge badge-secondary"><img src=imageGender type="image/png" alt=""></span>
+                </#if>-->
+
+                <a href="/CarRentals/signIn">Sign In  <img src="/image/userNo.png" type="image/png" alt="">     </a>
+
             </form>
         </nav>
 

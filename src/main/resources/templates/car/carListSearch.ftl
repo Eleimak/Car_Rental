@@ -14,15 +14,6 @@
     <div>
         <form name="CarForm" action="/CarRentals/car/listSearch" method="POST">
             <table class="table table-sm table-striped table-bordered table-dark">
-                <tr class="input-group mb-3">
-                        <th><@spring.formInput "CarForm.brandCar" "class='form-control'" placeholder="Brand car" "text"/></th>
-                        <th><@spring.formInput "CarForm.modelCar" "class='form-control'" placeholder="Model car" "text"/></th>
-                        <th><@spring.formInput "CarForm.castCar" "class='form-control'" placeholder="Cost car" "text"/></th>
-                        <th><@spring.formInput "CarForm.licenseNumberPlates" "class='form-control'" placeholder="License number" "text"/></th>
-                        <th><@spring.formInput "CarForm.yearCar" "class='form-control'" placeholder="Car year" "text"/></th>
-                        <th><@spring.formInput "CarForm.typeCar" "class='form-control'" placeholder="Type" "text"/></th>
-                        <th><@spring.formInput "CarForm.rentalPrice" "class='form-control'" placeholder="Rental price" "text"/></th>
-                </tr>
                 <tr class="bg-success">
                     <th>Brand car</th>
                     <th>Model car</th>
