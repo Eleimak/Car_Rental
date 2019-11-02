@@ -7,7 +7,7 @@
     <title>User Account</title>
 </head>
 <body>
-<div class="container-fluid" style="padding-left: 500px; padding-right: 500px " >
+<div class="container">
     <fieldset>
         <legend>User Account</legend>
         <table class="table table-bordered table-hover" class="rounded float-left">
