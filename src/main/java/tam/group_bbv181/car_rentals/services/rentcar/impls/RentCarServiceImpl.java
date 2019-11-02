@@ -87,4 +87,36 @@ public class RentCarServiceImpl implements IRentCarService {
         rentCarRepository.deleteById(id);
         return rentCar;
     }
+
+    @Override
+    public void carUpdate(Car car) {
+        List<RentCar> rentCarList = this.getAll();
+        RentCar newRentCar = null;
+        for (RentCar item : rentCarList) {
+            if(item.getCar().hashCode() == car.hashCode()){
+                newRentCar = new RentCar(
+                  car,item.getCustomer(),item.getDateOfIssue(),
+                  item.getReturnDate());
+                newRentCar.setId(item.getId());
+            }
+        }
+        rentCarRepository.save(newRentCar);
+    }
+
+    @Override
+    public void customerUpdate(Customer customer) {
+        List<RentCar> rentCarList = this.getAll();
+        RentCar newRentCar = null;
+        for (RentCar item : rentCarList) {
+            if(item.getCustomer().hashCode() == customer.hashCode()){
+                System.out.println("Flag");
+                newRentCar = new RentCar(
+                        item.getCar(),customer,item.getDateOfIssue(),
+                        item.getReturnDate());
+                newRentCar.setId(item.getId());
+            }
+        }
+        rentCarRepository.save(newRentCar);
+    }
+
 }

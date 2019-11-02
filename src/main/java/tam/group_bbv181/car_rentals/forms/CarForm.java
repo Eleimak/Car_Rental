@@ -11,7 +11,7 @@ public class CarForm {
     private int costCar;
     private String licenseNumberPlates;
     private TypeCar typeCar;
-    private Integer yearCar;
+    private String yearCar;
     private int rentalPrice;
     private String repair;
     private String rent;
@@ -19,7 +19,7 @@ public class CarForm {
     public CarForm() {
     }
 
-    public CarForm(String id, String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, Integer yearCar, int rentalPrice, String repair, String rent) {
+    public CarForm(String id, String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, String yearCar, int rentalPrice, String repair, String rent) {
         this.id = id;
         this.brandCar = brandCar;
         this.modelCar = modelCar;
@@ -80,11 +80,11 @@ public class CarForm {
         this.typeCar = typeCar;
     }
 
-    public Integer getYearCar() {
+    public String getYearCar() {
         return yearCar;
     }
 
-    public void setYearCar(Integer yearCar) {
+    public void setYearCar(String yearCar) {
         this.yearCar = yearCar;
     }
 
@@ -143,7 +143,7 @@ public class CarForm {
                 ", costCar=" + costCar +
                 ", licenseNumberPlates='" + licenseNumberPlates + '\'' +
                 ", typeCar=" + typeCar +
-                ", yearCar=" + yearCar +
+                ", yearCar='" + yearCar + '\'' +
                 ", rentalPrice=" + rentalPrice +
                 ", repair='" + repair + '\'' +
                 ", rent='" + rent + '\'' +

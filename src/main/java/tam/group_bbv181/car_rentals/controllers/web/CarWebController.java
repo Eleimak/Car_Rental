@@ -8,6 +8,7 @@ import tam.group_bbv181.car_rentals.forms.CarForm;
 import tam.group_bbv181.car_rentals.model.Car;
 import tam.group_bbv181.car_rentals.model.TypeCar;
 import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
+import tam.group_bbv181.car_rentals.services.rentcar.impls.RentCarServiceImpl;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -20,6 +21,8 @@ import java.util.List;
 public class CarWebController {
     @Autowired
     CarServiceImpl carService;
+    @Autowired
+    RentCarServiceImpl rentCarService;
 
     @RequestMapping("/list")
     public String showAll(Model model){
@@ -98,18 +101,8 @@ public class CarWebController {
         carForm.setModelCar(carToUpdate.getModelCar());
         carForm.setCostCar(carToUpdate.getCostCar());
         carForm.setLicenseNumberPlates(carToUpdate.getLicenseNumberPlates());
-        List typeCar = Arrays.asList(carToUpdate.getTypeCar(),
-                TypeCar.CONVERTIBLE, TypeCar.SEDAN, TypeCar.HATCHBACK,
-                TypeCar.COUPE, TypeCar.MUV_SUV, TypeCar.PIC_UP_VEHICLE,
-                TypeCar.VAN, TypeCar.WAGON);
-        model.addAttribute("typeCar", typeCar);
-        List listYear = new ArrayList();
-        listYear.add(carToUpdate.getYearCar().toString());
-        int nowYear = LocalDate.now().getYear();
-        for (Integer i = nowYear; i >= 2000; i--) {
-                    listYear.add(i.toString());
-        }
-        model.addAttribute("ListYear", listYear);
+        carForm.setTypeCar(carToUpdate.getTypeCar());
+        carForm.setYearCar(carToUpdate.getYearCar());
         carForm.setRentalPrice(carToUpdate.getRentalPrice());
         List listRepair = new ArrayList();
         if(carToUpdate.isRepair()){
@@ -152,7 +145,8 @@ public class CarWebController {
                 carForm.getTypeCar(), carForm.getYearCar(),
                 carForm.getRentalPrice(), repair, rent);
         newCar.setId(carForm.getId());
-        carService.update(newCar);
+
+        rentCarService.carUpdate(carService.update(newCar));
         return "redirect:/CarRentals/car/list";
     }
 }

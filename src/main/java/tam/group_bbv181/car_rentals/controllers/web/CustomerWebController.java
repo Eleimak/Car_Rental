@@ -13,6 +13,7 @@ import tam.group_bbv181.car_rentals.model.Role;
 import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rentals.services.login.impls.LoginServiceImpl;
 import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;
+import tam.group_bbv181.car_rentals.services.rentcar.impls.RentCarServiceImpl;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,6 +25,8 @@ import java.util.List;
 public class CustomerWebController {
     @Autowired
     CustomerServiceImpl customerService;
+    @Autowired
+    RentCarServiceImpl rentCarService;
 
     @Autowired
     LoginServiceImpl loginService;
@@ -142,7 +145,7 @@ public class CustomerWebController {
         Person newPerson = new Person(customerService.get(id).getPerson().getLoginUser(), customerForm.getFirstName(),
                 customerForm.getLastName(), customerForm.getMiddleName(),
                 gender);
-        newPerson.setId(customerForm.getIdPerson());
+        newPerson.setId(customerService.get(id).getPerson().getId());
 
         Customer newCustomer = new Customer(personService.update(newPerson), customerForm.getAddress(),
                 customerForm.getPhone(), customerForm.geteMail(),
@@ -150,7 +153,7 @@ public class CustomerWebController {
                 customerForm.isRent());
         newCustomer.setId(customerForm.getId());
 
-        customerService.update(newCustomer);
+        rentCarService.customerUpdate(customerService.update(newCustomer));
         return "redirect:/CarRentals/customer/list";
     }
 

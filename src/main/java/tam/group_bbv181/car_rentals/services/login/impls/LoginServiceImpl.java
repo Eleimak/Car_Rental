@@ -78,10 +78,6 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
         customerRepository.save(jan);
         customerRepository.save(anna);
         customerRepository.save(qwer1);
-
-        //loginRepository.save(jaN);
-        //loginRepository.save(annA);
-        //loginRepository.save(qweR);
     }
 
 
@@ -110,12 +106,6 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
         LoginUser loginUser = this.get(id);
         loginRepository.deleteById(id);
         return loginUser;
-    }
-
-
-    @Override
-    public LoginUser userAccount(String login, String password) {
-     return null;// loginRepository.findByLoginAndPassword(login, password);
     }
 
     @Override

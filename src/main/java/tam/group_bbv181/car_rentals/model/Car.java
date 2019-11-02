@@ -14,7 +14,7 @@ public class Car {
     private int costCar;
     private String licenseNumberPlates;
     private TypeCar typeCar;
-    private Integer yearCar;
+    private String yearCar;
     private int rentalPrice;
     private boolean repair;
     private boolean rent;
@@ -22,7 +22,7 @@ public class Car {
     public Car() {
     }
 
-    public Car(String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, Integer yearCar, int rentalPrice, boolean repair, boolean rent) {
+    public Car(String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, String yearCar, int rentalPrice, boolean repair, boolean rent) {
         this.brandCar = brandCar;
         this.modelCar = modelCar;
         this.costCar = costCar;
@@ -82,11 +82,11 @@ public class Car {
         this.typeCar = typeCar;
     }
 
-    public Integer getYearCar() {
+    public String getYearCar() {
         return yearCar;
     }
 
-    public void setYearCar(Integer yearCar) {
+    public void setYearCar(String yearCar) {
         this.yearCar = yearCar;
     }
 
@@ -145,7 +145,7 @@ public class Car {
                 ", costCar=" + costCar +
                 ", licenseNumberPlates='" + licenseNumberPlates + '\'' +
                 ", typeCar=" + typeCar +
-                ", yearCar=" + yearCar +
+                ", yearCar='" + yearCar + '\'' +
                 ", rentalPrice=" + rentalPrice +
                 ", repair=" + repair +
                 ", rent=" + rent +
