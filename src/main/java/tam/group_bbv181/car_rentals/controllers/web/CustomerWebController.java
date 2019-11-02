@@ -62,11 +62,11 @@ public class CustomerWebController {
     public String create(Model model,@ModelAttribute("CustomerForm")
             CustomerForm customerForm){
 
-        boolean gender;
+        boolean genderBool;
         if(customerForm.getGender().equals("man")){
-            gender = true;
+            genderBool = true;
         }else{
-            gender = false;
+            genderBool = false;
         }
 
         LoginUser newLogin = new LoginUser(customerForm.getLogin(),
@@ -76,7 +76,7 @@ public class CustomerWebController {
 
         Person newPerson = new Person(null, customerForm.getFirstName(),
                 customerForm.getLastName(), customerForm.getMiddleName(),
-                gender);
+                genderBool);
 
         Customer newCustomer = new Customer(personService.create(newPerson),
                 customerForm.getAddress(), customerForm.getPhone(),
@@ -84,9 +84,13 @@ public class CustomerWebController {
 
         if(personService.isNotEmptyFields(newPerson)
                 || customerService.isNotEmptyFields(newCustomer)){
-            String error = "First Name & Last Name is required!";
+            String error = "All fields must be filled!";
             model.addAttribute("errorMessage", error);
-            return "/CarRentals/customer/create";
+            List gender = Arrays.asList(
+                    "man", "woman");
+            model.addAttribute("Gender", gender);
+            personService.delete(newCustomer.getPerson().getId());
+            return "/customer/customerAdd";
         }
 
         customerService.create(newCustomer);

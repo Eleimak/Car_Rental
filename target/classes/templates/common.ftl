@@ -48,14 +48,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/CarRentals/rentCar/list">Rent car list</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/CarRentals/signIn">Sign in</a>
-                    </li>
                     <#--<li class="nav-item">
                         <a class="nav-link" href="/CarRentals/signIn">Sign In</a>
                     </li>-->
                 </ul>
             </div>
+            <form class="form-inline">
+                <button class="btn btn-outline-success my-2 my-sm-0"  href="/CarRentals/signIn">Sign in</button>
+            </form>
         </nav>
 
 

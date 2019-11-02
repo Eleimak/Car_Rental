@@ -83,9 +83,17 @@ public class CarWebController {
             carService.create(newCar);
             return "redirect:/CarRentals/car/list";
         }
-        String error = "is required!";
+        List typeCar = Arrays.asList( TypeCar.values());
+        model.addAttribute("typeCar", typeCar);
+        List yearCar = new ArrayList();
+        int nowYear = LocalDate.now().getYear();
+        for (Integer i = nowYear; i >= 2000; i--) {
+            yearCar.add(i.toString());
+        }
+        model.addAttribute("yearCar", yearCar);
+        String error = "All fields must be filled!";
         model.addAttribute("errorMessage", error);
-        return "/CarRentals/car/create";
+        return "/car/carAdd";
     }
 
     @RequestMapping("/delete/{id}")
