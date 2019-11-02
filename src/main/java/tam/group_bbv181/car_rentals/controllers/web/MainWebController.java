@@ -33,15 +33,14 @@ public class MainWebController {
            // model.addAttribute("username", user.getUsername());
            // model.addAttribute("roles", user.getAuthorities());//user.getAuthorities().stream().map(Role::getAuthority).collect(joining(","))
         }
-
-
-
         model.addAttribute("isAuthenticated", isAuthenticated);
-
         return "index";
     }
 
-
+    @RequestMapping ("/s")
+    String mainPage1(Model model) {
+        return "login";
+    }
     @RequestMapping (value = "/login", method = RequestMethod.GET)
     String login(Model model,
                  @RequestParam(value="error", required = false) String error,
