@@ -46,13 +46,8 @@ public class CarWebController {
     }
     @RequestMapping("/listSearch")
     public String showSearch(Model model){
-        List<Car> list = new ArrayList<>();
-        list.addAll(carService.getSearchBrand("BMW"));
-        list.addAll(carService.getSearchModel("Polo"));
-        list.addAll(carService.getSearchLicenseNumberPlates("Qq"));
-        list.addAll(carService.getSearchCostCarBetween(15000, 25000));
-        List<Car> listFull = carService.getAll();
-        model.addAttribute("cars", listFull);
+        List<Car> list = carService.getAll();
+        model.addAttribute("cars", list);
         return "/car/carListSearch";
     }
 

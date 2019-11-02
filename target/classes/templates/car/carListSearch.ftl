@@ -5,15 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Car List</title>
+    <link rel="stylesheet" href="/style/styleSearch.css" type="text/css">
 </head>
 <body>
-<div class="container-fluid">
+<div class="container">
     <br>
     <h3>Car List</h3>
     <br>
-    <div>
-        <form name="CarForm" action="/CarRentals/car/listSearch" method="POST">
-            <table class="table table-sm table-striped table-bordered table-dark">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+            <table class="table table-sm table-striped table-bordered table-dark" id="myTable">
                 <tr class="bg-success">
                     <th>Brand car</th>
                     <th>Model car</th>
@@ -24,8 +25,6 @@
                     <th>Rental price</th>
                     <th>Repair car</th>
                     <th>Rent car</th>
-                    <th>Delete</th>
-                    <th>Update</th>
                 </tr>
                 <#list cars as car>
                     <#assign repair = "">
@@ -50,17 +49,11 @@
                         <td>${car.rentalPrice}</td>
                         <td>${repair}</td>
                         <td>${rent}</td>
-                        <td><a href="/CarRentals/car/delete/${car.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
-                        <td><a href="/CarRentals/car/update/${car.id}" Type="Button" class="btn btn-primary" >Update</a></td>
                     </tr>
                 </#list>
-
-            </table>
-        </form>
-    </div>
-    <a href="/CarRentals/car/create" Type="Button" class="btn btn-info">Add new car</a>
-
+        </table>
 </div>
+<script src="/javascript/js_Search.js" type="text/javascript"></script>
 </body>
 </html>
 </@c.page>

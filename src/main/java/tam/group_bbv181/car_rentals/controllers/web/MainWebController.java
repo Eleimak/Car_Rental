@@ -1,5 +1,6 @@
 package tam.group_bbv181.car_rentals.controllers.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,6 +11,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import tam.group_bbv181.car_rentals.model.Car;
+import tam.group_bbv181.car_rentals.model.Customer;
+import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
+import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static java.util.stream.Collectors.joining;
 
@@ -17,6 +25,11 @@ import static java.util.stream.Collectors.joining;
 @CrossOrigin("*")
 @Controller
 public class MainWebController {
+    @Autowired
+    CarServiceImpl carService;
+    @Autowired
+    CustomerServiceImpl customerService;
+
 
     @RequestMapping ("/")
     String mainPage(Model model){
@@ -57,7 +70,20 @@ public class MainWebController {
         return "administrator/mainAdmin";
     }
 
-
+    @RequestMapping("/Search")
+    public String showSearch(Model model){
+        List<Car> listCar = carService.getAll();
+        List<Customer> listCustomer = customerService.getAll();
+        List<String> listFull = new ArrayList<>();
+        for (Car item :listCar) {
+            listFull.add(item.toString());
+        }
+        for (Customer item :listCustomer) {
+            listFull.add(item.toString());
+        }
+        model.addAttribute("listFull", listFull);
+        return "/listSearch";
+    }
 
 
 
