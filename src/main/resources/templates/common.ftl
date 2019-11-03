@@ -48,19 +48,19 @@
                     <#assign imageGender="/image/userGirl.png">
                 </#if>-->
                 <a href="/Search">Search <img src="/image/search.png" type="image/png" alt="">       </a>
-                <#--<#assign imageGender="">
+                <#assign imageGender="">
                 <#if !isAuthenticated??>
                     <a href="/CarRentals/signIn">Sign In  <img src="/image/userNo.png" type="image/png" alt="">     </a>
                 <#else>
                     <#if personLogin.gender>
-                    <#assign imageGender="/image/userMan.png" >
+                    <#assign imageGender="/image/userBoy.png" >
                 <#else>
                     <#assign imageGender="/image/userGirl.png">
                 </#if>
-                    <a href="/CarRentals/userAccount/${personLogin.loginUser.id}">${personLogin.lastName}  <img src="/image/userNo.png" type="image/png" alt="">     </a>
-                </#if>-->
+                    <a href="/CarRentals/userAccount/${personLogin.loginUser.id}">${personLogin.lastName}  <img src=${imageGender} type="image/png" alt="">     </a>
+                </#if>
 
-                <a href="/CarRentals/signIn">   Sign In  <img src="/image/userNo.png" type="image/png" alt="">     </a>
+                <#--<a href="/CarRentals/signIn">   Sign In  <img src="/image/userNo.png" type="image/png" alt="">     </a>-->
             </form>
         </nav>
 

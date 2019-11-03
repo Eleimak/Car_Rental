@@ -40,20 +40,27 @@
                 </ul>
             </div>
             <form class="form-inline">
-            <#--<#assign PersonLogin = personLogin>
-                <#assign imageGender="">
-                <#if PersonLogin.gender == true>
+
+
+                <#--<#if PersonLogin.gender>
                     <#assign imageGender="/image/userMan.png" >
                 <#else>
                     <#assign imageGender="/image/userGirl.png">
-                </if>
-                <#if !(PersonLogin??)>
-                    <a href="/CarRentals/signIn">Sign In  <img src="/image/userNo.png" type="image/png" alt="">     </a>
-                <#else>
-                  &lt;#&ndash;  <a href="/CarRentals/userAccount/${PersonLogin.loginUser.id}">${PersonLogin.lastName}  <img src="/image/userNo.png" type="image/png" alt="">     </a>&ndash;&gt;
                 </#if>-->
                 <a href="/Search">Search <img src="/image/search.png" type="image/png" alt="">       </a>
-                <a href="/CarRentals/signIn">   Sign In  <img src="/image/userNo.png" type="image/png" alt="">     </a>
+                <#assign imageGender="">
+                <#if !isAuthenticated??>
+                    <a href="/CarRentals/signIn">Sign In  <img src="/image/userNo.png" type="image/png" alt="">     </a>
+                <#else>
+                    <#if personLogin.gender>
+                    <#assign imageGender="/image/userBoy.png" >
+                <#else>
+                    <#assign imageGender="/image/userGirl.png">
+                </#if>
+                    <a href="/CarRentals/userAccount/${personLogin.loginUser.id}">${personLogin.lastName}  <img src=${imageGender} type="image/png" alt="">     </a>
+                </#if>
+
+                <#--<a href="/CarRentals/signIn">   Sign In  <img src="/image/userNo.png" type="image/png" alt="">     </a>-->
             </form>
         </nav>
 
