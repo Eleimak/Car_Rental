@@ -10,7 +10,8 @@
 <div class="container">
     <fieldset>
         <br>
-            <legend>${customer.person.firstName} ${customer.person.lastName}</legend>
+        <h3>${customer.person.firstName} ${customer.person.lastName}</h3>
+        <br>
         <table class="table table-bordered table-dark" class="rounded float-left">
                 <#assign gender = "">
                 <#if customer.person.gender == true>
