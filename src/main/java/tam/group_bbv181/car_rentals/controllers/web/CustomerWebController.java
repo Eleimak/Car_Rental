@@ -1,6 +1,9 @@
 package tam.group_bbv181.car_rentals.controllers.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +41,19 @@ public class CustomerWebController {
     public String showAll(Model model){
 
         List<Customer> list = customerService.getAll();
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
+                instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext()
+                    .getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            model.addAttribute("personLogin", personLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
 
         model.addAttribute("customers", list);
 
@@ -101,6 +117,19 @@ public class CustomerWebController {
     @RequestMapping("/userAccount/{id}")
     public String userAccount(Model model,@PathVariable(value="id")String id){
         Customer customer = customerService.get(id);
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
+                instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext()
+                    .getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            model.addAttribute("personLogin", personLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
         model.addAttribute("customer", customer);
         return "accountUser";
     }
@@ -135,6 +164,19 @@ public class CustomerWebController {
         model.addAttribute("ListCars", listCars);
         customerForm.setRent(customerToUpdate.isRent());
         model.addAttribute("CustomerForm", customerForm);
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
+                instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext()
+                    .getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            model.addAttribute("personLogin", personLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
         return "/customer/customerToUpdate";
     }
 

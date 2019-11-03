@@ -1,13 +1,19 @@
 package tam.group_bbv181.car_rentals.controllers.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import tam.group_bbv181.car_rentals.forms.CarForm;
 import tam.group_bbv181.car_rentals.model.Car;
+import tam.group_bbv181.car_rentals.model.LoginUser;
+import tam.group_bbv181.car_rentals.model.Person;
 import tam.group_bbv181.car_rentals.model.TypeCar;
 import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
+import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;
 import tam.group_bbv181.car_rentals.services.rentcar.impls.RentCarServiceImpl;
 
 import java.time.LocalDate;
@@ -24,10 +30,24 @@ public class CarWebController {
     CarServiceImpl carService;
     @Autowired
     RentCarServiceImpl rentCarService;
+    @Autowired
+    PersonServiceImpl personService;
 
     @RequestMapping("/list")
     public String showAll(Model model){
         List<Car> list = carService.getAll();
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            model.addAttribute("personLogin", personLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+
         model.addAttribute("cars", list);
         return "/car/carList";
     }

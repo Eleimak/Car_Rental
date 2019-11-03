@@ -1,15 +1,17 @@
 package tam.group_bbv181.car_rentals.controllers.web;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import tam.group_bbv181.car_rentals.forms.RentCarForm;
-import tam.group_bbv181.car_rentals.model.Car;
-import tam.group_bbv181.car_rentals.model.Customer;
-import tam.group_bbv181.car_rentals.model.RentCar;
+import tam.group_bbv181.car_rentals.model.*;
 import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
 import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
+import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;
 import tam.group_bbv181.car_rentals.services.rentcar.impls.RentCarServiceImpl;
 
 import java.time.LocalDate;
@@ -26,10 +28,26 @@ public class RentCarWebController {
     CarServiceImpl carService;
     @Autowired
     CustomerServiceImpl customerService;
+    @Autowired
+    PersonServiceImpl personService;
 
     @RequestMapping("/list")
     public String showAll(Model model){
         List<RentCar> list = rentCarService.getAll();
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
+                instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext()
+                    .getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            model.addAttribute("personLogin", personLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+
         model.addAttribute("RentCar", list);
         return "/rentcar/rentcarList";
     }
@@ -42,6 +60,20 @@ public class RentCarWebController {
         List<Customer> customerList = customerService.getAll();
         model.addAttribute("CustomerList", customerList);
         model.addAttribute("RentCarForm", rentCarForm);
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
+                instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext()
+                    .getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            model.addAttribute("personLogin", personLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+
         return "/rentcar/rentcarAdd";
     }
 
@@ -49,6 +81,20 @@ public class RentCarWebController {
     public String create(Model model, @ModelAttribute("RentCarForm")
                          RentCarForm rentCarForm){
             RentCar newRentCar = new RentCar();
+
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
+                instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext()
+                    .getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            model.addAttribute("personLogin", personLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
 
             rentCarService.create(newRentCar);
             return "redirect:/CarRentals/rentCar/list";
@@ -76,6 +122,21 @@ public class RentCarWebController {
         rentCarForm.setCustomerMiddleName(rentCarToUpdate.getCustomer().getPerson().getMiddleName());
 
         model.addAttribute("RentCarForm", rentCarForm);
+
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
+                instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext()
+                    .getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            model.addAttribute("personLogin", personLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+
         return "/rentcar/rentCarToUpdate";
     }
 
