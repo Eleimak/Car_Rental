@@ -14,6 +14,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequestMapping("/CarRentals/car")
 @CrossOrigin("*")
@@ -50,6 +51,18 @@ public class CarWebController {
         model.addAttribute("cars", list);
         return "/car/carListSearch";
     }
+/*
+    @RequestMapping(value = "/search", method = RequestMethod.POST)
+    public String hello(Model model, @RequestParam(defaultValue = "") String searchName) {
+        List<List<String>> persons = repositoryService.getRepository();
+        List<List<String>> filterList = persons.stream()
+                .filter(p -> p.get(0).contains(searchName))
+                .collect(Collectors.toList());
+        model.addAttribute("persons", filterList);
+        model.addAttribute("lastSearch", searchName);
+        return "persons";
+    }
+    */
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String addCar(Model model){
