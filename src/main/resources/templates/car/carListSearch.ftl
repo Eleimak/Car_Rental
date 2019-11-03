@@ -12,7 +12,7 @@
     <br>
     <h3>Car List</h3>
     <br>
-    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search car...">
 
             <table class="table table-sm table-striped table-bordered table-dark" id="myTable">
                 <tr class="bg-success">

@@ -13,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import tam.group_bbv181.car_rentals.model.Car;
 import tam.group_bbv181.car_rentals.model.Customer;
+import tam.group_bbv181.car_rentals.model.LoginUser;
+import tam.group_bbv181.car_rentals.model.Person;
 import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
 import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
+import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +32,8 @@ public class MainWebController {
     CarServiceImpl carService;
     @Autowired
     CustomerServiceImpl customerService;
+    @Autowired
+    PersonServiceImpl personService;
 
 
     @RequestMapping ("/")
@@ -41,8 +46,10 @@ public class MainWebController {
         if(isAuthenticated){
 
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
          //   User user = (User) authentication.getPrincipal();
-
+            model.addAttribute("personLogin", personLogin);
            // model.addAttribute("username", user.getUsername());
            // model.addAttribute("roles", user.getAuthorities());//user.getAuthorities().stream().map(Role::getAuthority).collect(joining(","))
         }
@@ -54,6 +61,7 @@ public class MainWebController {
     String mainPage1(Model model) {
         return "login";
     }
+
     @RequestMapping (value = "/login", method = RequestMethod.GET)
     String login(Model model,
                  @RequestParam(value="error", required = false) String error,

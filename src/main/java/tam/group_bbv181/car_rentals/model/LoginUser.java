@@ -21,7 +21,6 @@ public class LoginUser implements UserDetails {
     private boolean credentialsNonExpired;
     private boolean enabled;
 
-
     public LoginUser() {
     }
 

@@ -2,6 +2,7 @@ package tam.group_bbv181.car_rentals.services.person.impls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import tam.group_bbv181.car_rentals.model.LoginUser;
 import tam.group_bbv181.car_rentals.model.Person;
 import tam.group_bbv181.car_rentals.repository.PersonRepository;
 import tam.group_bbv181.car_rentals.services.person.interfaces.IPersonService;
@@ -38,6 +39,11 @@ public class PersonServiceImpl implements IPersonService {
         Person person = this.get(id);
         personRepository.deleteById(id);
         return person;
+    }
+
+    @Override
+    public Person getPersonLoginUser(LoginUser loginUser){
+        return personRepository.findPersonByLoginUser(loginUser);
     }
 
     @Override
