@@ -36,15 +36,14 @@ public class RentCarWebController {
         List<RentCar> list = rentCarService.getAll();
 
         boolean isAuthenticated;
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
-                instanceof UserDetails) isAuthenticated = true;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
         if(isAuthenticated){
-            Authentication authentication = SecurityContextHolder.getContext()
-                    .getAuthentication();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             LoginUser loginUser = (LoginUser) authentication.getPrincipal();
             Person personLogin = personService.getPersonLoginUser(loginUser);
-            model.addAttribute("personLogin", personLogin);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
 
@@ -62,15 +61,14 @@ public class RentCarWebController {
         model.addAttribute("RentCarForm", rentCarForm);
 
         boolean isAuthenticated;
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
-                instanceof UserDetails) isAuthenticated = true;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
         if(isAuthenticated){
-            Authentication authentication = SecurityContextHolder.getContext()
-                    .getAuthentication();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             LoginUser loginUser = (LoginUser) authentication.getPrincipal();
             Person personLogin = personService.getPersonLoginUser(loginUser);
-            model.addAttribute("personLogin", personLogin);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
 
@@ -81,21 +79,6 @@ public class RentCarWebController {
     public String create(Model model, @ModelAttribute("RentCarForm")
                          RentCarForm rentCarForm){
             RentCar newRentCar = new RentCar();
-
-
-        boolean isAuthenticated;
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
-                instanceof UserDetails) isAuthenticated = true;
-        else isAuthenticated = false;
-        if(isAuthenticated){
-            Authentication authentication = SecurityContextHolder.getContext()
-                    .getAuthentication();
-            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
-            Person personLogin = personService.getPersonLoginUser(loginUser);
-            model.addAttribute("personLogin", personLogin);
-        }
-        model.addAttribute("isAuthenticated", isAuthenticated);
-
             rentCarService.create(newRentCar);
             return "redirect:/CarRentals/rentCar/list";
     }
@@ -123,17 +106,15 @@ public class RentCarWebController {
 
         model.addAttribute("RentCarForm", rentCarForm);
 
-
         boolean isAuthenticated;
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
-                instanceof UserDetails) isAuthenticated = true;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
         if(isAuthenticated){
-            Authentication authentication = SecurityContextHolder.getContext()
-                    .getAuthentication();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             LoginUser loginUser = (LoginUser) authentication.getPrincipal();
             Person personLogin = personService.getPersonLoginUser(loginUser);
-            model.addAttribute("personLogin", personLogin);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
 
@@ -154,6 +135,19 @@ public class RentCarWebController {
     @RequestMapping("/delete/{id}")
     public String delete(Model model,@PathVariable(value = "id")String id){
         rentCarService.delete(id);
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+
         return "redirect:/CarRentals/rentCar/list";
     }
 }

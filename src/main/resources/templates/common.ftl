@@ -66,12 +66,12 @@
                 <#if !isAuthenticated??>
                     <a href="/CarRentals/signIn">Sign In <img src="/image/userNo.png" type="image/png" alt=""> </a>
                 <#else>
-                    <#if personLogin.gender>
+                    <#if personLogin.person.gender>
                         <#assign imageGender="/image/userBoy.png" >
                     <#else>
                         <#assign imageGender="/image/userGirl.png">
                     </#if>
-                    <a href="/CarRentals/userAccount/${personLogin.loginUser.id}">${personLogin.lastName} <img
+                    <a href="/CarRentals/userAccount/${personLogin.id}">${personLogin.person.lastName} <img
                                 src=${imageGender} type="image/png" alt=""> </a>
                 </#if>
 

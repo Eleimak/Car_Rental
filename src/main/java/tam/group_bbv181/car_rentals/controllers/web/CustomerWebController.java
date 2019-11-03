@@ -43,15 +43,14 @@ public class CustomerWebController {
         List<Customer> list = customerService.getAll();
 
         boolean isAuthenticated;
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
-                instanceof UserDetails) isAuthenticated = true;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
         if(isAuthenticated){
-            Authentication authentication = SecurityContextHolder.getContext()
-                    .getAuthentication();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             LoginUser loginUser = (LoginUser) authentication.getPrincipal();
             Person personLogin = personService.getPersonLoginUser(loginUser);
-            model.addAttribute("personLogin", personLogin);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
 
@@ -119,17 +118,17 @@ public class CustomerWebController {
         Customer customer = customerService.get(id);
 
         boolean isAuthenticated;
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
-                instanceof UserDetails) isAuthenticated = true;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
         if(isAuthenticated){
-            Authentication authentication = SecurityContextHolder.getContext()
-                    .getAuthentication();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             LoginUser loginUser = (LoginUser) authentication.getPrincipal();
             Person personLogin = personService.getPersonLoginUser(loginUser);
-            model.addAttribute("personLogin", personLogin);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+
         model.addAttribute("customer", customer);
         return "accountUser";
     }
@@ -166,17 +165,17 @@ public class CustomerWebController {
         model.addAttribute("CustomerForm", customerForm);
 
         boolean isAuthenticated;
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal()
-                instanceof UserDetails) isAuthenticated = true;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
         if(isAuthenticated){
-            Authentication authentication = SecurityContextHolder.getContext()
-                    .getAuthentication();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             LoginUser loginUser = (LoginUser) authentication.getPrincipal();
             Person personLogin = personService.getPersonLoginUser(loginUser);
-            model.addAttribute("personLogin", personLogin);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+
         return "/customer/customerToUpdate";
     }
 

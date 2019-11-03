@@ -45,11 +45,13 @@ public class MainWebController {
 
         if(isAuthenticated){
 
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            /*Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             LoginUser loginUser = (LoginUser) authentication.getPrincipal();
             Person personLogin = personService.getPersonLoginUser(loginUser);
+            model.addAttribute("personLogin", personLogin);*/
+
          //   User user = (User) authentication.getPrincipal();
-            model.addAttribute("personLogin", personLogin);
+
            // model.addAttribute("username", user.getUsername());
            // model.addAttribute("roles", user.getAuthorities());//user.getAuthorities().stream().map(Role::getAuthority).collect(joining(","))
         }

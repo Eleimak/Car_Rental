@@ -8,11 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import tam.group_bbv181.car_rentals.forms.CarForm;
-import tam.group_bbv181.car_rentals.model.Car;
-import tam.group_bbv181.car_rentals.model.LoginUser;
-import tam.group_bbv181.car_rentals.model.Person;
-import tam.group_bbv181.car_rentals.model.TypeCar;
+import tam.group_bbv181.car_rentals.model.*;
 import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
+import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;
 import tam.group_bbv181.car_rentals.services.rentcar.impls.RentCarServiceImpl;
 
@@ -32,6 +30,8 @@ public class CarWebController {
     RentCarServiceImpl rentCarService;
     @Autowired
     PersonServiceImpl personService;
+    @Autowired
+    CustomerServiceImpl customerService;
 
     @RequestMapping("/list")
     public String showAll(Model model){
@@ -44,7 +44,8 @@ public class CarWebController {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             LoginUser loginUser = (LoginUser) authentication.getPrincipal();
             Person personLogin = personService.getPersonLoginUser(loginUser);
-            model.addAttribute("personLogin", personLogin);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
 
@@ -56,6 +57,19 @@ public class CarWebController {
     public String showNoRepair(Model model){
         List<Car> listNoRepair = carService.getAllNoRepair();
         model.addAttribute("cars", listNoRepair);
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+
         return "/car/carList";
     }
 
@@ -63,12 +77,38 @@ public class CarWebController {
     public String showSort(Model model){
         List<Car> list = carService.getSortingByType(TypeCar.SEDAN);
         model.addAttribute("cars", list);
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+
         return "/car/carList";
     }
     @RequestMapping("/listSearch")
     public String showSearch(Model model){
         List<Car> list = carService.getAll();
         model.addAttribute("cars", list);
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+
         return "/car/carListSearch";
     }
 /*
@@ -96,6 +136,19 @@ public class CarWebController {
         }
         model.addAttribute("yearCar", yearCar);
         model.addAttribute("CarForm", carForm);
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+
         return "/car/carAdd";
     }
 
@@ -162,6 +215,19 @@ public class CarWebController {
         }
         carForm.setRent(rent);
         model.addAttribute("CarForm", carForm);
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+
         return "/car/carToUpdate";
     }
 
