@@ -26,7 +26,7 @@ public class RentCarServiceImpl implements IRentCarService {
     @Autowired
     CarServiceImpl carService;
 
-    @PostConstruct
+    /*@PostConstruct
     void init(){
 
         rentCarRepository.deleteAll();
@@ -58,7 +58,7 @@ public class RentCarServiceImpl implements IRentCarService {
                                 LocalDate.of(2019, Month.JANUARY,20),
                                 LocalDate.of(2019,Month.MARCH,29)
                         ))));
-    }
+    }*/
 
 
     @Override
@@ -109,7 +109,6 @@ public class RentCarServiceImpl implements IRentCarService {
         RentCar newRentCar = null;
         for (RentCar item : rentCarList) {
             if(item.getCustomer().hashCode() == customer.hashCode()){
-                System.out.println("Flag");
                 newRentCar = new RentCar(
                         item.getCar(),customer,item.getDateOfIssue(),
                         item.getReturnDate());
