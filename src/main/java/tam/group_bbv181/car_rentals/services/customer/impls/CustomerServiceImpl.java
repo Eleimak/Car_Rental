@@ -8,6 +8,7 @@ import tam.group_bbv181.car_rentals.repository.CustomerRepository;
 import tam.group_bbv181.car_rentals.repository.LoginRepository;
 import tam.group_bbv181.car_rentals.repository.PersonRepository;
 import tam.group_bbv181.car_rentals.services.customer.interfaces.ICustomerService;
+import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;
 
 import java.util.List;
 
@@ -16,9 +17,7 @@ public class CustomerServiceImpl implements ICustomerService {
     @Autowired
     CustomerRepository customerRepository;
     @Autowired
-    PersonRepository personRepository;
-    @Autowired
-    LoginRepository loginRepository;
+    PersonServiceImpl personService;
 
     @Override
     public List<Customer> getAll() {
@@ -44,8 +43,7 @@ public class CustomerServiceImpl implements ICustomerService {
     public Customer delete(String id) {
         Customer customer = this.get(id);
         customerRepository.deleteById(id);
-        personRepository.deleteById(customer.getPerson().getId());
-        //!!!!!!!!!!!!!!!!!! loginRepository.deleteById(loginRepository.findByCustomer(customer).getId());
+        personService.delete(customer.getPerson().getId());
         return customer;
     }
 

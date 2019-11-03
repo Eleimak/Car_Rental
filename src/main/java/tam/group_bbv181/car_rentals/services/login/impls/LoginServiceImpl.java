@@ -27,12 +27,6 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
     @Autowired
     LoginRepository loginRepository;
 
-    @Autowired
-    PersonRepository personRepository;
-
-    @Autowired
-    CustomerRepository customerRepository;
-
 /*
 
     @PostConstruct

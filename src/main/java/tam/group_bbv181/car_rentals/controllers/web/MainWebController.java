@@ -45,10 +45,11 @@ public class MainWebController {
 
         if(isAuthenticated){
 
-            /*Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             LoginUser loginUser = (LoginUser) authentication.getPrincipal();
             Person personLogin = personService.getPersonLoginUser(loginUser);
-            model.addAttribute("personLogin", personLogin);*/
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
 
          //   User user = (User) authentication.getPrincipal();
 
@@ -92,6 +93,19 @@ public class MainWebController {
             listFull.add(item.toString());
         }
         model.addAttribute("listFull", listFull);
+
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+
         return "/listSearch";
     }
 

@@ -61,7 +61,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .regexMatchers("^\\S*.js|\\S*.css$").permitAll()
                 .antMatchers("/admin/**").hasAuthority("ADMIN")
-                .antMatchers("/readme.txt", "/css/*", "/", "/CarRentals/signUp", "/image/**").permitAll()
+                .antMatchers("/readme.txt", "/css/*", "/CarRentals/signUp", "/image/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/CarRentals/signIn").defaultSuccessUrl("/")

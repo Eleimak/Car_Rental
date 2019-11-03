@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tam.group_bbv181.car_rentals.model.LoginUser;
 import tam.group_bbv181.car_rentals.model.Person;
+import tam.group_bbv181.car_rentals.repository.LoginRepository;
 import tam.group_bbv181.car_rentals.repository.PersonRepository;
+import tam.group_bbv181.car_rentals.services.login.impls.LoginServiceImpl;
 import tam.group_bbv181.car_rentals.services.person.interfaces.IPersonService;
 
 import java.util.List;
@@ -13,6 +15,8 @@ import java.util.List;
 public class PersonServiceImpl implements IPersonService {
     @Autowired
     PersonRepository personRepository;
+    @Autowired
+    LoginServiceImpl loginService;
 
     @Override
     public List<Person> getAll() {
@@ -38,6 +42,7 @@ public class PersonServiceImpl implements IPersonService {
     public Person delete(String id) {
         Person person = this.get(id);
         personRepository.deleteById(id);
+        loginService.delete(person.getLoginUser().getId());
         return person;
     }
 
