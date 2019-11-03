@@ -10,7 +10,7 @@
 <div class="container">
     <fieldset>
         <legend>User Account</legend>
-        <table class="table table-bordered table-hover" class="rounded float-left">
+        <table class="table table-bordered table-dark" class="rounded float-left">
                 <#assign gender = "">
                 <#if customer.person.gender == true>
                     <#assign gender = "man">
