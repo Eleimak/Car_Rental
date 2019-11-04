@@ -10,7 +10,8 @@
 <div class="container">
     <fieldset>
         <br>
-            <legend>${customer.person.firstName} ${customer.person.lastName}</legend>
+        <h3>${customer.person.firstName} ${customer.person.lastName}</h3>
+        <br>
         <table class="table table-bordered table-dark" class="rounded float-left">
                 <#assign gender = "">
                 <#if customer.person.gender == true>
@@ -54,6 +55,8 @@
             </div>
         </table>
     </fieldset>
+    <a href="/CarRentals/customer/list" Type="Button" class="btn btn-primary">Back</a>
+    <a href="/logout" Type="Button" class="btn btn-primary">Logout</a>
 </div>
 </body>
 </html>

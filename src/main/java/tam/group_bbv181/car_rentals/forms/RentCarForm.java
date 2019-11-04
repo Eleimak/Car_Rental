@@ -8,10 +8,12 @@ import java.util.Objects;
 
 public class RentCarForm {
     private String id;
+    private Car car;
     private String carID;
     private String carBrand;
     private String carModel;
     private String carNumber;
+    private Customer customer;
     private String customerID;
     private String customerFirstName;
     private String customerLastName;
@@ -48,6 +50,14 @@ public class RentCarForm {
         this.id = id;
     }
 
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
+    }
+
     public String getCarID() {
         return carID;
     }
@@ -78,6 +88,14 @@ public class RentCarForm {
 
     public void setCarNumber(String carNumber) {
         this.carNumber = carNumber;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     public String getCustomerID() {
@@ -134,10 +152,12 @@ public class RentCarForm {
         if (o == null || getClass() != o.getClass()) return false;
         RentCarForm that = (RentCarForm) o;
         return Objects.equals(id, that.id) &&
+                Objects.equals(car, that.car) &&
                 Objects.equals(carID, that.carID) &&
                 Objects.equals(carBrand, that.carBrand) &&
                 Objects.equals(carModel, that.carModel) &&
                 Objects.equals(carNumber, that.carNumber) &&
+                Objects.equals(customer, that.customer) &&
                 Objects.equals(customerID, that.customerID) &&
                 Objects.equals(customerFirstName, that.customerFirstName) &&
                 Objects.equals(customerLastName, that.customerLastName) &&
@@ -155,10 +175,12 @@ public class RentCarForm {
     public String toString() {
         return "RentCarForm{" +
                 "id='" + id + '\'' +
+                ", car=" + car +
                 ", carID='" + carID + '\'' +
                 ", carBrand='" + carBrand + '\'' +
                 ", carModel='" + carModel + '\'' +
                 ", carNumber='" + carNumber + '\'' +
+                ", customer=" + customer +
                 ", customerID='" + customerID + '\'' +
                 ", customerFirstName='" + customerFirstName + '\'' +
                 ", customerLastName='" + customerLastName + '\'' +

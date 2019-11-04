@@ -14,6 +14,7 @@ import tam.group_bbv181.car_rentals.model.Role;
 import tam.group_bbv181.car_rentals.repository.CustomerRepository;
 import tam.group_bbv181.car_rentals.repository.LoginRepository;
 import tam.group_bbv181.car_rentals.repository.PersonRepository;
+import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rentals.services.login.interfaces.ILoginService;
 
 import javax.annotation.PostConstruct;
@@ -26,8 +27,12 @@ import java.util.Optional;
 public class LoginServiceImpl implements UserDetailsService, ILoginService {
     @Autowired
     LoginRepository loginRepository;
+    @Autowired
+    CustomerRepository customerRepository;
+    @Autowired
+    PersonRepository personRepository;
 
-/*
+
 
     @PostConstruct
     void init(){
@@ -74,7 +79,7 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
         customerRepository.save(anna);
         customerRepository.save(qwer1);
     }
-*/
+
 
 
     @Override

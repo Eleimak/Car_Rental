@@ -56,7 +56,7 @@
         </table>
     </fieldset>
     <a href="/CarRentals/customer/list" Type="Button" class="btn btn-primary">Back</a>
-    <a href="/logout" Type="Button" class="btn btn-primary">Back</a>
+    <a href="/logout" Type="Button" class="btn btn-primary">Logout</a>
 </div>
 </body>
 </html>

@@ -16,7 +16,9 @@ import tam.group_bbv181.car_rentals.services.rentcar.impls.RentCarServiceImpl;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("/CarRentals/rentCar")
 @CrossOrigin("*")
@@ -56,10 +58,25 @@ public class RentCarWebController {
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String addCar(Model model){
         RentCarForm rentCarForm = new RentCarForm();
+
         List<Car> carList = carService.getAll();
-        model.addAttribute("CarList", carList);
+        Map<String, String> mapCarList = new HashMap<>();
+        String carBrand;
+        for (Car item : carList) {
+            carBrand = item.getBrandCar()+" "+item.getModelCar()+" "+item.getLicenseNumberPlates();
+            mapCarList.put(item.getId(),carBrand);
+        }
+        model.addAttribute("CarList", mapCarList);
+
         List<Customer> customerList = customerService.getAll();
-        model.addAttribute("CustomerList", customerList);
+        Map<String, String> mapCustomerList = new HashMap<>();
+        String fullName;
+        for (Customer item : customerList) {
+            fullName = item.getPerson().getFirstName()+" "+item.getPerson().getLastName()+" "+item.getPerson().getMiddleName();
+            mapCustomerList.put(item.getId(),fullName);
+        }
+        model.addAttribute("CustomerList", mapCustomerList);
+
         model.addAttribute("RentCarForm", rentCarForm);
 
         /////////////////////////////////////////////////////////////////
@@ -83,8 +100,14 @@ public class RentCarWebController {
     public String create(Model model, @ModelAttribute("RentCarForm")
                          RentCarForm rentCarForm){
             RentCar newRentCar = new RentCar();
-            rentCarService.create(newRentCar);
-            return "redirect:/CarRentals/rentCar/list";
+            newRentCar.setCar(carService.get(rentCarForm.getCarID()));
+            newRentCar.setCustomer(customerService.get(rentCarForm.getCustomerID()));
+            newRentCar.setDateOfIssue(LocalDate.parse(rentCarForm.getDateOfIssue(),
+                    DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+            newRentCar.setReturnDate(LocalDate.parse(rentCarForm.getReturnDate(),
+                    DateTimeFormatter.ofPattern("MM/dd/yyyy")));
+        System.out.println(rentCarService.create(newRentCar));
+        return "redirect:/CarRentals/rentCar/list";
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
@@ -95,8 +118,12 @@ public class RentCarWebController {
         RentCarForm rentCarForm = new RentCarForm();
 
         rentCarForm.setId(rentCarToUpdate.getId());
-        rentCarForm.setDateOfIssue(rentCarToUpdate.getDateOfIssue().toString());
-        rentCarForm.setReturnDate(rentCarToUpdate.getReturnDate().toString());
+        LocalDate date = rentCarToUpdate.getDateOfIssue();
+        String dateString = date.getMonth() + "/" + date.getDayOfMonth() + "/" + date.getYear();
+        rentCarForm.setDateOfIssue(dateString);
+        date = rentCarToUpdate.getReturnDate();
+        dateString = date.getMonth() + "/" + date.getDayOfMonth() + "/" + date.getYear();
+        rentCarForm.setReturnDate(dateString);
 
         rentCarForm.setCarID(rentCarToUpdate.getCar().getId());
         rentCarForm.setCarBrand(rentCarToUpdate.getCar().getBrandCar());

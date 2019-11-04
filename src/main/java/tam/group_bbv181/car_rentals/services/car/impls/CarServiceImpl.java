@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class CarServiceImpl implements ICarService {
     @Autowired
     CarRepository carRepository;
-/*
+
 
     @PostConstruct
     void init(){
@@ -45,7 +45,7 @@ public class CarServiceImpl implements ICarService {
 
         carRepository.saveAll(carList);
     }
-*/
+
 
     @Override
     public List<Car> getAll() {

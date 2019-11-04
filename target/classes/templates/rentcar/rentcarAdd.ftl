@@ -21,9 +21,38 @@
     <fieldset>
         <legend>Add car</legend>
         <form name="RentCarForm" action="" method="POST">
-
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Car:</span>
+                </div>
+                <@spring.formSingleSelect "RentCarForm.carID", CarList, "class='form-control'"/>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Customer:</span>
+                </div>
+                <@spring.formSingleSelect "RentCarForm.customerID", CustomerList, "class='form-control'"/>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Date of issue:</span>
+                </div>
+                <@spring.formInput "RentCarForm.dateOfIssue" "class='form-control' readonly  width='276'" "text"/>
+                <script>
+                    $('#dateOfIssue').datepicker({uiLibrary: 'bootstrap4'});
+                </script>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Return date:</span>
+                </div>
+                <@spring.formInput "RentCarForm.returnDate" "class='form-control' readonly  width='276'" "text"/>
+                <script>
+                    $('#returnDate').datepicker({uiLibrary: 'bootstrap4'});
+                </script>
+            </div>
             <a href="/CarRentals/rentCar/list" Type="Button" class="btn btn-primary">Back</a>
-            <input Type="submit" value="     Next     " class="btn btn-danger"/>
+            <input Type="submit" value="     Submit     " class="btn btn-danger"/>
         </form>
     </fieldset>
 </div>
