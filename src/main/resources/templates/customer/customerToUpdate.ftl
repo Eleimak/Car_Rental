@@ -70,7 +70,7 @@
             </div>-->
             <br>
             <a href="/CarRentals/customer/list" Type="Button" class="btn btn-primary">Back</a>
-            <input Type="submit" value="     Next     " class="btn btn-danger"/>
+            <input Type="submit" value="     Submit     " class="btn btn-danger"/>
         </form>
     </div>
     </body>

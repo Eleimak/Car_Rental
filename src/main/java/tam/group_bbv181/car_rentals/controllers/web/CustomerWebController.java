@@ -117,6 +117,7 @@ public class CustomerWebController {
     public String userAccount(Model model,@PathVariable(value="id")String id){
         Customer customer = customerService.get(id);
 
+        ///////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -128,6 +129,7 @@ public class CustomerWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        ////////////////////////////////////////////////////////////////
 
         model.addAttribute("customer", customer);
         return "accountUser";
@@ -164,6 +166,7 @@ public class CustomerWebController {
         customerForm.setRent(customerToUpdate.isRent());
         model.addAttribute("CustomerForm", customerForm);
 
+        ///////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -175,6 +178,7 @@ public class CustomerWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        ////////////////////////////////////////////////////////////
 
         return "/customer/customerToUpdate";
     }

@@ -37,6 +37,7 @@ public class CarWebController {
     public String showAll(Model model){
         List<Car> list = carService.getAll();
 
+        ///////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -48,6 +49,7 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        ////////////////////////////////////////////////////////////////////
 
         model.addAttribute("cars", list);
         return "/car/carList";
@@ -58,6 +60,7 @@ public class CarWebController {
         List<Car> listNoRepair = carService.getAllNoRepair();
         model.addAttribute("cars", listNoRepair);
 
+        ///////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -69,6 +72,7 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        ///////////////////////////////////////////////////////////////////
 
         return "/car/carList";
     }
@@ -78,6 +82,7 @@ public class CarWebController {
         List<Car> list = carService.getSortingByType(TypeCar.SEDAN);
         model.addAttribute("cars", list);
 
+        ////////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -89,6 +94,7 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        /////////////////////////////////////////////////////////////////////
 
         return "/car/carList";
     }
@@ -97,6 +103,7 @@ public class CarWebController {
         List<Car> list = carService.getAll();
         model.addAttribute("cars", list);
 
+        //////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -108,6 +115,7 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        ////////////////////////////////////////////////////////////////
 
         return "/car/carListSearch";
     }
@@ -216,6 +224,7 @@ public class CarWebController {
         carForm.setRent(rent);
         model.addAttribute("CarForm", carForm);
 
+        /////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -227,6 +236,7 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        ////////////////////////////////////////////////////////////
 
         return "/car/carToUpdate";
     }

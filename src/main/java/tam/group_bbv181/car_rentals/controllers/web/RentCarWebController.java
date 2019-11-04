@@ -35,6 +35,7 @@ public class RentCarWebController {
     public String showAll(Model model){
         List<RentCar> list = rentCarService.getAll();
 
+        ///////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -46,6 +47,7 @@ public class RentCarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        /////////////////////////////////////////////////////////////////
 
         model.addAttribute("RentCar", list);
         return "/rentcar/rentcarList";
@@ -60,6 +62,7 @@ public class RentCarWebController {
         model.addAttribute("CustomerList", customerList);
         model.addAttribute("RentCarForm", rentCarForm);
 
+        /////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -71,6 +74,7 @@ public class RentCarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        ////////////////////////////////////////////////////////////////
 
         return "/rentcar/rentcarAdd";
     }
@@ -106,6 +110,7 @@ public class RentCarWebController {
 
         model.addAttribute("RentCarForm", rentCarForm);
 
+        ////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -117,6 +122,7 @@ public class RentCarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        /////////////////////////////////////////////////////////////
 
         return "/rentcar/rentCarToUpdate";
     }
@@ -136,6 +142,7 @@ public class RentCarWebController {
     public String delete(Model model,@PathVariable(value = "id")String id){
         rentCarService.delete(id);
 
+        //////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -147,6 +154,7 @@ public class RentCarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        //////////////////////////////////////////////////////////////
 
         return "redirect:/CarRentals/rentCar/list";
     }
