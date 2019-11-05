@@ -21,5 +21,4 @@ public interface ICarService {
     List<Car> getSearchBrand(String search);
     List<Car> getSearchModel(String search);
     List<Car> getSearchLicenseNumberPlates(String search);
-    List<Car> getSearchCostCarBetween(Integer from, Integer before);
 }

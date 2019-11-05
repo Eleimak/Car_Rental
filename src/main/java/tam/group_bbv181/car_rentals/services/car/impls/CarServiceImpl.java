@@ -125,9 +125,4 @@ public class CarServiceImpl implements ICarService {
     public List<Car> getSearchLicenseNumberPlates(String search) {
         return carRepository.findCarByLicenseNumberPlates(search);
     }
-
-    @Override
-    public List<Car> getSearchCostCarBetween(Integer from, Integer before) {
-        return carRepository.findCarByCostCarIsBetween(from, before);
-    }
 }

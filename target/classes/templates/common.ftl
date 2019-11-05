@@ -40,7 +40,8 @@
                             <a class="dropdown-item alert-link" href="/CarRentals/car/list">Full list</a>
                             <a class="dropdown-item alert-link" href="/CarRentals/car/listR">Active list</a>
                             <a class="dropdown-item alert-link" href="/CarRentals/car/listSort">Sort list</a>
-                            <a class="dropdown-item alert-link" href="/CarRentals/car/listSearch">Search</a>
+                            <a class="dropdown-item alert-link" href="/CarRentals/car/search">Search</a>
+                            <a class="dropdown-item alert-link" href="/CarRentals/car/List">List</a>
                         </div>
                     </li>
                     <li class="nav-item">
@@ -63,7 +64,7 @@
                             <#assign imageGender="/image/userGirl.png">
                         </#if>-->
                 <sec:authorize access="isAuthenticated()">
-                    <a href="/Search">Search <img src="/image/search.png" type="image/png" alt=""> </a>
+                    <a href="/CarRentals/car/listSearch">Search <img src="/image/search.png" type="image/png" alt=""> </a>
                 </sec:authorize>
                 <#assign imageGender="">
                 <#if !isAuthenticated??>

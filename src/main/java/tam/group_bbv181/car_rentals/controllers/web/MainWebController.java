@@ -40,11 +40,15 @@ public class MainWebController {
     String mainPage(Model model){
         boolean isAuthenticated;
         // checking if someone is logged in
-        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
-        else isAuthenticated = false;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails){
+            isAuthenticated = true;
+        }
+        else {
+            isAuthenticated = false;
+        }
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         if(isAuthenticated){
-
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             LoginUser loginUser = (LoginUser) authentication.getPrincipal();
             Person personLogin = personService.getPersonLoginUser(loginUser);
@@ -52,10 +56,11 @@ public class MainWebController {
             model.addAttribute("personLogin", customerLogin);
 
          //   User user = (User) authentication.getPrincipal();
-
            // model.addAttribute("username", user.getUsername());
            // model.addAttribute("roles", user.getAuthorities());//user.getAuthorities().stream().map(Role::getAuthority).collect(joining(","))
         }
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         model.addAttribute("isAuthenticated", isAuthenticated);
         return "index";
     }
@@ -94,6 +99,7 @@ public class MainWebController {
         }
         model.addAttribute("listFull", listFull);
 
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -105,10 +111,8 @@ public class MainWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         return "/listSearch";
     }
-
-
-
 }

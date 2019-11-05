@@ -8,12 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import tam.group_bbv181.car_rentals.forms.CarForm;
+import tam.group_bbv181.car_rentals.forms.CarListSearchForm;
 import tam.group_bbv181.car_rentals.model.*;
 import tam.group_bbv181.car_rentals.services.car.impls.CarServiceImpl;
 import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;
 import tam.group_bbv181.car_rentals.services.rentcar.impls.RentCarServiceImpl;
 
+import java.net.InetAddress;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -157,6 +159,91 @@ public class CarWebController {
     }
     */
 
+    /*
+
+     * LIST GET
+
+     */
+
+    @RequestMapping(value = "/List", method = RequestMethod.GET)
+    public String list(Model model){
+        CarListSearchForm carListSearchForm = new CarListSearchForm();
+        List typeCar = new ArrayList();
+        typeCar.add(" ");
+        typeCar.add(TypeCar.CONVERTIBLE);
+        typeCar.add(TypeCar.COUPE);
+        typeCar.add(TypeCar.PIC_UP_VEHICLE);
+        typeCar.add(TypeCar.SEDAN);
+        typeCar.add(TypeCar.HATCHBACK);
+        typeCar.add(TypeCar.MUV_SUV);
+        typeCar.add(TypeCar.VAN);
+        typeCar.add(TypeCar.WAGON);
+        model.addAttribute("TypeCar", typeCar);
+        List yearCar = new ArrayList();
+        yearCar.add(" ");
+        int nowYear = LocalDate.now().getYear();
+        for (Integer i = nowYear; i >= 2000; i--) {
+            yearCar.add(i.toString());
+        }
+        model.addAttribute("YearCar", yearCar);
+        model.addAttribute("CarListSearchForm", carListSearchForm);
+        List repairCar = new ArrayList();
+        repairCar.add(" ");
+        repairCar.add("yes");
+        repairCar.add("no");
+        model.addAttribute("RepairCar", repairCar);
+
+        List<Car> list = carService.getAll();
+        model.addAttribute("cars", list);
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        boolean isAuthenticated;
+        if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
+        else isAuthenticated = false;
+        if(isAuthenticated){
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+            Person personLogin = personService.getPersonLoginUser(loginUser);
+            Customer customerLogin = customerService.getCustomerPerson(personLogin);
+            model.addAttribute("personLogin", customerLogin);
+        }
+        model.addAttribute("isAuthenticated", isAuthenticated);
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        return "/car/carListFind";
+    }
+
+    /*
+
+     * LIST POST
+
+     */
+    @RequestMapping(value = "/List", method = RequestMethod.POST)
+    public String list(Model model,@ModelAttribute("CarListSearchForm")
+            CarListSearchForm carListSearchForm){
+        List<Car> list = new ArrayList<>();
+        if(!carListSearchForm.getCarYear().equals(" ")){
+
+            return "/car/carListFind";
+        }
+
+            list = carService.getSortingByType(carListSearchForm.getTypeCar());
+            model.addAttribute("cars", list);
+
+        List typeCar = Arrays.asList( TypeCar.values());
+        model.addAttribute("typeCar", typeCar);
+        List yearCar = new ArrayList();
+        int nowYear = LocalDate.now().getYear();
+        for (Integer i = nowYear; i >= 2000; i--) {
+            yearCar.add(i.toString());
+        }
+        model.addAttribute("yearCar", yearCar);
+        String error = "All fields must be filled!";
+        model.addAttribute("errorMessage", error);
+        return "/car/carListFind";
+    }
+
+
 
 
     /*
@@ -172,12 +259,14 @@ public class CarWebController {
         model.addAttribute("typeCar", typeCar);
         List yearCar = new ArrayList();
         int nowYear = LocalDate.now().getYear();
+
         for (Integer i = nowYear; i >= 2000; i--) {
             yearCar.add(i.toString());
         }
         model.addAttribute("yearCar", yearCar);
         model.addAttribute("CarForm", carForm);
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -189,6 +278,7 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         return "/car/carAdd";
     }
@@ -285,7 +375,7 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         return "/car/carToUpdate";
     }
@@ -295,6 +385,7 @@ public class CarWebController {
     *UPDATE POST
 
      */
+
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String update(@ModelAttribute("CarForm") CarForm carForm){
         boolean repair, rent;
