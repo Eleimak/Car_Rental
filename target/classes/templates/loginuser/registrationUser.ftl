@@ -5,7 +5,7 @@
     <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Registration</title>
+        <title>Sign up</title>
         <link rel="stylesheet" Type="text/css" href="<@spring.url '/css/style.css'/>"/>
     </head>
     <body>
@@ -16,7 +16,7 @@
                 </div>
             </#if>
             <fieldset>
-                <legend>Registration</legend>
+                <legend>Sign up</legend>
                 <form name="Customer" action="" method="POST">
                     <@spring.formHiddenInput "CustomersForm.person"/>
                     <div class="input-group mb-3">

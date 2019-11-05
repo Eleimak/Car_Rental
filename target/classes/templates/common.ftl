@@ -46,6 +46,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/CarRentals/rentCar/list">Rent car list</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/CarRentals/returnRentCar/list">Return list</a>
+                    </li>
                     <#--<li class="nav-item">
                                 <a class="nav-link" href="/CarRentals/signIn">Sign In</a>
                             </li>-->

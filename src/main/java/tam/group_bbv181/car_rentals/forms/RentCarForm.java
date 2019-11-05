@@ -13,6 +13,7 @@ public class RentCarForm {
     private String carBrand;
     private String carModel;
     private String carNumber;
+    private int carRentalPrice;
     private Customer customer;
     private String customerID;
     private String customerFirstName;
@@ -20,26 +21,34 @@ public class RentCarForm {
     private String customerMiddleName;
     private String dateOfIssue;
     private String returnDate;
+    private double returnCost;
+    private double repairCost;
 
     public RentCarForm() {
     }
 
-    public RentCarForm(String id, String carID, String carBrand,
-                       String carModel, String carNumber, String customerID,
+    public RentCarForm(String id, Car car, String carID, String carBrand,
+                       String carModel, String carNumber, int carRentalPrice,
+                       Customer customer, String customerID,
                        String customerFirstName, String customerLastName,
                        String customerMiddleName, String dateOfIssue,
-                       String returnDate) {
+                       String returnDate, double returnCost, double repairCost) {
         this.id = id;
+        this.car = car;
         this.carID = carID;
         this.carBrand = carBrand;
         this.carModel = carModel;
         this.carNumber = carNumber;
+        this.carRentalPrice = carRentalPrice;
+        this.customer = customer;
         this.customerID = customerID;
         this.customerFirstName = customerFirstName;
         this.customerLastName = customerLastName;
         this.customerMiddleName = customerMiddleName;
         this.dateOfIssue = dateOfIssue;
         this.returnDate = returnDate;
+        this.returnCost = returnCost;
+        this.repairCost = repairCost;
     }
 
     public String getId() {
@@ -88,6 +97,14 @@ public class RentCarForm {
 
     public void setCarNumber(String carNumber) {
         this.carNumber = carNumber;
+    }
+
+    public int getCarRentalPrice() {
+        return carRentalPrice;
+    }
+
+    public void setCarRentalPrice(int carRentalPrice) {
+        this.carRentalPrice = carRentalPrice;
     }
 
     public Customer getCustomer() {
@@ -146,12 +163,31 @@ public class RentCarForm {
         this.returnDate = returnDate;
     }
 
+    public double getReturnCost() {
+        return returnCost;
+    }
+
+    public void setReturnCost(double returnCost) {
+        this.returnCost = returnCost;
+    }
+
+    public double getRepairCost() {
+        return repairCost;
+    }
+
+    public void setRepairCost(double repairCost) {
+        this.repairCost = repairCost;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RentCarForm that = (RentCarForm) o;
-        return Objects.equals(id, that.id) &&
+        return carRentalPrice == that.carRentalPrice &&
+                Double.compare(that.returnCost, returnCost) == 0 &&
+                Double.compare(that.repairCost, repairCost) == 0 &&
+                Objects.equals(id, that.id) &&
                 Objects.equals(car, that.car) &&
                 Objects.equals(carID, that.carID) &&
                 Objects.equals(carBrand, that.carBrand) &&
@@ -180,6 +216,7 @@ public class RentCarForm {
                 ", carBrand='" + carBrand + '\'' +
                 ", carModel='" + carModel + '\'' +
                 ", carNumber='" + carNumber + '\'' +
+                ", carRentalPrice=" + carRentalPrice +
                 ", customer=" + customer +
                 ", customerID='" + customerID + '\'' +
                 ", customerFirstName='" + customerFirstName + '\'' +
@@ -187,6 +224,8 @@ public class RentCarForm {
                 ", customerMiddleName='" + customerMiddleName + '\'' +
                 ", dateOfIssue='" + dateOfIssue + '\'' +
                 ", returnDate='" + returnDate + '\'' +
+                ", returnCost=" + returnCost +
+                ", repairCost=" + repairCost +
                 '}';
     }
 }

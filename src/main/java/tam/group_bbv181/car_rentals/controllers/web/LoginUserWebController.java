@@ -29,6 +29,12 @@ public class LoginUserWebController {
     @Autowired
     PersonServiceImpl personService;
 
+    /*
+
+    * SIGN IN
+
+     */
+
     @RequestMapping(value = "/signIn", method = RequestMethod.GET)
     public String signIn(Model model){
         return "loginuser/loginUser";
@@ -48,6 +54,12 @@ public class LoginUserWebController {
         return "redirect:/CarRentals/signIn";
     }
 */
+    /*
+
+    * SIGN UP GET
+
+     */
+
    @RequestMapping(value = "/signUp", method = RequestMethod.GET)
     public String addCustomer(Model model){
         CustomerForm customerForm = new CustomerForm();
@@ -57,6 +69,12 @@ public class LoginUserWebController {
         model.addAttribute("CustomersForm", customerForm);
         return "/loginuser/registrationUser";
     }
+
+    /*
+
+    * SIGN UP POST
+
+     */
 
     @RequestMapping(value = "/signUp", method = RequestMethod.POST)
     public String create(Model model,@ModelAttribute("CustomersForm")

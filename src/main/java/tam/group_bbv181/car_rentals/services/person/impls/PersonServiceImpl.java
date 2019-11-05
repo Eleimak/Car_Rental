@@ -42,7 +42,9 @@ public class PersonServiceImpl implements IPersonService {
     public Person delete(String id) {
         Person person = this.get(id);
         personRepository.deleteById(id);
-        loginService.delete(person.getLoginUser().getId());
+        if(person.getLoginUser()!=null) {
+            loginService.delete(person.getLoginUser().getId());
+        }
         return person;
     }
 

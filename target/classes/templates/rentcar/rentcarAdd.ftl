@@ -25,13 +25,13 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Car:</span>
                 </div>
-                <@spring.formSingleSelect "RentCarForm.carID", CarList, "class='form-control'"/>
+                <@spring.formSingleSelect "RentCarForm.carID", CarList, "class='form-control' width='300'"/>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1">Customer:</span>
                 </div>
-                <@spring.formSingleSelect "RentCarForm.customerID", CustomerList, "class='form-control'"/>
+                <@spring.formSingleSelect "RentCarForm.customerID", CustomerList, "class='form-control' width='300'"/>
             </div>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">

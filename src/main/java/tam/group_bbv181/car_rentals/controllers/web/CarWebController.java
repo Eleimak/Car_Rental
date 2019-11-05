@@ -33,11 +33,17 @@ public class CarWebController {
     @Autowired
     CustomerServiceImpl customerService;
 
+    /*
+
+    * LIST
+
+     */
+
     @RequestMapping("/list")
     public String showAll(Model model){
         List<Car> list = carService.getAll();
 
-        ///////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -49,18 +55,24 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
-        ////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         model.addAttribute("cars", list);
         return "/car/carList";
     }
+
+    /*
+
+    * LIST ACTIVE
+
+     */
 
     @RequestMapping("/listR")
     public String showNoRepair(Model model){
         List<Car> listNoRepair = carService.getAllNoRepair();
         model.addAttribute("cars", listNoRepair);
 
-        ///////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -72,17 +84,23 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
-        ///////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         return "/car/carList";
     }
+
+    /*
+
+    * LIST TYPE CAR
+
+     */
 
     @RequestMapping("/listSort")
     public String showSort(Model model){
         List<Car> list = carService.getSortingByType(TypeCar.SEDAN);
         model.addAttribute("cars", list);
 
-        ////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -94,16 +112,23 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
-        /////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         return "/car/carList";
     }
+
+    /*
+
+    * LIST SEARCH
+
+     */
+
     @RequestMapping("/listSearch")
     public String showSearch(Model model){
         List<Car> list = carService.getAll();
         model.addAttribute("cars", list);
 
-        //////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -115,7 +140,7 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
-        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         return "/car/carListSearch";
     }
@@ -131,6 +156,14 @@ public class CarWebController {
         return "persons";
     }
     */
+
+
+
+    /*
+
+    * CREATE GET
+
+     */
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String addCar(Model model){
@@ -160,6 +193,11 @@ public class CarWebController {
         return "/car/carAdd";
     }
 
+    /*
+
+    * CREATE POST
+
+     */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String create(Model model,@ModelAttribute("CarForm")
             CarForm carForm){
@@ -185,11 +223,22 @@ public class CarWebController {
         return "/car/carAdd";
     }
 
+    /*
+
+    * DELETE
+
+     */
     @RequestMapping("/delete/{id}")
     public String delete(Model model,@PathVariable(value = "id")String id){
         carService.delete(id);
         return "redirect:/CarRentals/car/list";
     }
+
+    /*
+
+    *UPDATE GET
+
+     */
 
     // @PostMapping("/update/{id}")
     @RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
@@ -224,7 +273,7 @@ public class CarWebController {
         carForm.setRent(rent);
         model.addAttribute("CarForm", carForm);
 
-        /////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -236,11 +285,16 @@ public class CarWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
-        ////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         return "/car/carToUpdate";
     }
 
+    /*
+
+    *UPDATE POST
+
+     */
     @RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
     public String update(@ModelAttribute("CarForm") CarForm carForm){
         boolean repair, rent;

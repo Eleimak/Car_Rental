@@ -37,6 +37,12 @@ public class CustomerWebController {
     @Autowired
     PersonServiceImpl personService;
 
+    /*
+
+    * LIST
+
+     */
+
     @RequestMapping("/customer/list")
     public String showAll(Model model){
 
@@ -59,6 +65,12 @@ public class CustomerWebController {
         return "/customer/customerList";
     }
 
+    /*
+
+    * CREATE GET
+
+     */
+
     @RequestMapping(value = "/customer/create", method = RequestMethod.GET)
     public String add(Model model){
 
@@ -73,6 +85,11 @@ public class CustomerWebController {
         return "/customer/customerAdd";
     }
 
+    /*
+
+    * CREATE POST
+
+     */
     @RequestMapping(value = "/customer/create", method = RequestMethod.POST)
     public String create(Model model,@ModelAttribute("CustomerForm")
             CustomerForm customerForm){
@@ -83,11 +100,6 @@ public class CustomerWebController {
         }else{
             genderBool = false;
         }
-
-        LoginUser newLogin = new LoginUser(customerForm.getLogin(),
-                new ArrayList<>(Arrays.asList(Role.USER)),
-                new BCryptPasswordEncoder().encode(customerForm.getPassword()),
-                true, true, true, true);
 
         Person newPerson = new Person(null, customerForm.getFirstName(),
                 customerForm.getLastName(), customerForm.getMiddleName(),
@@ -113,11 +125,17 @@ public class CustomerWebController {
         return "redirect:/CarRentals/customer/list";
     }
 
+    /*
+
+    * USER ACCOUNT
+
+     */
+
     @RequestMapping("/userAccount/{id}")
     public String userAccount(Model model,@PathVariable(value="id")String id){
         Customer customer = customerService.get(id);
 
-        ///////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -129,11 +147,17 @@ public class CustomerWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
-        ////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         model.addAttribute("customer", customer);
         return "accountUser";
     }
+
+    /*
+
+    * UPDATE GET
+
+     */
 
     // @PostMapping("/update/{id}")
     @RequestMapping(value = "/customer/update/{id}", method = RequestMethod.GET)
@@ -166,7 +190,7 @@ public class CustomerWebController {
         customerForm.setRent(customerToUpdate.isRent());
         model.addAttribute("CustomerForm", customerForm);
 
-        ///////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         boolean isAuthenticated;
         if(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails) isAuthenticated = true;
         else isAuthenticated = false;
@@ -178,10 +202,16 @@ public class CustomerWebController {
             model.addAttribute("personLogin", customerLogin);
         }
         model.addAttribute("isAuthenticated", isAuthenticated);
-        ////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         return "/customer/customerToUpdate";
     }
+
+    /*
+
+    * UPDATE POST
+
+     */
 
     @RequestMapping(value = "/customer/update/{id}", method = RequestMethod.POST)
     public String update(@PathVariable("id") String id,
@@ -207,6 +237,12 @@ public class CustomerWebController {
         rentCarService.customerUpdate(customerService.update(newCustomer));
         return "redirect:/CarRentals/customer/list";
     }
+
+    /*
+
+    * DELETE
+
+     */
 
     @RequestMapping("/customer/delete/{id}")
     public String delete(Model model,@PathVariable(value = "id")String id){

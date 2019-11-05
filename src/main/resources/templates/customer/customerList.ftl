@@ -56,7 +56,7 @@
         </#list>
         </table>
     </div>
-    <#--<a href="/CarRentals/customer/create" Type="Button" class="btn btn-info">Add new customer</a>-->
+    <a href="/CarRentals/customer/create" Type="Button" class="btn btn-info">Add new customer</a>
     </form>
 </div>
 </body>

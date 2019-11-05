@@ -23,7 +23,7 @@
                     <th>License number plates</th>
                     <th>Date of issue</th>
                     <th>Return date</th>
-                    <th>Delete</th>
+                    <th>Return</th>
                     <th>Update</th>
                 </tr>
                 <#list RentCar as RentCars>
@@ -36,7 +36,7 @@
                         <td>${RentCars.car.licenseNumberPlates}</td>
                         <td>${RentCars.dateOfIssue}</td>
                         <td>${RentCars.returnDate}</td>
-                        <td><a href="/CarRentals/rentCar/delete/${RentCars.id}" Type="Button" class="btn btn-danger" >Delete</a></td>
+                        <td><a href="/CarRentals/returnRentCar/return/${RentCars.id}" Type="Button" class="btn btn-danger" >Return</a></td>
                         <td><a href="/CarRentals/rentCar/update/${RentCars.id}" Type="Button" class="btn btn-primary" >Update</a></td>
                     </tr>
                 </#list>

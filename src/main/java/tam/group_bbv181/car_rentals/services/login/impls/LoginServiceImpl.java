@@ -7,10 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import tam.group_bbv181.car_rentals.model.Customer;
-import tam.group_bbv181.car_rentals.model.LoginUser;
-import tam.group_bbv181.car_rentals.model.Person;
-import tam.group_bbv181.car_rentals.model.Role;
+import tam.group_bbv181.car_rentals.model.*;
 import tam.group_bbv181.car_rentals.repository.CustomerRepository;
 import tam.group_bbv181.car_rentals.repository.LoginRepository;
 import tam.group_bbv181.car_rentals.repository.PersonRepository;
@@ -59,14 +56,15 @@ public class LoginServiceImpl implements UserDetailsService, ILoginService {
         Person tester = new Person(this.create(annA),"Anna","Tester", "Oyen", false);
         Person pash1 = new Person(this.create(qweR),"Qwer","Rewq", "Ywer", true);
 
+        List<Car> carList = new ArrayList<>();
         Customer bazil = new Customer(personRepository.save(pash),"qwrewt",
-                    "45679689","qwer@gmail.com", 0,null,false);
+                    "45679689","qwer@gmail.com", 0,carList,false);
         Customer jan = new Customer(personRepository.save(desi),"zxcxczcz",
-                    "436554","asdf@gmail.com",0,null,false);
+                    "436554","asdf@gmail.com",0,carList,false);
         Customer anna = new Customer(personRepository.save(tester),"wqqrrwer",
-                    "323774","zvcx@mail.com",0,null,false);
+                    "323774","zvcx@mail.com",0,carList,false);
         Customer qwer1 = new Customer(personRepository.save(pash1),"qwerrttyy",
-                "1234567890","qwert@mail.com",0,null,false);
+                "1234567890","qwert@mail.com",0,carList,false);
 
         anna.setBonusPoints(7);
         bazil.setBonusPoints(20);

@@ -35,7 +35,7 @@ public class RentCarServiceImpl implements IRentCarService {
         rentCarRepository.saveAll( new ArrayList<>(
                 Arrays.asList(
                         new RentCar(
-                        carService.getAll().get(0),
+                        carService.getAll().get(3),
                         customerService.getAll().get(0),
                         LocalDate.of(2017, Month.JULY,15),
                         LocalDate.of(2017,Month.AUGUST,16)
@@ -51,13 +51,26 @@ public class RentCarServiceImpl implements IRentCarService {
                                 customerService.getAll().get(2),
                                 LocalDate.of(2018, Month.NOVEMBER,4),
                                 LocalDate.of(2018,Month.DECEMBER,19)
-                        ),
-                        new RentCar(
-                                carService.getAll().get(3),
-                                customerService.getAll().get(3),
-                                LocalDate.of(2019, Month.JANUARY,20),
-                                LocalDate.of(2019,Month.MARCH,29)
-                        ))));
+                        )
+                        )));
+        Car car0 = carService.getAll().get(3);
+        car0.setRent(true);
+        carService.update(car0);
+        Car car1 = carService.getAll().get(1);
+        car1.setRent(true);
+        carService.update(car1);
+        Car car2 = carService.getAll().get(2);
+        car2.setRent(true);
+        carService.update(car2);
+        Customer customer0 = customerService.getAll().get(0);
+        customer0.setRent(true);
+        customerService.update(customer0);
+        Customer customer1 = customerService.getAll().get(1);
+        customer1.setRent(true);
+        customerService.update(customer1);
+        Customer customer2 = customerService.getAll().get(2);
+        customer2.setRent(true);
+        customerService.update(customer2);
     }
 
 
