@@ -413,6 +413,6 @@ public class CarWebController {
         newCar.setId(carForm.getId());
 
         rentCarService.carUpdate(carService.update(newCar));
-        return "redirect:/CarRentals/car/List";
+        return "redirect:/CarRentals/car/list";
     }
 }
