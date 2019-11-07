@@ -107,8 +107,8 @@ public class CarServiceImpl implements ICarService {
 
     @Override
     public boolean isFullInput(CarForm carForm) {
-        if(carForm.getBrandCar().equals("")){return true;}
-        return false;
+        if(carForm.getBrandCar().equals("")){return false;}
+        return true;
     }
 
     @Override

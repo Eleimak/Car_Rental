@@ -310,7 +310,7 @@ public class CarWebController {
         model.addAttribute("yearCar", yearCar);
         String error = "";
         if(carService.isUniqueNumber(carForm.getLicenseNumberPlates())){
-            error = "Enter another phone number!";
+            error = "Enter another license number plates!";
         }
         else {
             error = "All fields must be filled!";
