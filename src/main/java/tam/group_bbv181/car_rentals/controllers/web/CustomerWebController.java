@@ -9,10 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import tam.group_bbv181.car_rentals.forms.CustomerForm;
-import tam.group_bbv181.car_rentals.model.Customer;
-import tam.group_bbv181.car_rentals.model.LoginUser;
-import tam.group_bbv181.car_rentals.model.Person;
-import tam.group_bbv181.car_rentals.model.Role;
+import tam.group_bbv181.car_rentals.model.*;
 import tam.group_bbv181.car_rentals.services.customer.impls.CustomerServiceImpl;
 import tam.group_bbv181.car_rentals.services.login.impls.LoginServiceImpl;
 import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;
@@ -105,9 +102,10 @@ public class CustomerWebController {
                 customerForm.getLastName(), customerForm.getMiddleName(),
                 genderBool);
 
+        List<Car> carList = new ArrayList<>();
         Customer newCustomer = new Customer(personService.create(newPerson),
                 customerForm.getAddress(), customerForm.getPhone(),
-                customerForm.geteMail(),0,null,false);
+                customerForm.geteMail(),0,carList,false);
 
         if(personService.isNotEmptyFields(newPerson)
                 || customerService.isNotEmptyFields(newCustomer)){

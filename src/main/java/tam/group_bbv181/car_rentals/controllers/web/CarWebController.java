@@ -308,7 +308,13 @@ public class CarWebController {
             yearCar.add(i.toString());
         }
         model.addAttribute("yearCar", yearCar);
-        String error = "All fields must be filled!";
+        String error = "";
+        if(carService.isUniqueNumber(carForm.getLicenseNumberPlates())){
+            error = "Enter another phone number!";
+        }
+        else {
+            error = "All fields must be filled!";
+        }
         model.addAttribute("errorMessage", error);
         return "/car/carAdd";
     }
