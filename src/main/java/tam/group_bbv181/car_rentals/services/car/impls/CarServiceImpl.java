@@ -99,10 +99,10 @@ public class CarServiceImpl implements ICarService {
         List<Car> carList = this.getAll();
         for (Car item: carList) {
             if(item.getLicenseNumberPlates().equals(licenseNumberPlates)){
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     @Override
