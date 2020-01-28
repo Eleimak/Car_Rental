@@ -43,18 +43,18 @@ public class ReturnRentCarServiceImpl implements IReturnRentCarService {
 
     @Override
     public ReturnRentCar create(ReturnRentCar returnRentCar) {
-        RentCar newRentCar = returnRentCar.getRentCar();
-        Car newCar = carService.get(newRentCar.getCar().getId());
-        newCar.setRent(false);
-        carService.update(newCar);
-        Customer newCustomer = customerService.get(newRentCar.getCustomer().getId());
-        newCustomer.setRent(false);
-        List<Car> carList = newCustomer.getCarList();
-        carList.add(newCar);
-        newCustomer.setCarList(carList);
-        newCustomer.setBonusPoints(newCustomer.getBonusPoints() + 1);
-        customerService.update(newCustomer);
-        rentCarService.delete(newRentCar.getId());
+//        RentCar newRentCar = returnRentCar.getRentCar();
+//        Car newCar = carService.get(newRentCar.getCar().getId());
+//        newCar.setRent(false);
+//        carService.update(newCar);
+//        Customer newCustomer = customerService.get(newRentCar.getCustomer().getId());
+//        newCustomer.setRent(false);
+//        List<Car> carList = newCustomer.getCarList();
+//        carList.add(newCar);
+//        newCustomer.setCarList(carList);
+//        newCustomer.setBonusPoints(newCustomer.getBonusPoints() + 1);
+//        customerService.update(newCustomer);
+//        rentCarService.delete(newRentCar.getId());
         return returnRentCarRepository.save(returnRentCar);
     }
 

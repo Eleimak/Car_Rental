@@ -3,6 +3,7 @@ package tam.group_bbv181.car_rentals.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.awt.*;
 import java.util.Objects;
 
 @Document
@@ -11,27 +12,41 @@ public class Car {
     private String id;
     private String brandCar;
     private String modelCar;
-    private int costCar;
-    private String licenseNumberPlates;
     private TypeCar typeCar;
+    private int carMileage;
+    private boolean transmission;
     private String yearCar;
-    private int rentalPrice;
-    private boolean repair;
-    private boolean rent;
+    private int door;
+    private String fuel;
 
     public Car() {
     }
 
-    public Car(String brandCar, String modelCar, int costCar, String licenseNumberPlates, TypeCar typeCar, String yearCar, int rentalPrice, boolean repair, boolean rent) {
+    public Car(String brandCar, String modelCar, TypeCar typeCar,
+               int carMileage, boolean transmission, String yearCar, int door,
+               String fuel) {
         this.brandCar = brandCar;
         this.modelCar = modelCar;
-        this.costCar = costCar;
-        this.licenseNumberPlates = licenseNumberPlates;
         this.typeCar = typeCar;
+        this.carMileage = carMileage;
+        this.transmission = transmission;
         this.yearCar = yearCar;
-        this.rentalPrice = rentalPrice;
-        this.repair = repair;
-        this.rent = rent;
+        this.door = door;
+        this.fuel = fuel;
+    }
+
+    public Car(String id, String brandCar, String modelCar, TypeCar typeCar,
+               int carMileage, boolean transmission,
+               String yearCar, int door, String fuel) {
+        this.id = id;
+        this.brandCar = brandCar;
+        this.modelCar = modelCar;
+        this.typeCar = typeCar;
+        this.carMileage = carMileage;
+        this.transmission = transmission;
+        this.yearCar = yearCar;
+        this.door = door;
+        this.fuel = fuel;
     }
 
     public String getId() {
@@ -58,28 +73,28 @@ public class Car {
         this.modelCar = modelCar;
     }
 
-    public int getCostCar() {
-        return costCar;
-    }
-
-    public void setCostCar(int costCar) {
-        this.costCar = costCar;
-    }
-
-    public String getLicenseNumberPlates() {
-        return licenseNumberPlates;
-    }
-
-    public void setLicenseNumberPlates(String licenseNumberPlates) {
-        this.licenseNumberPlates = licenseNumberPlates;
-    }
-
     public TypeCar getTypeCar() {
         return typeCar;
     }
 
     public void setTypeCar(TypeCar typeCar) {
         this.typeCar = typeCar;
+    }
+
+    public int getCarMileage() {
+        return carMileage;
+    }
+
+    public void setCarMileage(int carMileage) {
+        this.carMileage = carMileage;
+    }
+
+    public boolean isTransmission() {
+        return transmission;
+    }
+
+    public void setTransmission(boolean transmission) {
+        this.transmission = transmission;
     }
 
     public String getYearCar() {
@@ -90,28 +105,20 @@ public class Car {
         this.yearCar = yearCar;
     }
 
-    public int getRentalPrice() {
-        return rentalPrice;
+    public int getDoor() {
+        return door;
     }
 
-    public void setRentalPrice(int rentalPrice) {
-        this.rentalPrice = rentalPrice;
+    public void setDoor(int door) {
+        this.door = door;
     }
 
-    public boolean isRepair() {
-        return repair;
+    public String getFuel() {
+        return fuel;
     }
 
-    public void setRepair(boolean repair) {
-        this.repair = repair;
-    }
-
-    public boolean isRent() {
-        return rent;
-    }
-
-    public void setRent(boolean rent) {
-        this.rent = rent;
+    public void setFuel(String fuel) {
+        this.fuel = fuel;
     }
 
     @Override
@@ -119,16 +126,15 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return costCar == car.costCar &&
-                rentalPrice == car.rentalPrice &&
-                repair == car.repair &&
-                rent == car.rent &&
+        return carMileage == car.carMileage &&
+                transmission == car.transmission &&
+                door == car.door &&
                 Objects.equals(id, car.id) &&
                 Objects.equals(brandCar, car.brandCar) &&
                 Objects.equals(modelCar, car.modelCar) &&
-                Objects.equals(licenseNumberPlates, car.licenseNumberPlates) &&
                 typeCar == car.typeCar &&
-                Objects.equals(yearCar, car.yearCar);
+                Objects.equals(yearCar, car.yearCar) &&
+                Objects.equals(fuel, car.fuel);
     }
 
     @Override
@@ -142,13 +148,12 @@ public class Car {
                 "id='" + id + '\'' +
                 ", brandCar='" + brandCar + '\'' +
                 ", modelCar='" + modelCar + '\'' +
-                ", costCar=" + costCar +
-                ", licenseNumberPlates='" + licenseNumberPlates + '\'' +
                 ", typeCar=" + typeCar +
+                ", carMileage=" + carMileage +
+                ", transmission=" + transmission +
                 ", yearCar='" + yearCar + '\'' +
-                ", rentalPrice=" + rentalPrice +
-                ", repair=" + repair +
-                ", rent=" + rent +
+                ", door=" + door +
+                ", fuel='" + fuel + '\'' +
                 '}';
     }
 }

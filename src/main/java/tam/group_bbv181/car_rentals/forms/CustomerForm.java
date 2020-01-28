@@ -1,7 +1,7 @@
 package tam.group_bbv181.car_rentals.forms;
 
 import tam.group_bbv181.car_rentals.model.Car;
-import tam.group_bbv181.car_rentals.model.LoginUser;
+//import tam.group_bbv181.car_rentals.model.LoginUser;
 import tam.group_bbv181.car_rentals.model.Person;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class CustomerForm {
     private String id;
-    private LoginUser loginUser;
+    //private LoginUser loginUser;
     private String idLogin;
     private String login;
     private String password;
@@ -29,30 +29,30 @@ public class CustomerForm {
     public CustomerForm() {
     }
 
-    public CustomerForm(String id, LoginUser loginUser, String idLogin,
-                        String login, String password, Person person,
-                        String idPerson, String firstName, String lastName,
-                        String middleName, String gender, String address,
-                        String phone, String eMail, int bonusPoints,
-                        List<Car> carList, boolean rent) {
-        this.id = id;
-        this.loginUser = loginUser;
-        this.idLogin = idLogin;
-        this.login = login;
-        this.password = password;
-        this.person = person;
-        this.idPerson = idPerson;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.middleName = middleName;
-        this.gender = gender;
-        this.address = address;
-        this.phone = phone;
-        this.eMail = eMail;
-        this.bonusPoints = bonusPoints;
-        this.carList = carList;
-        this.rent = rent;
-    }
+//    public CustomerForm(String id, LoginUser loginUser, String idLogin,
+//                        String login, String password, Person person,
+//                        String idPerson, String firstName, String lastName,
+//                        String middleName, String gender, String address,
+//                        String phone, String eMail, int bonusPoints,
+//                        List<Car> carList, boolean rent) {
+//        this.id = id;
+//        this.loginUser = loginUser;
+//        this.idLogin = idLogin;
+//        this.login = login;
+//        this.password = password;
+//        this.person = person;
+//        this.idPerson = idPerson;
+//        this.firstName = firstName;
+//        this.lastName = lastName;
+//        this.middleName = middleName;
+//        this.gender = gender;
+//        this.address = address;
+//        this.phone = phone;
+//        this.eMail = eMail;
+//        this.bonusPoints = bonusPoints;
+//        this.carList = carList;
+//        this.rent = rent;
+//    }
 
     public String getId() {
         return id;
@@ -62,13 +62,13 @@ public class CustomerForm {
         this.id = id;
     }
 
-    public LoginUser getLoginUser() {
-        return loginUser;
-    }
-
-    public void setLoginUser(LoginUser loginUser) {
-        this.loginUser = loginUser;
-    }
+//    public LoginUser getLoginUser() {
+//        return loginUser;
+//    }
+//
+//    public void setLoginUser(LoginUser loginUser) {
+//        this.loginUser = loginUser;
+//    }
 
     public String getIdLogin() {
         return idLogin;
@@ -198,7 +198,7 @@ public class CustomerForm {
         return bonusPoints == that.bonusPoints &&
                 rent == that.rent &&
                 Objects.equals(id, that.id) &&
-                Objects.equals(loginUser, that.loginUser) &&
+               // Objects.equals(loginUser, that.loginUser) &&
                 Objects.equals(idLogin, that.idLogin) &&
                 Objects.equals(login, that.login) &&
                 Objects.equals(password, that.password) &&
@@ -219,26 +219,26 @@ public class CustomerForm {
         return Objects.hash(id);
     }
 
-    @Override
-    public String toString() {
-        return "CustomerForm{" +
-                "id='" + id + '\'' +
-                ", loginUser=" + loginUser +
-                ", idLogin='" + idLogin + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", person=" + person +
-                ", idPerson='" + idPerson + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", gender='" + gender + '\'' +
-                ", address='" + address + '\'' +
-                ", phone='" + phone + '\'' +
-                ", eMail='" + eMail + '\'' +
-                ", bonusPoints=" + bonusPoints +
-                ", carList=" + carList +
-                ", rent=" + rent +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "CustomerForm{" +
+//                "id='" + id + '\'' +
+//                ", loginUser=" + loginUser +
+//                ", idLogin='" + idLogin + '\'' +
+//                ", login='" + login + '\'' +
+//                ", password='" + password + '\'' +
+//                ", person=" + person +
+//                ", idPerson='" + idPerson + '\'' +
+//                ", firstName='" + firstName + '\'' +
+//                ", lastName='" + lastName + '\'' +
+//                ", middleName='" + middleName + '\'' +
+//                ", gender='" + gender + '\'' +
+//                ", address='" + address + '\'' +
+//                ", phone='" + phone + '\'' +
+//                ", eMail='" + eMail + '\'' +
+//                ", bonusPoints=" + bonusPoints +
+//                ", carList=" + carList +
+//                ", rent=" + rent +
+//                '}';
+//    }
 }

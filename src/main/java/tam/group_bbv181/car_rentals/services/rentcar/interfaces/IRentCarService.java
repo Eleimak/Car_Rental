@@ -2,6 +2,7 @@ package tam.group_bbv181.car_rentals.services.rentcar.interfaces;
 
 import sun.java2d.loops.CustomComponent;
 import tam.group_bbv181.car_rentals.model.Car;
+import tam.group_bbv181.car_rentals.model.CompanyCar;
 import tam.group_bbv181.car_rentals.model.Customer;
 import tam.group_bbv181.car_rentals.model.RentCar;
 
@@ -14,6 +15,6 @@ public interface IRentCarService {
     RentCar update(RentCar rentCar);
     RentCar delete(String id);
 
-    void carUpdate(Car car);
+    void companyCarUpdate(CompanyCar companyCar);
     void customerUpdate(Customer customer);
 }

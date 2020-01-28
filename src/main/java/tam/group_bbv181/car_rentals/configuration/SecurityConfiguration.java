@@ -1,3 +1,4 @@
+/*
 package tam.group_bbv181.car_rentals.configuration;
 
 
@@ -19,7 +20,8 @@ import tam.group_bbv181.car_rentals.services.login.impls.LoginServiceImpl;
 @EnableWebSecurity
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-  /*  @Override
+  */
+/*  @Override
      protected void configure(AuthenticationManagerBuilder auth) throws Exception {
          auth.inMemoryAuthentication()
                  .withUser("user")
@@ -34,7 +36,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
      public PasswordEncoder getPasswordEncoder(){
          return NoOpPasswordEncoder.getInstance();
      }
- }*/
+ }*//*
+
    @Autowired
    private LoginServiceImpl userService;
 
@@ -73,7 +76,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 
 
-   /* @Override
+   */
+/* @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasRole("ADMIN")
@@ -83,6 +87,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         ;
         http.csrf().disable();
     }
-    */
+    *//*
 
-}
+
+}*/

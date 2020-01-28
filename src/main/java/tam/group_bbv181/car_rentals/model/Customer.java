@@ -15,13 +15,13 @@ public class Customer {
     private String phone;
     private String eMail;
     private int bonusPoints;
-    private List<Car> carList;
-    private boolean rent;
+    private List<ReturnRentCar> carList;
+    private ReturnRentCar rent;
 
     public Customer() {
     }
 
-    public Customer(Person person, String address, String phone, String eMail, int bonusPoints, List<Car> carList, boolean rent) {
+    public Customer(Person person, String address, String phone, String eMail, int bonusPoints, List<ReturnRentCar> carList, ReturnRentCar rent) {
         this.person = person;
         this.address = address;
         this.phone = phone;
@@ -79,19 +79,19 @@ public class Customer {
         this.bonusPoints = bonusPoints;
     }
 
-    public List<Car> getCarList() {
+    public List<ReturnRentCar> getCarList() {
         return carList;
     }
 
-    public void setCarList(List<Car> carList) {
+    public void setCarList(List<ReturnRentCar> carList) {
         this.carList = carList;
     }
 
-    public boolean isRent() {
+    public ReturnRentCar getRent() {
         return rent;
     }
 
-    public void setRent(boolean rent) {
+    public void setRent(ReturnRentCar rent) {
         this.rent = rent;
     }
 

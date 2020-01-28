@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import tam.group_bbv181.car_rentals.model.Customer;
 import tam.group_bbv181.car_rentals.model.Person;
 import tam.group_bbv181.car_rentals.repository.CustomerRepository;
-import tam.group_bbv181.car_rentals.repository.LoginRepository;
+//import tam.group_bbv181.car_rentals.repository.LoginRepository;
 import tam.group_bbv181.car_rentals.repository.PersonRepository;
 import tam.group_bbv181.car_rentals.services.customer.interfaces.ICustomerService;
 import tam.group_bbv181.car_rentals.services.person.impls.PersonServiceImpl;

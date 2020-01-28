@@ -9,7 +9,7 @@ import java.util.Objects;
 public class RentCar {
     @Id
     private String id;
-    private Car car;
+    private CompanyCar companyCar;
     private Customer customer;
     private LocalDate dateOfIssue;
     private LocalDate returnDate;
@@ -18,8 +18,8 @@ public class RentCar {
     public RentCar() {
     }
 
-    public RentCar(Car car, Customer customer, LocalDate dateOfIssue, LocalDate returnDate) {
-        this.car = car;
+    public RentCar(CompanyCar companyCar, Customer customer, LocalDate dateOfIssue, LocalDate returnDate) {
+        this.companyCar = companyCar;
         this.customer = customer;
         this.dateOfIssue = dateOfIssue;
         this.returnDate = returnDate;
@@ -33,12 +33,12 @@ public class RentCar {
         this.id = id;
     }
 
-    public Car getCar() {
-        return car;
+    public CompanyCar getCar() {
+        return companyCar;
     }
 
-    public void setCar(Car car) {
-        this.car = car;
+    public void setCar(CompanyCar companyCar) {
+        this.companyCar = companyCar;
     }
 
     public Customer getCustomer() {
@@ -71,7 +71,7 @@ public class RentCar {
         if (o == null || getClass() != o.getClass()) return false;
         RentCar rentCar = (RentCar) o;
         return Objects.equals(id, rentCar.id) &&
-                Objects.equals(car, rentCar.car) &&
+                Objects.equals(companyCar, rentCar.companyCar) &&
                 Objects.equals(customer, rentCar.customer) &&
                 Objects.equals(dateOfIssue, rentCar.dateOfIssue) &&
                 Objects.equals(returnDate, rentCar.returnDate);
@@ -86,7 +86,7 @@ public class RentCar {
     public String toString() {
         return "RentCar{" +
                 "id='" + id + '\'' +
-                ", car=" + car +
+                ", car=" + companyCar +
                 ", customer=" + customer +
                 ", dateOfIssue=" + dateOfIssue +
                 ", returnDate=" + returnDate +
