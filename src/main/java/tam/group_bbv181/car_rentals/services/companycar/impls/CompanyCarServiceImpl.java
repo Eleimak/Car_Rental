@@ -16,6 +16,8 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import static tam.group_bbv181.car_rentals.model.Fuel.*;
+
 @Service
 public class CompanyCarServiceImpl implements ICompanyCarService {
     @Autowired
@@ -35,17 +37,17 @@ public class CompanyCarServiceImpl implements ICompanyCarService {
         List<Car> carList = new ArrayList<>();
 
         Car bmw = new Car("BMW", "320",
-                TypeCar.SEDAN,  210000,true, "2012",4,"Petrol");
+                TypeCar.SEDAN,  210000,true, "2012",4, petrol);
         Car volkswagen = new Car("Volkswagen", "Polo",
-                TypeCar.HATCHBACK,180000, true, "2015",5,"Diesel");
+                TypeCar.HATCHBACK,180000, true, "2015",5, diesel);
         Car mercedes = new Car("Mercedes", "E 220",
-                TypeCar.CONVERTIBLE, 65000, false, "2017", 4, "Mixed");
+                TypeCar.CONVERTIBLE, 65000, false, "2017", 4, mixed);
         Car WV = new Car("Volkswagen", "Lupo",
-                TypeCar.SEDAN,50000,false, "2016", 4, "Diesel");
+                TypeCar.SEDAN,50000,false, "2016", 4, diesel);
         Car Fiat = new Car("Fiat", "Uno",
-                TypeCar.SEDAN,500000,false, "2018", 3, "Diesel");
+                TypeCar.SEDAN,500000,false, "2018", 3, diesel);
         Car audi = new Car("Audi", "e-tron",
-                TypeCar.SEDAN,500000,false, "2018", 3, "Diesel");
+                TypeCar.SEDAN,500000,false, "2018", 3, diesel);
 
 
         carList.add(bmw);

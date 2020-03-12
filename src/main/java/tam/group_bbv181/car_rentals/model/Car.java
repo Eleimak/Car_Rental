@@ -17,14 +17,11 @@ public class Car {
     private boolean transmission;
     private String yearCar;
     private int door;
-    private String fuel;
+    private Fuel fuel;
 
-    public Car() {
-    }
+    public Car() { }
 
-    public Car(String brandCar, String modelCar, TypeCar typeCar,
-               int carMileage, boolean transmission, String yearCar, int door,
-               String fuel) {
+    public Car(String brandCar, String modelCar, TypeCar typeCar, int carMileage, boolean transmission, String yearCar, int door, Fuel fuel) {
         this.brandCar = brandCar;
         this.modelCar = modelCar;
         this.typeCar = typeCar;
@@ -35,9 +32,7 @@ public class Car {
         this.fuel = fuel;
     }
 
-    public Car(String id, String brandCar, String modelCar, TypeCar typeCar,
-               int carMileage, boolean transmission,
-               String yearCar, int door, String fuel) {
+    public Car(String id, String brandCar, String modelCar, TypeCar typeCar, int carMileage, boolean transmission, String yearCar, int door, Fuel fuel) {
         this.id = id;
         this.brandCar = brandCar;
         this.modelCar = modelCar;
@@ -113,11 +108,11 @@ public class Car {
         this.door = door;
     }
 
-    public String getFuel() {
+    public Fuel getFuel() {
         return fuel;
     }
 
-    public void setFuel(String fuel) {
+    public void setFuel(Fuel fuel) {
         this.fuel = fuel;
     }
 
@@ -126,15 +121,7 @@ public class Car {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Car car = (Car) o;
-        return carMileage == car.carMileage &&
-                transmission == car.transmission &&
-                door == car.door &&
-                Objects.equals(id, car.id) &&
-                Objects.equals(brandCar, car.brandCar) &&
-                Objects.equals(modelCar, car.modelCar) &&
-                typeCar == car.typeCar &&
-                Objects.equals(yearCar, car.yearCar) &&
-                Objects.equals(fuel, car.fuel);
+        return Objects.equals(id, car.id);
     }
 
     @Override

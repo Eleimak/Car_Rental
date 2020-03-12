@@ -59,10 +59,7 @@ public class ReturnRentCar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ReturnRentCar that = (ReturnRentCar) o;
-        return Double.compare(that.returnCost, returnCost) == 0 &&
-                Double.compare(that.allCost, allCost) == 0 &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(rentCar, that.rentCar);
+        return Objects.equals(id, that.id);
     }
 
     @Override

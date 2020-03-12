@@ -15,8 +15,7 @@ public class RentCar {
     private LocalDate returnDate;
 
 
-    public RentCar() {
-    }
+    public RentCar() { }
 
     public RentCar(CompanyCar companyCar, Customer customer, LocalDate dateOfIssue, LocalDate returnDate) {
         this.companyCar = companyCar;
@@ -70,11 +69,7 @@ public class RentCar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RentCar rentCar = (RentCar) o;
-        return Objects.equals(id, rentCar.id) &&
-                Objects.equals(companyCar, rentCar.companyCar) &&
-                Objects.equals(customer, rentCar.customer) &&
-                Objects.equals(dateOfIssue, rentCar.dateOfIssue) &&
-                Objects.equals(returnDate, rentCar.returnDate);
+        return id.equals(rentCar.id);
     }
 
     @Override

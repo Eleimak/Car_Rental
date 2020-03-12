@@ -131,14 +131,7 @@ public class CompanyCar {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CompanyCar that = (CompanyCar) o;
-        return costCar == that.costCar &&
-                rentalPrice == that.rentalPrice &&
-                repair == that.repair &&
-                rent == that.rent &&
-                Objects.equals(id, that.id) &&
-                Objects.equals(car, that.car) &&
-                Objects.equals(color, that.color) &&
-                Objects.equals(licenseNumberPlates, that.licenseNumberPlates);
+        return id.equals(that.id);
     }
 
     @Override

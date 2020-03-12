@@ -9,7 +9,6 @@ import java.util.Objects;
 public class Person {
     @Id
     private String id;
-   // private LoginUser loginUser;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -33,23 +32,6 @@ public class Person {
         this.gender = gender;
     }
 
-//    public Person(String id, LoginUser loginUser, String firstName, String middleName, String lastName, boolean gender) {
-//        this.id = id;
-//        this.loginUser = loginUser;
-//        this.firstName = firstName;
-//        this.middleName = middleName;
-//        this.lastName = lastName;
-//        this.gender = gender;
-//    }
-//
-//    public Person(LoginUser loginUser, String firstName, String lastName, String middleName, boolean gender) {
-//        this.loginUser = loginUser;
-//        this.firstName = firstName;
-//        this.middleName = middleName;
-//        this.lastName = lastName;
-//        this.gender = gender;
-//    }
-
     public String getId() {
         return id;
     }
@@ -57,14 +39,6 @@ public class Person {
     public void setId(String id) {
         this.id = id;
     }
-
-//    public LoginUser getLoginUser() {
-//        return loginUser;
-//    }
-//
-//    public void setLoginUser(LoginUser loginUser) {
-//        this.loginUser = loginUser;
-//    }
 
     public String getFirstName() {
         return firstName;
@@ -103,12 +77,7 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return gender == person.gender &&
-                Objects.equals(id, person.id) &&
-               // Objects.equals(loginUser, person.loginUser) &&
-                Objects.equals(firstName, person.firstName) &&
-                Objects.equals(middleName, person.middleName) &&
-                Objects.equals(lastName, person.lastName);
+        return Objects.equals(id, person.id);
     }
 
     @Override
@@ -120,7 +89,6 @@ public class Person {
     public String toString() {
         return "Person{" +
                 "id='" + id + '\'' +
-            //    ", loginUser=" + loginUser +
                 ", firstName='" + firstName + '\'' +
                 ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +

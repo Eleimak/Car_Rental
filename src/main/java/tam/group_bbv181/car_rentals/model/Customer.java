@@ -18,8 +18,7 @@ public class Customer {
     private List<ReturnRentCar> carList;
     private ReturnRentCar rent;
 
-    public Customer() {
-    }
+    public Customer() { }
 
     public Customer(Person person, String address, String phone, String eMail, int bonusPoints, List<ReturnRentCar> carList, ReturnRentCar rent) {
         this.person = person;
@@ -100,14 +99,7 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return bonusPoints == customer.bonusPoints &&
-                rent == customer.rent &&
-                Objects.equals(id, customer.id) &&
-                Objects.equals(person, customer.person) &&
-                Objects.equals(address, customer.address) &&
-                Objects.equals(phone, customer.phone) &&
-                Objects.equals(eMail, customer.eMail) &&
-                Objects.equals(carList, customer.carList);
+        return Objects.equals(id, customer.id);
     }
 
     @Override
