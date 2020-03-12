@@ -20,7 +20,52 @@ public class Customer {
 
     public Customer() { }
 
+    public Customer(Person person, String address, String phone, String eMail) {
+        this.person = person;
+        this.address = address;
+        this.phone = phone;
+        this.eMail = eMail;
+    }
+
+    public Customer(String id, Person person, String address, String phone, String eMail) {
+        this.id = id;
+        this.person = person;
+        this.address = address;
+        this.phone = phone;
+        this.eMail = eMail;
+    }
+
+    public Customer(Person person, String address, String phone, String eMail, List<ReturnRentCar> carList, ReturnRentCar rent) {
+        this.person = person;
+        this.address = address;
+        this.phone = phone;
+        this.eMail = eMail;
+        this.carList = carList;
+        this.rent = rent;
+    }
+
+    public Customer(String id, Person person, String address, String phone, String eMail, List<ReturnRentCar> carList, ReturnRentCar rent) {
+        this.id = id;
+        this.person = person;
+        this.address = address;
+        this.phone = phone;
+        this.eMail = eMail;
+        this.carList = carList;
+        this.rent = rent;
+    }
+
     public Customer(Person person, String address, String phone, String eMail, int bonusPoints, List<ReturnRentCar> carList, ReturnRentCar rent) {
+        this.person = person;
+        this.address = address;
+        this.phone = phone;
+        this.eMail = eMail;
+        this.bonusPoints = bonusPoints;
+        this.carList = carList;
+        this.rent = rent;
+    }
+
+    public Customer(String id, Person person, String address, String phone, String eMail, int bonusPoints, List<ReturnRentCar> carList, ReturnRentCar rent) {
+        this.id = id;
         this.person = person;
         this.address = address;
         this.phone = phone;
@@ -99,7 +144,7 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Customer customer = (Customer) o;
-        return Objects.equals(id, customer.id);
+        return id.equals(customer.id);
     }
 
     @Override
