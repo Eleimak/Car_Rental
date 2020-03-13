@@ -38,4 +38,9 @@ public class CustomerRestController {
     public Customer update(@RequestBody Customer customer){
         return service.create(customer);
     }
+
+    @GetMapping("/get/{id}")
+    public Customer get(@PathVariable("id")String id) {
+        return service.get(id);
+    }
 }

@@ -39,4 +39,9 @@ public class CompanyCarRestController {
     public CompanyCar update(@RequestBody CompanyCar companyCar){
         return service.create(companyCar);
     }
+
+    @GetMapping("/get/{id}")
+    public CompanyCar get(@PathVariable("id")String id) {
+        return service.get(id);
+    }
 }

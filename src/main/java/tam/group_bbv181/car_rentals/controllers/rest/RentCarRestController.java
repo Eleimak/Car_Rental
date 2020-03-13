@@ -38,4 +38,9 @@ public class RentCarRestController {
     public RentCar update(@RequestBody RentCar rentCar){
         return service.create(rentCar);
     }
+
+    @GetMapping("/get/{id}")
+    public RentCar get(@PathVariable("id")String id) {
+        return service.get(id);
+    }
 }
