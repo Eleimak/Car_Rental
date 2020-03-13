@@ -15,15 +15,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-@Service
+//@Service
 public class RentCarServiceImpl implements IRentCarService {
-    @Autowired
+    //@Autowired
     RentCarRepository rentCarRepository;
 
-    @Autowired
+    //@Autowired
     CustomerServiceImpl customerService;
 
-    @Autowired
+    //@Autowired
     CarServiceImpl carService;
 
 //    @PostConstruct

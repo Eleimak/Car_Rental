@@ -18,18 +18,18 @@ import java.util.List;
 
 import static tam.group_bbv181.car_rentals.model.Fuel.*;
 
-@Service
+//@Service
 public class CompanyCarServiceImpl implements ICompanyCarService {
-    @Autowired
+   //@Autowired
     CompanyCarRepository companyCarRepository;
-    @Autowired
+    //@Autowired
     CarRepository carRepository;
 
     CarServiceImpl carService;
 
     List<CompanyCar> companyCarList = new ArrayList<>();
 
-    @PostConstruct
+   // @PostConstruct
     void init(){
         carRepository.deleteAll();
         companyCarRepository.deleteAll();

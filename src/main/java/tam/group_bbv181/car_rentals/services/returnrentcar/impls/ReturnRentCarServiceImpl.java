@@ -15,18 +15,18 @@ import tam.group_bbv181.car_rentals.services.returnrentcar.interfaces.IReturnRen
 import javax.annotation.PostConstruct;
 import java.util.List;
 
-@Service
+//@Service
 public class ReturnRentCarServiceImpl implements IReturnRentCarService {
-    @Autowired
+    //@Autowired
     ReturnRentCarRepository returnRentCarRepository;
-    @Autowired
+    //@Autowired
     CarServiceImpl carService;
-    @Autowired
+    //@Autowired
     CustomerServiceImpl customerService;
-    @Autowired
+    //@Autowired
     RentCarServiceImpl rentCarService;
 
-    @PostConstruct
+    //@PostConstruct
     void init() {
     returnRentCarRepository.deleteAll();
     }

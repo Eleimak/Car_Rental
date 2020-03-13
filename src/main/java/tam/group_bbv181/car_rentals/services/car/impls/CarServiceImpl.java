@@ -8,12 +8,12 @@ import tam.group_bbv181.car_rentals.services.car.interfaces.ICarService;
 
 import java.util.List;
 
-@Service
+//@Service
 public class CarServiceImpl implements ICarService {
 
     private CarRepository carRepository;
 
-    @Autowired
+    //@Autowired
     public CarServiceImpl(CarRepository carRepository) {
         this.carRepository = carRepository;
     }

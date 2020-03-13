@@ -11,11 +11,11 @@ import tam.group_bbv181.car_rentals.services.person.interfaces.IPersonService;
 
 import java.util.List;
 
-@Service
+//@Service
 public class PersonServiceImpl implements IPersonService {
-    @Autowired
+    //@Autowired
     PersonRepository personRepository;
-    @Autowired
+    //@Autowired
    // LoginServiceImpl loginService;
 
     @Override
